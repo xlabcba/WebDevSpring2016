@@ -17,7 +17,7 @@
             var inputUsername = $scope.user.username;
             var inputPassword = $scope.user.password;
 
-            UserService.findUserByUsernameAndPassword(inputUsername, inputPassword, function(user) {
+            UserService.findUserByCredentials(inputUsername, inputPassword, function(user) {
                 if (user === null) {
                     alert("user not exist!");
                 } else {
