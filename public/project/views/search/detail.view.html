@@ -1,11 +1,15 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DetailController">
-    <h1>Result Detail</h1>
-    <div class="panel-body">
-        <img ng-src="{{detail.image_url}}">
-        <h2>{{detail.name}}</h2>
-        <p>{{detail.location.display_address.toString()}}</p>
-        <p>{{detail.display_phone}}</p>
-        <img ng-src="{{detail.rating_img_url}}">
-        <p>{{detail.snippet_text}}</p>
+<div class="main" ng-controller="DetailController">
+    <div class="content_box">
+        <div class="container">
+            <h1>Result Detail</h1>
+            <div class="panel-body">
+                <img ng-src="{{detail.image_url}}">
+                <h2>{{detail.name}}</h2>
+                <p>{{detail.location.display_address.toString()}}</p>
+                <p>{{detail.display_phone}}</p>
+                <img ng-src="{{detail.rating_img_url}}">
+                <p>{{detail.snippet_text}}</p>
+            </div>
+        </div>
     </div>
 </div>

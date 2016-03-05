@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="main" ng-controller="LoginController">
+    <div class="content_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="menu_box">
+                        <h3 class="menu_head">Menu</h3>
+                        <ul class="nav">
+                            <li><a href="#/home">Recipe</a></li>
+                            <li><a href="#/home">Liquor</a></li>
+                            <li><a href="#/home">Occasion</a></li>
+                            <li><a href="#/home">Flavor</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dreamcrub">
+                        <ul class="breadcrumbs">
+                            <li class="home">
+                                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
+                                <span>&gt;</span>
+                            </li>
+                            <li class="women">
+                                Login
+                            </li>
+                        </ul>
+                        <ul class="previous">
+                            <li><a href="#/home">Back to Previous Page</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="account_grid">
+                        <div class="col-md-6 login-left">
+                            <h3>NEW CUSTOMERS</h3>
+                            <p>By creating an account, you will be able to share your<br/>amazing recipe with others. <br/>Start from here!</p>
+                            <a class="acount-btn" href="#/register">Create an Account</a>
+                        </div>
+                        <div class="col-md-6 login-right">
+                            <h3>REGISTERED CUSTOMERS</h3>
+                            <p>If you have an account with us,  please log in.</p>
+                            <form>
+                                <div>
+                                    <span>Username<label>*</label></span>
+                                    <input type="text">
+                                </div>
+                                <div>
+                                    <span>Password<label>*</label></span>
+                                    <input type="text">
+                                </div>
+                                <a type="login" href="#/profile_info">Login</a>
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

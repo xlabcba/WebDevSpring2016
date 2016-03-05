@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="header" ng-controller="HeaderController">
+    <div class="container">
+        <div class="header-top">
+            <div class="logo">
+                <a href="#/home"><img src="images/logo.png" alt=""/></a>
+            </div>
+            <div class="header_right">
+                <ul class="social">
+                    <li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register" ng-show=true>Register</a></li>
+                    <li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login" ng-show=true>Login</a></li>
+                    <li ng-class="{'active' : $location.url().indexOf('username') != -1}"><a href="#/profile_info"  ng-show=true>profile</a></li>
+                    <li ng-class="{'active' : $location.url().indexOf('logout') != -1}"><a href="#/home" ng-show=true ng-click="resetUser()">Logout</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="banner_wrap">
+            <div class="bannertop_box">
+                <div class="search">
+                    <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
+                    <a href="#/local_search"><input type="submit" value=""></a>
+                </div>
+                <div class="welcome_box">
+                    <h2>Welcome to OurBar</h2>
+                    <p>share recipe and enjoy</p>
+                </div>
+            </div>
+            <div class="banner_right">
+                <h1>Cocktail Recipes</h1>
+                <p>Thirsty? We have tons of delicious cocktail recipes from cocktail-lovers around the world. No matter if you're looking for a classic cocktail, or a punch for a party, we have a cocktail recipe for you. What are you waiting for? Start mixing!</p>
+            </div>
+        </div>
+    </div>
+</div>

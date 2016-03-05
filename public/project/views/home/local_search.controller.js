@@ -6,11 +6,10 @@
 {
     angular
         .module("RecipeApp")
-        .controller("FooterController", FooterController);
+        .controller("LocalSearchController", LocalSearchController);
 
-    function FooterController($rootScope, $scope)
+    function LocalSearchController($scope)
     {
 
     }
-
 })();
