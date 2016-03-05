@@ -2036,24 +2036,6 @@ a.cpns {
     ul.instagram_grid li {
         width: 15.781%;
     }
-    i.fb {
-        width:313px;
-        height: 130px;
-        display: block;
-        background: url(../images/fb.png)#3b5997 no-repeat 115px 18px;
-    }
-    i.tw {
-        width:313px;
-        height: 130px;
-        display: block;
-        background: url(../images/tw.png)#3fccfd no-repeat 115px 19px;
-    }
-    i.pin {
-        width:313px;
-        height: 130px;
-        display: block;
-        background: url(../images/pin.png)#cb2027 no-repeat 115px 19px;
-    }
     p.f_text, p.email{
         font-size: 0.8125em;
     }
@@ -2111,24 +2093,6 @@ a.cpns {
     }
     ul.instagram_grid li {
         width: 15.5%;
-    }
-    i.fb {
-        width:239px;
-        height: 110px;
-        display: block;
-        background: url(../images/fb.png)#3b5997 no-repeat 80px 10px;
-    }
-    i.tw {
-        width: 240px;
-        height: 110px;
-        display: block;
-        background: url(../images/tw.png)#3fccfd no-repeat 80px 10px;
-    }
-    i.pin {
-        width: 240px;
-        height: 110px;
-        display: block;
-        background: url(../images/pin.png)#cb2027 no-repeat 80px 10px;
     }
     .side_banner .banner_holder {
         left: -29em;
@@ -2231,24 +2195,6 @@ a.cpns {
     ul.instagram_grid li {
         width: 15.2%;
     }
-    i.fb {
-        width: 198px;
-        height: 90px;
-        display: block;
-        background: url(../images/fb.png)#3b5997 no-repeat 58px 0px;
-    }
-    i.tw {
-        width: 197px;
-        height: 90px;
-        display: block;
-        background: url(../images/tw.png)#3fccfd no-repeat 60px -1px;
-    }
-    i.pin {
-        width: 198px;
-        height: 90px;
-        display: block;
-        background: url(../images/pin.png)#cb2027 no-repeat 59px 0px;
-    }
     .footer-grid {
         float: none;
         width: 100%;
@@ -2335,27 +2281,6 @@ a.cpns {
     .instagram_top {
         padding: 2em 0;
     }
-    i.fb {
-        width: 159px;
-        height: 90px;
-        display: block;
-        background: url(../images/fb.png)#3b5997 no-repeat 58px 20px;
-        background-size: 30%;
-    }
-    i.tw {
-        width: 159px;
-        height: 90px;
-        display: block;
-        background: url(../images/tw.png)#3fccfd no-repeat 58px 20px;
-        background-size: 30%;
-    }
-    i.pin {
-        width: 159px;
-        height: 90px;
-        display: block;
-        background: url(../images/pin.png)#cb2027 no-repeat 58px 20px;
-        background-size: 30%;
-    }
     .side_banner .banner_holder {
         left: -21em;
     }
@@ -2437,13 +2362,7 @@ a.cpns {
         float: none;
         text-align: center;
     }
-    i.cart_icon {
-        width: 25px;
-        height: 22px;
-        float: left;
-        background: url(../images/cart.png)no-repeat 0px 0px;
-        margin-right: 10px;
-    }
+
     ul.login {
         padding: 5px 5px;
     }
@@ -2537,27 +2456,7 @@ a.cpns {
         margin-right: -10px;
         margin-left: -10px;
     }
-    i.fb {
-        width: 95px;
-        height: 65px;
-        display: block;
-        background: url(../images/fb.png)#3b5997 no-repeat 35px 17px;
-        background-size: 30%;
-    }
-    i.tw {
-        width: 95px;
-        height: 65px;
-        display: block;
-        background: url(../images/tw.png)#3fccfd no-repeat 35px 17px;
-        background-size: 30%;
-    }
-    i.pin {
-        width: 95px;
-        height: 65px;
-        display: block;
-        background: url(../images/pin.png)#cb2027 no-repeat 35px 17px;
-        background-size: 30%;
-    }
+
     .apparel_box {
         width:49%;
     }
@@ -2601,7 +2500,7 @@ a.cpns {
         width: 83.33%;
     }
 }
-@media (max-width: 320px)
+@media (max-width: 320px) {
     .side_banner .banner_holder {
         left: -96px;
     }
@@ -2631,9 +2530,7 @@ a.cpns {
 .cbp-vm-options a:hover,
 .cbp-vm-options a.cbp-vm-selected {
 }
-a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected {
-    background: url(../images/grid_view.png)no-repeat;
-}
+
 .cbp-vm-options a:hover, .cbp-vm-options a.cbp-vm-selected {
 }
 .cbp-vm-options a:before {
@@ -2696,14 +2593,6 @@ a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected {
 }
 /* Common icon styles */
 .cbp-vm-icon:before {
-}
-.cbp-vm-grid:before {
-    content: " ";
-    background: url(../images/grid_view.png)no-repeat;
-}
-.cbp-vm-list:before {
-    content: " ";
-    background: url(../images/list_view.png)no-repeat;
 }
 .cbp-vm-add:before {
     content: " ";

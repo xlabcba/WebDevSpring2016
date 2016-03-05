@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DataModelApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body ng-controller="MainController">
+
+<div ng-include="'./views/header/header.view.html'"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div ng-include="'./views/sidebar/sidebar.view.html'"></div>
+        <div ng-view></div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- jQuery JavaScript Library -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- AngularJS Core and Routing Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+
+<!-- app.js and config.js -->
+<script src="./app.js"></script>
+<script src="./config.js"></script>
+
+<!-- main.controller.js -->
+<script src="./views/main/main.controller.js"></script>
+
+<!-- user.service.client.js -->
+<script src="./services/forms.service.client.js"></script>
+<script src="./services/user.service.client.js"></script>
+
+<!-- all other js -->
+<script src="./views/user/user.controller.js"></script>
+<script src="./views/header/header.controller.js"></script>
+<script src="./views/sidebar/sidebar.controller.js"></script>
+<script src="./views/home/home.controller.js"></script>
+
+
+</body>
+</html>

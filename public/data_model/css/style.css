@@ -1,0 +1,12 @@
+/* custom for label text alignment*/
+.form-horizontal .control-label{
+    /* text-align:right; */
+    text-align:left;
+    /*background-color:#ffa;*/
+}
+
+/* to fit div in td/th*/
+.the-div
+{
+    width: 100%;
+}
