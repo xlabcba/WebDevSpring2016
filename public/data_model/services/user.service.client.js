@@ -10,12 +10,18 @@
     function UserService() {
         var users = [];
 
+        var d1 = new Date('1990-04-02T24:00:00');
+        var d2 = new Date('1985-04-29T24:00:00');
+        var d3 = new Date('1963-10-09T24:00:00');
+        var d4 = new Date('1964-06-02T24:00:00');
+        var d5 = new Date('1985-11-23T24:00:00');
+
         users = [
-            {"_id":123, "firstName":"Alice",   "lastName":"Wonderland", "username":"alice",   "password":"alice",   "email":"alice@gmail.com", "birthday":""},
-            {"_id":234, "firstName":"Bob",     "lastName":"Hope",       "username":"bob",     "password":"bob",     "email":"bob@gmail.com", "birthday":""},
-            {"_id":345, "firstName":"Charlie", "lastName":"Brown",      "username":"charlie", "password":"charlie", "email":"charlie@gmail.com", "birthday":""},
-            {"_id":456, "firstName":"Dan",     "lastName":"Craig",      "username":"dan",     "password":"dan",     "email":"dan@gmail.com", "birthday":""},
-            {"_id":567, "firstName":"Edward",  "lastName":"Norton",     "username":"ed",      "password":"ed",      "email":"ed@gmail.com", "birthday":""}
+            {"_id":123, "firstName":"Alice",   "lastName":"Wonderland", "username":"alice",   "password":"alice",   "email":"alice@gmail.com",   "birthday":d1, "roles":["user", "admin"]},
+            {"_id":234, "firstName":"Bob",     "lastName":"Hope",       "username":"bob",     "password":"bob",     "email":"bob@gmail.com",     "birthday":d2, "roles":["user", "admin"]},
+            {"_id":345, "firstName":"Charlie", "lastName":"Brown",      "username":"charlie", "password":"charlie", "email":"charlie@gmail.com", "birthday":d3, "roles":["user", "admin"]},
+            {"_id":456, "firstName":"Dan",     "lastName":"Craig",      "username":"dan",     "password":"dan",     "email":"dan@gmail.com",     "birthday":d4, "roles":["user", "admin"]},
+            {"_id":567, "firstName":"Edward",  "lastName":"Norton",     "username":"ed",      "password":"ed",      "email":"ed@gmail.com",      "birthday":d5, "roles":["user", "admin"]}
         ];
 
         var service = {

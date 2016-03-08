@@ -22,22 +22,22 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            <input type="text" class="form-control" placeholder="First Name" ng-model="newUser.firstName">
+                                            <input type="text" class="form-control" placeholder="First Name" ng-model="newUser.firstName" />
                                         </th>
                                         <th>
-                                            <input type="text" class="form-control" placeholder="Last Name" ng-model="newUser.lastName">
+                                            <input type="text" class="form-control" placeholder="Last Name" ng-model="newUser.lastName" />
                                         </th>
                                         <th>
-                                            <input type="text" class="form-control" placeholder="Username" ng-model="newUser.username">
+                                            <input type="text" class="form-control" placeholder="Username" ng-model="newUser.username" />
                                         </th>
                                         <th>
-                                            <input type="password" class="form-control" placeholder="password" ng-model="newUser.password">
+                                            <input type="password" class="form-control" placeholder="password" ng-model="newUser.password" />
                                         </th>
                                         <th>
-                                            <input type="email" class="form-control" placeholder="email" ng-model="newUser.email">
+                                            <input type="email" class="form-control" placeholder="email" ng-model="newUser.email" />
                                         </th>
                                         <th>
-                                            <input type="date" class="form-control" placeholder="birthday" ng-model="newUser.birthday">
+                                            <input type="date" class="form-control" placeholder="birthday" ng-model="newUser.birthday" />
                                         </th>
                                         <th>
                                             <div class="the-div row">
@@ -63,7 +63,7 @@
                                         <td>{{user.username}}</td>
                                         <td>{{user.password}}</td>
                                         <td>{{user.email}}</td>
-                                        <td>{{user.birthday}}</td>
+                                        <td>{{user.birthday | date: "yyyy-MM-dd"}}</td>
                                         <td>
                                             <div class="the-div row">
                                                 <div>
