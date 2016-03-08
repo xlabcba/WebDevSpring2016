@@ -25,8 +25,9 @@
             var inputLastname = $scope.user.lastName;
             var inputPassword = $scope.user.password;
             var inputEmail = $scope.user.email;
+            var roles = currUser.roles;
             var user = {"_id":currUser._id, "firstName":inputFirstname, "lastName":inputLastname,
-                "username":inputUsername, "password":inputPassword, "roles":["student"], "email":inputEmail};
+                "username":inputUsername, "password":inputPassword, "roles":roles, "email":inputEmail};
 
             UserService.updateUser(user._id, user, function(user) {
                 $rootScope.currUser = user;
