@@ -29,6 +29,24 @@
                 "email": $scope.newUser.email,
                 "birthday": $scope.newUser.birthday
             };
+
+            if (!newUser.firstName) {
+                alert("First Name is Required!");
+                return;
+            }
+            if (!newUser.lastName) {
+                alert("Last Name is Required!");
+                return;
+            }
+            if (!newUser.username) {
+                alert("Username is Required!");
+                return;
+            }
+            if (!newUser.password) {
+                alert("Password is Required!");
+                return;
+            }
+
             UserService.createUser(newUser, function(user) {
                 UserService.findAllUsers(function (users) {
                     $scope.users = users;
@@ -62,6 +80,24 @@
                     "email": $scope.newUser.email,
                     "birthday": $scope.newUser.birthday
                 };
+
+                if (!newUser.firstName) {
+                    alert("First Name is Required!");
+                    return;
+                }
+                if (!newUser.lastName) {
+                    alert("Last Name is Required!");
+                    return;
+                }
+                if (!newUser.username) {
+                    alert("Username is Required!");
+                    return;
+                }
+                if (!newUser.password) {
+                    alert("Password is Required!");
+                    return;
+                }
+
                 UserService.updateUser(newUser._id, newUser, function(user) {
                     UserService.findAllUsers(function (users) {
                         $scope.users = users;
