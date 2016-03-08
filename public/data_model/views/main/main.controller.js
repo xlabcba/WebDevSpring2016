@@ -11,7 +11,7 @@
     function MainController($rootScope, $scope, $location)
     {
         $scope.$location = $location;
-        $rootScope.currUser = {"_id":0, "firstName":"", "lastName":"", "username":"", "password":"", "email":"", "birthday":""};
+        $rootScope.currUser = {"_id":0, "firstName":"", "lastName":"", "username":"", "password":"", "email":"", "birthday":"", "roles":["user", "admin"]};
     }
 })();
 
