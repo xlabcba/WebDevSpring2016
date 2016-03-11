@@ -7,74 +7,142 @@
         .module("DataModelApp")
         .controller("CommentController", CommentController);
 
-    function CommentController($rootScope, $scope, FormService) {
+    function CommentController($scope, $rootScope, $location, CommentService) {
 
+        //var stepStr;
         var currUser = $rootScope.currUser;
-        var selectedFormIndex = -1;
-        $scope.forms = [];
-        $scope.currForm = {};
-        $scope.currForm = {"_id": "0", "title":"", "userId": currUser._id};
+        var currRecipe = $rootScope.currRecipe;
+        var selectedCommentIndex = -1;
+        $scope.newComment = {"_id":0, "userId":0, "recipeId":0, "title":"", "rating":"", "rateImg":"", "content":""};
 
-        FormService.findAllFormsForUser(currUser._id, function (forms) {
-            $scope.forms = forms;
+
+        $scope.parentComments = [];
+        CommentService.findAllComments(function (parentComments) {
+            $scope.parentComments = parentComments;
         });
 
-        $scope.addForm = function () {
-            var currForm = {
-                _id : $scope.currForm._id,
-                title: $scope.currForm.title,
-                userId: $scope.currForm.userId
-            };
-            FormService.createFormForUser(currForm.userId, currForm, function(currForm) {
-                FormService.findAllFormsForUser(currUser._id, function (forms) {
-                    $scope.forms = forms;
-                });
-                $scope.currForm = {"_id": "0", "title":"", "userId": currUser._id};
-                selectedFormIndex = -1;
-            });
-        }
+        $scope.createComment = function(){
 
-        $scope.updateForm = function () {
-            if (selectedFormIndex >= 0) {
-                var currForm = {
-                    _id : $scope.currForm._id,
-                    title: $scope.currForm.title,
-                    userId: $scope.currForm.userId
+            if (!$scope.newComment.title) {
+                alert("Title is Required!");
+                return;
+            }
+            if (!$scope.newComment.content) {
+                alert("Content cannot be empty!");
+                return;
+            }
+
+            if ($scope.newComment.rating === "5") {
+                $scope.newComment.rateImg = "./images/star5.png";
+            } else if ($scope.newComment.rating === "4") {
+                $scope.newComment.rateImg = "./images/star4.png";
+            } else if ($scope.newComment.rating === "3") {
+                $scope.newComment.rateImg = "./images/star3.png";
+            } else if ($scope.newComment.rating === "2") {
+                $scope.newComment.rateImg = "./images/star2.png";
+            } else if ($scope.newComment.rating === "1") {
+                $scope.newComment.rateImg = "./images/star1.png";
+            } else {
+                $scope.newComment.rateImg = "./images/star0.png";
+            }
+
+            var newComment =
+            {   "_id":0,
+                "userId": $scope.currUser._id,
+                "recipeId": $scope.currRecipe._id,
+                "title": $scope.newComment.title,
+                "rating": $scope.newComment.rating,
+                "rateImg": $scope.newComment.rateImg,
+                "content": $scope.newComment.content
+            };
+
+            CommentService.createCommentForUser($scope.currUser._id, $scope.currRecipe._id, newComment, function(comment) {
+                CommentService.findAllComments(function (parentComments) {
+                    $scope.parentComments = parentComments;
+                });
+                $scope.newComment = {"_id":0, "userId":0, "recipeId":0, "title":"", "rating":"", "rateImg":"", "content":""};
+                selectedCommentIndex = -1;
+            });
+        };
+
+        $scope.selectComment = function(index){
+            selectedCommentIndex = index;
+
+            $scope.newComment =
+            {   "_id": $scope.parentComments[selectedCommentIndex]._id,
+                "userId": $scope.parentComments[selectedCommentIndex].userId,
+                "recipeId": $scope.parentComments[selectedCommentIndex].recipeId,
+                "title": $scope.parentComments[selectedCommentIndex].title,
+                "rating": $scope.parentComments[selectedCommentIndex].rating,
+                "rateImg": $scope.parentComments[selectedCommentIndex].rateImg,
+                "content": $scope.parentComments[selectedCommentIndex].content
+            };
+        };
+
+        $scope.updateComment = function(){
+            if (selectedCommentIndex >= 0) {
+                if (!$scope.newComment.title) {
+                    alert("Title is Required!");
+                    return;
+                }
+                if (!$scope.newComment.content) {
+                    alert("Content cannot be empty!");
+                    return;
+                }
+
+                if ($scope.newComment.rating === "5") {
+                    $scope.newComment.rateImg = "./images/star5.png";
+                } else if ($scope.newComment.rating === "4") {
+                    $scope.newComment.rateImg = "./images/star4.png";
+                } else if ($scope.newComment.rating === "3") {
+                    $scope.newComment.rateImg = "./images/star3.png";
+                } else if ($scope.newComment.rating === "2") {
+                    $scope.newComment.rateImg = "./images/star2.png";
+                } else if ($scope.newComment.rating === "1") {
+                    $scope.newComment.rateImg = "./images/star1.png";
+                } else {
+                    $scope.newComment.rateImg = "./images/star0.png";
+                }
+
+                var newComment =
+                {   "_id": $scope.newComment._id,
+                    "userId": $scope.newComment.userId,
+                    "recipeId": $scope.newComment.recipeId,
+                    "title": $scope.newComment.title,
+                    "rating": $scope.newComment.rating,
+                    "rateImg": $scope.newComment.rateImg,
+                    "content": $scope.newComment.content
                 };
-                FormService.updateFormById(currForm._id, currForm, function(currForm) {
-                    FormService.findAllFormsForUser(currUser._id, function (forms) {
-                        $scope.forms = forms;
+
+                CommentService.updateCommentById(newComment._id, newComment, function(comment) {
+                    CommentService.findAllComments(function (parentComments) {
+                        $scope.parentComments = parentComments;
                     });
-                    $scope.currForm = {"_id": "0", "title":"", "userId": currUser._id};
-                    selectedFormIndex = -1;
+                    $scope.newComment = {"_id":0, "userId":0, "recipeId":0, "title":"", "rating":"", "rateImg":"", "content":""};
+                    selectedCommentIndex = -1;
                 });
             }
-        }
+        };
 
-        $scope.deleteForm = function (index) {
-            var delForm = {
-                _id : $scope.forms[index]._id,
-                title: $scope.forms[index].title,
-                userId: $scope.forms[index].userId
+        $scope.deleteComment = function (index) {
+
+            var delComment =
+            {   "_id": $scope.parentComments[index]._id,
+                "userId": $scope.parentComments[index].userId,
+                "recipeId": $scope.parentComments[index].recipeId,
+                "title": $scope.parentComments[index].title,
+                "rating": $scope.parentComments[index].rating,
+                "rateImg": $scope.parentComments[index].rateImg,
+                "content": $scope.parentComments[index].content,
             };
-            FormService.deleteFormById(delForm._id, function(forms) {
-                if ($scope.forms[index]._id === $scope.currForm._id){
-                    $scope.currForm = {"_id": "0", "title":"", "userId": currUser._id};
-                    selectedFormIndex = -1;
-                }
-                FormService.findAllFormsForUser(currUser._id, function (forms) {
-                    $scope.forms = forms;
+
+            CommentService.deleteCommentById(delComment._id, function(comments) {
+                $scope.newComment = {"_id":0, "userId":0, "recipeId":0, "title":"", "rating":"", "rateImg":"", "content":""};
+                CommentService.findAllComments(function (parentComments) {
+                    $scope.parentComments = parentComments;
                 });
             });
-        }
+        };
 
-        $scope.selectForm = function (index) {
-            selectedFormIndex = index;
-            $scope.currForm = {
-                "_id": $scope.forms[selectedFormIndex]._id,
-                "title": $scope.forms[selectedFormIndex].title,
-                "userId": $scope.forms[selectedFormIndex].userId
-            };
-        }
     }
 })();

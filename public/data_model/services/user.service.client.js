@@ -17,11 +17,11 @@
         var d5 = new Date('1985-11-23T24:00:00');
 
         users = [
-            {"_id":123, "firstName":"Alice",   "lastName":"Wonderland", "username":"alice",   "password":"alice",   "email":"alice@gmail.com",   "birthday":d1, "roles":["user", "admin"]},
-            {"_id":234, "firstName":"Bob",     "lastName":"Hope",       "username":"bob",     "password":"bob",     "email":"bob@gmail.com",     "birthday":d2, "roles":["user", "admin"]},
-            {"_id":345, "firstName":"Charlie", "lastName":"Brown",      "username":"charlie", "password":"charlie", "email":"charlie@gmail.com", "birthday":d3, "roles":["user", "admin"]},
-            {"_id":456, "firstName":"Dan",     "lastName":"Craig",      "username":"dan",     "password":"dan",     "email":"dan@gmail.com",     "birthday":d4, "roles":["user", "admin"]},
-            {"_id":567, "firstName":"Edward",  "lastName":"Norton",     "username":"ed",      "password":"ed",      "email":"ed@gmail.com",      "birthday":d5, "roles":["user", "admin"]}
+            {"_id":123, "firstName":"Alice",   "lastName":"Wonderland", "username":"alice",   "password":"alice",   "email":"alice@gmail.com",   "birthday":d1, "roles":["admin","user"]},
+            {"_id":234, "firstName":"Bob",     "lastName":"Hope",       "username":"bob",     "password":"bob",     "email":"bob@gmail.com",     "birthday":d2, "roles":["admin"]},
+            {"_id":345, "firstName":"Charlie", "lastName":"Brown",      "username":"charlie", "password":"charlie", "email":"charlie@gmail.com", "birthday":d3, "roles":["user"]},
+            {"_id":456, "firstName":"Dan",     "lastName":"Craig",      "username":"dan",     "password":"dan",     "email":"dan@gmail.com",     "birthday":d4, "roles":["admin","user"]},
+            {"_id":567, "firstName":"Edward",  "lastName":"Norton",     "username":"ed",      "password":"ed",      "email":"ed@gmail.com",      "birthday":d5, "roles":["admin","user"]}
         ];
 
         var service = {

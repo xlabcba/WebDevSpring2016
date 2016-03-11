@@ -18,6 +18,7 @@
                                         <th>Password</th>
                                         <th>Email</th>
                                         <th>Birthday</th>
+                                        <th>Roles</th>
                                         <th>Action</th>
                                     </tr>
                                     <tr>
@@ -38,6 +39,14 @@
                                         </th>
                                         <th>
                                             <input type="date" class="form-control" placeholder="birthday" ng-model="newUser.birthday" />
+                                        </th>
+                                        <th>
+                                            <label>Admin
+                                            <input type="checkbox" class="form-control" ng-model="newUser.admin"/>
+                                            </label>
+                                            <label>User
+                                            <input type="checkbox" class="form-control" ng-model="newUser.user"/>
+                                            </label>
                                         </th>
                                         <th>
                                             <div class="the-div row">
@@ -64,6 +73,7 @@
                                         <td>{{user.password}}</td>
                                         <td>{{user.email}}</td>
                                         <td>{{user.birthday | date: "yyyy-MM-dd"}}</td>
+                                        <td>{{user.roles.join('/')}}</td>
                                         <td>
                                             <div class="the-div row">
                                                 <div>
