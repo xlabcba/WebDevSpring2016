@@ -1,0 +1,8 @@
+<div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController as model">
+    <ul class="nav nav-sidebar">
+        <li ng-class="{'active' : model.$location.url() == '/home'}"><a href="#/home">Home</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/profile'}"><a href="#/profile" ng-show="model.isLoggedIn()">Profile</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/admin'}"><a href="#/admin" ng-show="model.isAdmin()">Admin</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/forms'}"><a href="#/forms" ng-show="model.isLoggedIn()">Forms</a></li>
+    </ul>
+</div>

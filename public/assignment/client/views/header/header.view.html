@@ -1,0 +1,38 @@
+<header ng-controller="HeaderController as model">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/home">Form Maker</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="{'active' : model.$location.url() == '/register'}"
+                        ng-hide="model.isLoggedIn()">
+                        <a href="#/register">Register</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url() == '/login'}"
+                        ng-hide="model.isLoggedIn()">
+                        <a href="#/login">Login</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url() == '/profile'}"
+                        ng-show="model.isLoggedIn()">
+                        <a href="#/profile">{{model.getCurrentUsername()}}</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url() == '/admin'}"
+                        ng-show="model.isAdmin()">
+                        <a href="#/admin">Admin</a>
+                    </li>
+                    <li ng-show="model.isLoggedIn()">
+                        <a ng-click="model.logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
