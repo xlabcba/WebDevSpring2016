@@ -5,8 +5,8 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Forms</a></li>
-                <li ><a href="#/fields">Fields</a></li>
+                <li class="active"><a href="#/forms">Forms</a></li>
+                <li ><a href="#/forms">Fields</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -54,7 +54,9 @@
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="form in model.forms">
-                                        <td class="col-xs-8 col-sm-8 col-md-8">{{form.title}}</td>
+                                        <td class="col-xs-8 col-sm-8 col-md-8">
+                                            <a href="#/form/{{form._id}}/fields">{{form.title}}</a>
+                                        </td>
                                         <td class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="the-div row">
                                                 <div>

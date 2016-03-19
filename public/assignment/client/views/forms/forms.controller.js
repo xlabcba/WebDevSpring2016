@@ -53,7 +53,12 @@
         }
 
         function selectForm(index) {
-            vm.currForm = vm.forms[index];
+            vm.currForm = {
+                "_id": vm.forms[index]._id,
+                "title": vm.forms[index].title,
+                "userId": vm.forms[index].userId,
+                "fields": vm.forms[index].fields
+            }
         }
     }
 })();

@@ -10,3 +10,9 @@
 {
     width: 100%;
 }
+
+.btn-div {
+    padding: 10px;
+    overflow:hidden;
+    float: left;
+}

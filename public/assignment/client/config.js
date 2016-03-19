@@ -20,12 +20,18 @@
                 .when("/profile", {
                     templateUrl: "./views/users/profile.view.html",
                     controller: "ProfileController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
                 })
                 .when("/admin", {
                     templateUrl: "./views/admin/admin.view.html",
                     controller: "AdminController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
                 })
                 .when("/home", {
                     templateUrl: "./views/home/home.view.html",
@@ -40,12 +46,19 @@
                 .when("/forms", {
                     templateUrl: "./views/forms/forms.view.html",
                     controller: "FormController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
+
                 })
-                .when("/fields", {
-                    templateUrl: "./views/forms/fields.view.html",
+                .when("/form/:formId/fields", {
+                    templateUrl: "./views/forms/field.view.html",
                     controller: "FieldController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
                 })
                 .otherwise({
                     redirectTo: "/home"
@@ -76,6 +89,15 @@
 
         var deferred = $q.defer();
 
+        if (UserService.isLoggedIn()) {
+            deferred.resolve();
+        } else {
+            deferred.reject();
+            $location.url("/home");
+        }
+
+
+        /*
         UserService
             .getCurrentUser()
             .then(function(response) {
@@ -88,6 +110,7 @@
                     $location.url("/home");
                 }
             });
+            */
 
         return deferred.promise;
     }

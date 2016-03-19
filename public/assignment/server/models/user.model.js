@@ -4,6 +4,7 @@
 
 // load mock users data
 var mock = require("./user.mock.json");
+var Guid = require("../js/guid.js");
 
 // pass app reference to model
 module.exports = function() {
@@ -20,7 +21,7 @@ module.exports = function() {
     return api;
 
     function createUser(user) {
-        user._id = "ID_" + (new Date()).getTime();
+        user._id = Guid.create(); //"ID_" + (new Date()).getTime();
         user.roles = [];
         mock.push(user);
         return mock;
@@ -41,7 +42,7 @@ module.exports = function() {
 
     function findUserByUsername(username) {
         for(var u in mock) {
-            if( mock[u].username === username ) {
+            if( mock[u].username == username ) {
                 return mock[u];
             }
         }
@@ -50,8 +51,8 @@ module.exports = function() {
 
     function findUserByCredentials(credentials) {
         for(var u in mock) {
-            if( mock[u].username === credentials.username &&
-                mock[u].password === credentials.password) {
+            if( mock[u].username == credentials.username &&
+                mock[u].password == credentials.password) {
                 return mock[u];
             }
         }
@@ -70,7 +71,7 @@ module.exports = function() {
 
     function deleteUserById(userId) {
         for(var u in mock) {
-            if(mock[u]._id === userId) {
+            if(mock[u]._id == userId) {
                 mock.splice(u,1);
                 return mock;
             }
