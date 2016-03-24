@@ -1853,6 +1853,7 @@ ul.qty li {
     float: right;
 }
 
+
 .delivery textarea {
     padding: 5px;
     display: block;
@@ -1937,6 +1938,21 @@ a.order:hover{
     font-size: 0.75em;
     margin-top: 3px;
 }
+
+.cart-item-info input {
+    padding: 5px;
+    display: block;
+    width: 60%;
+    background: #fff;
+    border: 1px solid #eee;
+    outline: none;
+    color: #9198A3;
+    font-size: 0.8125em;
+    -webkit-appearance: none;
+    resize: none;
+    height: 100%;
+}
+
 .delivery {
     margin-top: 0;
 }
