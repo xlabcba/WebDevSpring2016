@@ -1,0 +1,92 @@
+<div class="main" ng-controller="EditController">
+    <div class="content_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="menu_box">
+                        <h3 class="menu_head">Menu</h3>
+                        <ul class="nav">
+                            <li><a href="#/local_search">Recipe</a></li>
+                            <li><a href="#/local_search">Liquor</a></li>
+                            <li><a href="#/local_search">Occasion</a></li>
+                            <li><a href="#/local_search">Flavor</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dreamcrub">
+                        <ul class="breadcrumbs">
+                            <li class="home">
+                                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
+                                <span>&gt;</span>
+                            </li>
+                            <li class="women">
+                                Create and Edit Recipe
+                            </li>
+                        </ul>
+                        <ul class="previous">
+                            <li><a href="#/home">Back to Previous Page</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="login-right">
+                        <form>
+                            <div>
+                                <span>Recipe Name<label>*</label></span>
+                                <input type="text" placeholder="Recipe Name">
+                            </div>
+                            <div>
+                                <span>Base Liquor<label>*</label></span>
+                                <input type="text" placeholder="Base Liquor">
+                            </div>
+                            <div>
+                                <span>Flavor<label>*</label></span>
+                                <input type="text" placeholder="Flavor">
+                            </div>
+                            <div>
+                                <span>Skill Level<label>*</label></span>
+                                <div class="radio">
+                                    <label for="Beginner">
+                                        <input type="radio" name="level" id="Beginner" value="Beginner" checked>
+                                        Beginner
+                                    </label>
+                                    <label for="Intermediate">
+                                        <input type="radio" name="level" id="Intermediate" value="Intermediate">
+                                        Intermediate
+                                    </label>
+                                    <label for="Advanced">
+                                        <input type="radio" name="level" id="Advanced" value="Advanced">
+                                        Advanced
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <span>Quick Overview<label>*</label></span>
+                                <textarea rows="4" placeholder="Please briefly introduce this recipe..."></textarea>
+                            </div>
+                            <div>
+                                <span>Ingredients<label>*</label></span>
+                                <textarea rows="6" placeholder="List all ingredients, separated with ';'. e.g. '1 1/2 parts Vodka;Splash Triple Sec Liqueur;' "></textarea>
+                            </div>
+                            <div>
+                                <span>Steps<label>*</label></span>
+                                <textarea rows="6" placeholder="List all steps, separated with ';'. e.g. 'Shake with ice;Pour into a martini glass;Garnish with fresh lime wedge or cranberries' "></textarea>
+                            </div>
+                            <a type="login" href="#/recipe">Save</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+</script>

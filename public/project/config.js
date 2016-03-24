@@ -11,6 +11,10 @@
                     templateUrl: "./views/home/home.view.html",
                     controller: "HomeController"
                 })
+                .when("/profile_public", {
+                    templateUrl: "./views/user/profile_public.view.html",
+                    controller: "PublicController"
+                })
                 .when("/profile_info", {
                     templateUrl: "./views/user/profile_info.view.html",
                     controller: "InfoController"
@@ -31,6 +35,14 @@
                     templateUrl: "./views/user/profile_following.view.html",
                     controller: "FollowingController"
                 })
+                .when("/admin_user", {
+                    templateUrl: "./views/admin/admin_user.view.html",
+                    controller: "AdminUserController"
+                })
+                .when("/admin_recipe", {
+                    templateUrl: "./views/admin/admin_recipe.view.html",
+                    controller: "AdminRecipeController"
+                })
                 .when("/register", {
                     templateUrl: "./views/user/register.view.html",
                     controller: "RegisterController"
@@ -42,6 +54,10 @@
                 .when("/recipe", {
                     templateUrl: "./views/recipe/recipe.view.html",
                     controller: "RecipeController"
+                })
+                .when("/recipe_edit", {
+                    templateUrl: "./views/recipe/recipe_edit.view.html",
+                    controller: "EditController"
                 })
                 .when("/local_search", {
                     templateUrl: "./views/home/local_search.view.html",

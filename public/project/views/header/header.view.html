@@ -8,7 +8,8 @@
                 <ul class="social">
                     <li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register" ng-show=true>Register</a></li>
                     <li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login" ng-show=true>Login</a></li>
-                    <li ng-class="{'active' : $location.url().indexOf('username') != -1}"><a href="#/profile_info"  ng-show=true>profile</a></li>
+                    <li ng-class="{'active' : $location.url().indexOf('profile') != -1 && $location.url().indexOf('public') == -1}"><a href="#/profile_info"  ng-show=true>Profile</a></li>
+                    <li ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin_user"  ng-show=true>Admin</a></li>
                     <li ng-class="{'active' : $location.url().indexOf('logout') != -1}"><a href="#/home" ng-show=true ng-click="resetUser()">Logout</a></li>
                 </ul>
                 <div class="clearfix"></div>

@@ -1,4 +1,4 @@
-<div class="main" ng-controller="MyRecipeController">
+<div class="main" ng-controller="AdminRecipeController">
     <div class="content_box">
         <div class="container">
             <div class="row">
@@ -6,11 +6,8 @@
                     <div class="menu_box">
                         <h3 class="menu_head">Menu</h3>
                         <ul class="nav">
-                            <li><a href="#/profile_info">Profile</a></li>
-                            <li class="active"><a href="#/profile_myrecipe">My Recipe</a></li>
-                            <li><a href="#/profile_reviewed">Reviewed</a></li>
-                            <li><a href="#/profile_favorite">Favorite</a></li>
-                            <li><a href="#/profile_following">Following</a></li>
+                            <li><a href="#/admin_user">Manage<br/>Users</a></li>
+                            <li class="active"><a href="#/admin_recipe">Manage<br/>Recipes and Comments</a></li>
                         </ul>
                     </div>
                 </div>
@@ -21,16 +18,12 @@
                                 <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
                                 <span>&gt;</span>
                             </li>
-                            <li class="home">
-                                <a href="#/profile_info" title="Go to Home Page">Profile</a>&nbsp;
-                                <span>&gt;</span>
-                            </li>
                             <li class="women">
-                                My Recipe
+                                Manage Recipes
                             </li>
                         </ul>
                         <ul class="previous">
-                            <li><a href="#/profile_info">Back to Previous Page</a></li>
+                            <li><a href="#/home">Back to Previous Page</a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -52,8 +45,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -71,8 +64,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -90,8 +83,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -109,8 +102,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -128,8 +121,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -147,8 +140,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -166,8 +159,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -185,8 +178,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                             <li>
                                 <a class="cbp-vm-image" href="#/recipe">
@@ -204,8 +197,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="button cbp-vm-add" href="#/recipe">Edit</a>
-                                <a class="button cbp-vm-add" href="#/profile_myrecipe   ">Delete</a>
+                                <a class="button cbp-vm-add" href="#/recipe_edit">Edit</a>
+                                <a class="button cbp-vm-add" href="#/admin_recipe">Delete</a>
                             </li>
                         </ul>
                     </div>

@@ -43,6 +43,8 @@
  * BASE STYLES
  * ====================================================================================================================*/
 .flexslider {
+  text-align: center;
+  vertical-align: middle;
   margin: 0;
   padding: 0;
 }
@@ -76,7 +78,7 @@ html[xmlns] .flexslider .slides {
  * ====================================================================================================================*/
 .flexslider {
   margin: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   background: #f4f4f4;
   border: 4px solid #f4f4f4;
   position: relative;

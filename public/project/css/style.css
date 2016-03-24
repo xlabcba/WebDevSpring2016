@@ -1576,6 +1576,15 @@ i.mail{
     font-size:0.8125em;
     padding: 0.5em;
 }
+
+.login-right textarea {
+    border: 1px solid #EEE;
+    outline-color:#fb4d01;
+    width: 96%;
+    font-size:0.8125em;
+    padding: 0.5em;
+}
+
 .login-right button[type="login"], .login-right a[type="login"] {
     background: #d97118;
     color: #FFF;
@@ -1634,6 +1643,7 @@ a.forgot {
     padding: 0.5em;
 }
 
+/*
 .checkbox {
     width: 265px;
     margin-bottom: 4px;
@@ -1651,6 +1661,7 @@ a.forgot {
 .checkbox:last-child {
     margin-bottom: 0;
 }
+*/
 .news-letter {
     color: #555;
     font-weight:600;
@@ -1664,6 +1675,7 @@ a.forgot {
     -o-transition: 0.5s all;
     clear: both;
 }
+/*
 .checkbox i {
     position: absolute;
     bottom: 5px;
@@ -1700,9 +1712,11 @@ a.forgot {
 .checkbox input:checked + i:after {
     opacity: 1;
 }
+
 .news-letter:hover {
     color:#00BFF0;
 }
+*/
 .register-but{
     margin-top:1em;
     margin-right:4.2em;
@@ -2111,7 +2125,7 @@ a.cpns {
         margin-bottom:2em;
     }
     .cart-items {
-        width: 100%;
+        width: 90%;
         margin: 10px;
     }
     .cart_bg {
@@ -2727,7 +2741,7 @@ a.cpns {
         width: 48.5%;
     }
     .cbp-vm-view-grid ul li {
-        min-height: 350px;
+        min-height: 200px;
     }
     .cbp-vm-add {
         padding: 6px 8px;
