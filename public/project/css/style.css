@@ -486,7 +486,6 @@ h3.menu_head{
     font-family: 'Audiowide', cursive;
 }
 ul.nav{
-    padding:14px 0;
     height:100%;
     list-style:none;
     background: rgba(131, 31, 11, 0.88);
@@ -519,6 +518,23 @@ ul.nav li a:hover{
     text-decoration:none;
 }
 
+ul.nav div.checkbox {
+    background-color: #d6ac8c;
+    padding:10px 15px 10px 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+ul.nav div.checkbox label{
+    width:200px;
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+input[type="checkbox"]:after {
+    background-color: black;
+}
 
 .side_banner {
     position: relative;
@@ -1318,6 +1334,7 @@ h2.resp-accordion {
     padding: 5px;
     display: none;
 }
+
 .resp-tab-content {
     display: none;
 }
@@ -2430,6 +2447,7 @@ a.cpns {
         font-size: 11px;
         padding: 10px 10px 10px 30px;
     }
+
     h3.menu_head {
         padding: 1em 0 1em 2em;
     }
