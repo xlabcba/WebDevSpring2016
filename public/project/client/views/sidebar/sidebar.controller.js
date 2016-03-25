@@ -14,7 +14,6 @@
 
         function init() {
             vm.$location = $location;
-            console.log(vm.$location.url());
         }
         init();
 

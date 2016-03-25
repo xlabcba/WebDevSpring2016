@@ -6,11 +6,25 @@
             </div>
             <div class="header_right">
                 <ul class="social">
-                    <li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register" ng-show=true>Register</a></li>
-                    <li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login" ng-show=true>Login</a></li>
-                    <li ng-class="{'active' : $location.url().indexOf('profile') != -1 && $location.url().indexOf('public') == -1}"><a href="#/profile_info"  ng-show=true>Profile</a></li>
-                    <li ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin_user"  ng-show=true>Admin</a></li>
-                    <li ng-class="{'active' : $location.url().indexOf('logout') != -1}"><a href="#/home" ng-show=true ng-click="resetUser()">Logout</a></li>
+                    <li ng-class="{'active' : model.$location.url() == '/register'}"
+                        ng-hide="model.isLoggedIn()">
+                        <a href="#/register">Register</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url() == '/login'}"
+                        ng-hide="model.isLoggedIn()">
+                        <a href="#/login">Login</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url().indexOf('profile') > 0}"
+                        ng-show="model.isLoggedIn()">
+                        <a href="#/profile_info">{{model.getCurrentUsername()}}</a>
+                    </li>
+                    <li ng-class="{'active' : model.$location.url().indexOf('admin') > 0}"
+                        ng-show="model.isAdmin()">
+                        <a href="#/admin_user">Admin</a>
+                    </li>
+                    <li ng-show="model.isLoggedIn()">
+                        <a ng-click="model.logout()">Logout</a>
+                    </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>

@@ -8,28 +8,34 @@
         .module("RecipeApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($rootScope, $scope)
+    function HeaderController($rootScope, $scope, $location, UserService)
     {
-        $scope.isLogin = function() {
-            return $rootScope.currUser._id !== 0;
-        }
-        $scope.isAdmin = function() {
+        var vm = this;
 
+        vm.logout = logout;
+        vm.isLoggedIn = isLoggedIn;
+        vm.isAdmin = isAdmin;
+        vm.getCurrentUsername = getCurrentUsername;
 
-            var currUser = $rootScope.currUser;
-            for(var i=0; i<currUser.roles.length; i++)
-            {
-                if(currUser.roles[i] === "admin")
-                {
-                    return true;
-                }
-            }
-            return false;
+        function init() {
+            vm.$location = $location;
         }
-        $scope.resetUser = function() {
-            /*
-            $rootScope.currUser = {"_id":0, "firstName":"", "lastName":"", "username":"", "password":"", "roles":[]};
-            */
+        init();
+
+        function logout() {
+            UserService.setCurrentUser(null);
+            $location.url("/home");
+        }
+
+        function isLoggedIn() {
+            return UserService.isLoggedIn();
+        }
+        function isAdmin() {
+            return UserService.isAdmin();
+        }
+
+        function getCurrentUsername() {
+            return UserService.getCurrentUsername();
         }
     }
 
