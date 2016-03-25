@@ -9,71 +9,88 @@
             $routeProvider
                 .when("/home", {
                     templateUrl: "./views/home/home.view.html",
-                    controller: "HomeController"
+                    controller: "HomeController",
+                    controllerAs: "model"
                 })
                 .when("/profile_public", {
                     templateUrl: "./views/user/profile_public.view.html",
-                    controller: "PublicController"
+                    controller: "PublicController",
+                    controllerAs: "model"
                 })
                 .when("/profile_info", {
                     templateUrl: "./views/user/profile_info.view.html",
-                    controller: "InfoController"
+                    controller: "InfoController",
+                    controllerAs: "model"
                 })
                 .when("/profile_myrecipe", {
                     templateUrl: "./views/user/profile_myrecipe.view.html",
-                    controller: "MyRecipeController"
+                    controller: "MyRecipeController",
+                    controllerAs: "model"
                 })
                 .when("/profile_reviewed", {
                     templateUrl: "./views/user/profile_reviewed.view.html",
-                    controller: "ReviewedController"
+                    controller: "ReviewedController",
+                    controllerAs: "model"
                 })
                 .when("/profile_favorite", {
                     templateUrl: "./views/user/profile_favorite.view.html",
-                    controller: "FavoriteController"
+                    controller: "FavoriteController",
+                    controllerAs: "model"
                 })
                 .when("/profile_following", {
                     templateUrl: "./views/user/profile_following.view.html",
-                    controller: "FollowingController"
+                    controller: "FollowingController",
+                    controllerAs: "model"
                 })
                 .when("/admin_user", {
                     templateUrl: "./views/admin/admin_user.view.html",
-                    controller: "AdminUserController"
+                    controller: "AdminUserController",
+                    controllerAs: "model"
                 })
                 .when("/admin_recipe", {
                     templateUrl: "./views/admin/admin_recipe.view.html",
-                    controller: "AdminRecipeController"
+                    controller: "AdminRecipeController",
+                    controllerAs: "model"
                 })
                 .when("/register", {
                     templateUrl: "./views/user/register.view.html",
-                    controller: "RegisterController"
+                    controller: "RegisterController",
+                    controllerAs: "model"
                 })
                 .when("/login", {
                     templateUrl: "./views/user/login.view.html",
-                    controller: "LoginController"
+                    controller: "LoginController",
+                    controllerAs: "model"
                 })
                 .when("/recipe", {
                     templateUrl: "./views/recipe/recipe.view.html",
-                    controller: "RecipeController"
+                    controller: "RecipeController",
+                    controllerAs: "model"
                 })
                 .when("/recipe_edit", {
                     templateUrl: "./views/recipe/recipe_edit.view.html",
-                    controller: "EditController"
+                    controller: "EditController",
+                    controllerAs: "model"
                 })
                 .when("/local_search", {
                     templateUrl: "./views/home/local_search.view.html",
-                    controller: "LocalSearchController"
+                    controller: "LocalSearchController",
+                    controllerAs: "model"
                 })
                 .when("/search", {
                     templateUrl: "./views/search/search.view.html",
-                    controller: "SearchController"
+                    controller: "SearchController",
+                    controllerAs: "model"
                 })
                 .when("/search/:spirit :zipcode", {
                     templateUrl: "./views/search/search.view.html",
-                    controller: "SearchController"
+                    controller: "SearchController",
+                    controllerAs: "model"
                 })
                 .when("/detail/:id", {
                     templateUrl: "./views/search/detail.view.html",
-                    controller: "DetailController"
+                    controller: "DetailController",
+                    controllerAs: "model"
                 })
                 .otherwise({
                     redirectTo: "/home"

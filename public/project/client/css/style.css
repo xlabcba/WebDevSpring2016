@@ -1586,7 +1586,8 @@ i.mail{
     display: block;
     text-transform: uppercase;
 }
-.login-right input[type="text"] {
+.login-right input[type="text"],
+.login-right input[type="password"] {
     border: 1px solid #EEE;
     outline-color:#fb4d01;
     width: 96%;
@@ -1632,7 +1633,7 @@ a.forgot {
     margin: 0;
 }
 .register-top-grid div, .register-bottom-grid div {
-    width: 48%;
+    width: 96%;
     float: left;
     margin: 10px 0;
 }
@@ -1644,7 +1645,9 @@ a.forgot {
     display: block;
     text-transform: uppercase;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-top-grid input[type="email"],
+.register-top-grid input[type="password"], .register-bottom-grid input[type="text"],
+.register-bottom-grid input[type="password"], .register-top-grid input[type="date"] {
     border: 1px solid #EEE;
     outline-color: #FF5B36;
     width: 96%;
@@ -1652,9 +1655,9 @@ a.forgot {
     padding: 0.5em;
 }
 
-.register-top-grid input[type="date"] {
+.register-top-grid textarea{
     border: 1px solid #EEE;
-    outline-color:#FF5B36;
+    outline-color: #FF5B36;
     width: 96%;
     font-size: 1em;
     padding: 0.5em;

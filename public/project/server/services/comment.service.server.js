@@ -9,7 +9,7 @@ module.exports = function(app, commentModel) {
     app.get("/api/project/recipe/:recipeId/comment", getAllCommentsForRecipe);
     app.get("/api/project/comment/:commentId", getCommentById);
     app.delete("/api/project/comment/:commentId", deleteComment);
-    app.post("/api/project/user/:userId/recipe/:recipeId/comment/", createNewCommentForUgetAllCommentsForUserser);
+    app.post("/api/project/user/:userId/recipe/:recipeId/comment/", createNewCommentForUser);
     app.put("/api/project/comment/:commentId", updateComment);
 
     function getAllComments(req, res) {
@@ -20,6 +20,12 @@ module.exports = function(app, commentModel) {
     function getAllCommentsForUser(req, res) {
         var userId = req.params.userId;
         var comments = recipeModel.findAllCommentsForUser(userId);
+        res.json(comments);
+    }
+
+    function getAllCommentsForRecipe(req, res) {
+        var recipeId = req.params.recipeId;
+        var comments = recipeModel.findAllCommentsForRecipe(recipeId);
         res.json(comments);
     }
 
