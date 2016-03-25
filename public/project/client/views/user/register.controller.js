@@ -20,6 +20,7 @@
         init();
 
         function register(user) {
+            user.photo = "./images/head.jpg"; //change later ?????
             UserService
                 .createUser(user)
                 .then(function(response){
