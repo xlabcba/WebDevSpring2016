@@ -44,25 +44,25 @@
                     <label><input type="checkbox" value="">Advanced</label>
                 </div>
             </div>
-            <li ng-class="{'active' : model.$location.url() == 'profile_info'}">
+            <li ng-class="{'active' : model.$location.url() == '/profile_info'}">
                 <a href="#/profile_info" ng-show="model.isProfile()">Profile</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'profile_myrecipe'}">
+            <li ng-class="{'active' : model.$location.url() == '/profile_myrecipe'}">
                 <a href="#/profile_myrecipe" ng-show="model.isProfile()">My Recipe</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'profile_reviewed'}">
+            <li ng-class="{'active' : model.$location.url() == '/profile_reviewed'}">
                 <a href="#/profile_reviewed" ng-show="model.isProfile()">Reviewed</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'profile_favorite'}">
+            <li ng-class="{'active' : model.$location.url() == '/profile_favorite'}">
                 <a href="#/profile_favorite" ng-show="model.isProfile()">Favorite</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'profile_following'}">
+            <li ng-class="{'active' : model.$location.url() == '/profile_following'}">
                 <a href="#/profile_following" ng-show="model.isProfile()">Following</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'admin_user'}">
+            <li ng-class="{'active' : model.$location.url() == '/admin_user'}">
                 <a href="#/admin_user" ng-show="model.isAdmin()">Manage<br/>Users</a>
             </li>
-            <li ng-class="{'active' : model.$location.url() == 'admin_recipe'}">
+            <li ng-class="{'active' : model.$location.url() == '/admin_recipe'}">
                 <a href="#/admin_recipe" ng-show="model.isAdmin()">Manage<br/>Recipes and Comments</a>
             </li>
         </ul>

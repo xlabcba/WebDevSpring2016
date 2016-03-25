@@ -497,7 +497,7 @@ ul.nav li:hover {
 }
 
 ul.nav li.active a{
-    background: #333;
+    background: #4b4b4b;
     color: #fff;
     text-decoration: none;
 }
