@@ -1,0 +1,33 @@
+[
+  {
+    "_id": "000", "userId": 123, "title": "Cosmo",
+    "rating": 5, "rateImg":"./images/star5.png",
+    "likeBy":[234, 345, 567],
+    "tag1": ["Vodka"], "tag2": ["sweet"], "tag3": "beginner",
+    "ingredientSpirit": ["1 1/2 parts Vodka", "Splash Triple Sec Liqueur"],
+    "ingredientOther": ["2 parts Cranberry Juice", "Splash Lime Juice", "Lime Wedges", "Cranberries"],
+    "step": ["Shake with ice", "Pour into a martini glass", "Garnish with fresh lime wedge or cranberries"],
+  },
+  {
+    "_id": "010", "userId": 123, "title": "Bloody Mary",
+    "rating": 3, "rateImg":"./images/star3.png",
+    "likeBy":[345, 456, 567],
+    "tag1": ["Vodka"], "tag2": ["savory", "spicy"], "tag3": "intermediate",
+    "ingredientSpirit": ["2 parts Cucumber Vodka"],
+    "ingredientOther": ["Dash Hot Sauce", "2 parts Low-Sodium Tomato Juice", "Squeeze fresh Lemon Juice",
+      "Squeeze fresh Lime Juice", "Dash Worcestershire sauce", "Celery Salt", "Lime", "Cucumber, Sliced"],
+    "step": ["Shake ingredients well in a three-piece shaker filled with ice", "Strain into a glass over ice",
+      "Garnish with lime, cucumber and a celery stalk", "Sprinkle with celery salt"],
+  },
+  {
+    "_id": "020", "userId": 234, "title": "Long Island Ice Tea",
+    "rating": 0, "rateImg":"./images/star0.png",
+    "likeBy":[123, 456, 567],
+    "tag1": ["Rum","Vodka","Gin"], "tag2": ["sweet"], "tag3": "advanced",
+    "ingredientSpirit": ["1/2 part Triple Sec Liqueur", "1/2 part Original Vodka", "1/2 part Aged Dark Rum",
+      "1/2 part Gin"],
+    "ingredientOther": ["3 parts Sour Mix", "3 parts Cola"],
+    "step": ["Fill a Collins glass 3/4 full with ice", "Add all ingredients except for the cola into a cocktail tin",
+      "Shake and pour into glass", " Add Cola"],
+  }
+]
