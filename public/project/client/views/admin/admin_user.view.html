@@ -1,73 +1,57 @@
-<div class="main" ng-controller="AdminUserController">
-    <div class="content_box">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu_box">
-                        <h3 class="menu_head">Menu</h3>
-                        <ul class="nav">
-                            <li class="active"><a href="#/admin_user">Manage<br/>Users</a></li>
-                            <li><a href="#/admin_recipe">Manage<br/>Recipes and Comments</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-9 cart-items">
-                    <div class="dreamcrub">
-                        <ul class="breadcrumbs">
-                            <li class="home">
-                                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
-                                <span>&gt;</span>
-                            </li>
-                            <li class="women">
-                                Manage Users
-                            </li>
-                        </ul>
-                        <ul class="previous">
-                            <li><a href="#/home">Back to Previous Page</a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <h1>Users</h1>
-                    <div class="cart-header">
-                        <a class="button close1" href="#/admin_user">Delete</a>
-                        <a class="button update" data-toggle="modal" data-target="#myModal">Change</a>
-                        <div class="cart-sec simpleCart_shelfItem">
-                            <div class="cart-item cyc">
-                                <img src="images/pic10.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="cart-item-info">
-                                <h3><a href="#/profile_public">Marc Jacobs</a></h3>
-                                <div class="delivery">
-                                    <p>Password: 1234</p>
-                                    <P>Status: User</P>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="cart-header">
-                        <a class="button close1" href="#/admin_user">Delete</a>
-                        <a class="button update" data-toggle="modal" data-target="#myModal">Change</a>
-                        <div class="cart-sec simpleCart_shelfItem">
-                            <div class="cart-item cyc">
-                                <img src="images/pic11.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="cart-item-info">
-                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
-                                <div class="delivery">
-                                    <p>Password: 4321</p>
-                                    <P>Status: User/Admin</P>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
+<div class="col-xs-12 col-md-9 cart-items" ng-controller="AdminUserController">
+    <div class="dreamcrub">
+        <ul class="breadcrumbs">
+            <li class="home">
+                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
+                <span>&gt;</span>
+            </li>
+            <li class="women">
+                Manage Users
+            </li>
+        </ul>
+        <ul class="previous">
+            <li><a href="#/home">Back to Previous Page</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <h1>Users</h1>
+    <div class="cart-header">
+        <a class="button close1" href="#/admin_user">Delete</a>
+        <a class="button update" data-toggle="modal" data-target="#myModal">Change</a>
+        <div class="cart-sec simpleCart_shelfItem">
+            <div class="cart-item cyc">
+                <img src="images/pic10.jpg" class="img-responsive" alt="">
+            </div>
+            <div class="cart-item-info">
+                <h3><a href="#/profile_public">Marc Jacobs</a></h3>
+                <div class="delivery">
+                    <p>Password: 1234</p>
+                    <P>Status: User</P>
+                    <div class="clearfix"></div>
                 </div>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+    <div class="cart-header">
+        <a class="button close1" href="#/admin_user">Delete</a>
+        <a class="button update" data-toggle="modal" data-target="#myModal">Change</a>
+        <div class="cart-sec simpleCart_shelfItem">
+            <div class="cart-item cyc">
+                <img src="images/pic11.jpg" class="img-responsive" alt="">
+            </div>
+            <div class="cart-item-info">
+                <h3><a href="#/profile_public">Coco Chanel</a></h3>
+                <div class="delivery">
+                    <p>Password: 4321</p>
+                    <P>Status: User/Admin</P>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -106,8 +90,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+
 </div>

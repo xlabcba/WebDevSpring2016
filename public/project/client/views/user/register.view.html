@@ -1,117 +1,65 @@
-<div class="main" ng-controller="RegisterController">
-    <div class="content_box">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu_box">
-                        <h3 class="menu_head">Menu</h3>
-                        <ul class="nav">
-                            <li><a data-toggle="collapse" data-target="#acrdn1">Liquor</a></li>
-                            <div id="acrdn1" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beer</label>
-                                    <label><input type="checkbox" value="">Bourbon</label>
-                                    <label><input type="checkbox" value="">Whisky</label>
-                                    <label><input type="checkbox" value="">Champagne</label>
-                                    <label><input type="checkbox" value="">Cognac</label>
-                                    <label><input type="checkbox" value="">Cordials</label>
-                                    <label><input type="checkbox" value="">Gin</label>
-                                    <label><input type="checkbox" value="">Rum</label>
-                                    <label><input type="checkbox" value="">Rye</label>
-                                    <label><input type="checkbox" value="">Sparkling</label>
-                                    <label><input type="checkbox" value="">Tequila</label>
-                                    <label><input type="checkbox" value="">Vermouth</label>
-                                    <label><input type="checkbox" value="">Vodka</label>
-                                    <label><input type="checkbox" value="">Wine</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn2">Flavor</a></li>
-                            <div id="acrdn2" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Frozen</label>
-                                    <label><input type="checkbox" value="">Fruity</label>
-                                    <label><input type="checkbox" value="">Hot</label>
-                                    <label><input type="checkbox" value="">Savory</label>
-                                    <label><input type="checkbox" value="">Sour</label>
-                                    <label><input type="checkbox" value="">Spicy</label>
-                                    <label><input type="checkbox" value="">Sweet</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn3">Skill Level</a></li>
-                            <div id="acrdn3" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beginner</label>
-                                    <label><input type="checkbox" value="">Intermediate</label>
-                                    <label><input type="checkbox" value="">Advanced</label>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
+<div class="col-md-9" ng-controller="RegisterController">
+    <div class="register">
+        <form>
+            <div class="register-top-grid">
+                <h3>PERSONAL INFORMATION</h3>
+                <div>
+                    <span>First Name<label>*</label></span>
+                    <input type="text" placeholder="First Name" ng-model="model.user.firstName">
                 </div>
-                <div class="col-md-9">
-                    <div class="register">
-                        <form>
-                            <div class="register-top-grid">
-                                <h3>PERSONAL INFORMATION</h3>
-                                <div>
-                                    <span>First Name<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <span>Last Name<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <span>Username<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <span>Email Address<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <span>Birthday</span>
-                                    <input type="date">
-                                </div>
-                                <div>
-                                    <span>Gender</span>
-                                    <div class="radio">
-                                        <label for="radioMale">
-                                            <input type="radio" name="radioLicense" id="radioMale" value="Male" checked>
-                                            Male
-                                        </label>
-                                        <label for="radioFemale">
-                                            <input type="radio" name="radioLicense" id="radioFemale" value="Female">
-                                            Female
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="register-bottom-grid">
-                                <h3>LOGIN INFORMATION</h3>
-                                <div>
-                                    <span>Password<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <span>Confirm Password<label>*</label></span>
-                                    <input type="text">
-                                </div>
-                                <div>
-                                    <input type="checkbox"/>  I agree with Terms and Conditions.
-                                </div>
-                            </div>
-                        </form>
-                        <div class="clearfix"> </div>
-                        <div class="register-but">
-                            <form>
-                                <a type="submit" href="#/profile_info">Submit</a>
-                                <div class="clearfix"> </div>
-                            </form>
-                        </div>
+                <div>
+                    <span>Last Name<label>*</label></span>
+                    <input type="text" placeholder="Last Name" ng-model="model.user.lastName">
+                </div>
+                <div>
+                    <span>Email Address<label>*</label></span>
+                    <input type="email" placeholder="Email Address" ng-model="model.user.email">
+                </div>
+                <div>
+                    <span>Birthday</span>
+                    <input type="date" placeholder="Birthday" ng-model="model.user.birthday">
+                </div>
+                <div>
+                    <span>Gender</span>
+                    <div class="radio">
+                        <label for="radioMale">
+                            <input type="radio" name="radioLicense" id="radioMale"
+                                   value="Male" ng-model="model.user.gender">
+                            Male
+                        </label>
+                        <label for="radioFemale">
+                            <input type="radio" name="radioLicense" id="radioFemale"
+                                   value="Female" ng-model="model.user.gender">
+                            Female
+                        </label>
                     </div>
                 </div>
             </div>
+            <div class="register-top-grid">
+                <h3>LOGIN INFORMATION</h3>
+                <div>
+                    <span>Username<label>*</label></span>
+                    <input type="text" placeholder="Username" ng-model="model.user.username">
+                </div>
+                <div>
+                    <span>Password<label>*</label></span>
+                    <input type="password" placeholder="Password" ng-model="model.user.password">
+                </div>
+                <div>
+                    <span>Confirm Password<label>*</label></span>
+                    <input type="password" placeholder="Confirm Password">
+                </div>
+                <div>
+                    <input type="checkbox"/>  I agree with Terms and Conditions.
+                </div>
+            </div>
+        </form>
+        <div class="clearfix"> </div>
+        <div class="register-but">
+            <form>
+                <a type="submit" ng-click="model.register(model.user)">Register</a>
+                <div class="clearfix"> </div>
+            </form>
         </div>
     </div>
 </div>

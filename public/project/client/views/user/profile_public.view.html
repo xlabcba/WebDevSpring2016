@@ -1,246 +1,192 @@
-<div class="main" ng-controller="PublicController">
-    <div class="content_box">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu_box">
-                        <h3 class="menu_head">Menu</h3>
-                        <ul class="nav">
-                            <li><a data-toggle="collapse" data-target="#acrdn1">Liquor</a></li>
-                            <div id="acrdn1" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beer</label>
-                                    <label><input type="checkbox" value="">Bourbon</label>
-                                    <label><input type="checkbox" value="">Whisky</label>
-                                    <label><input type="checkbox" value="">Champagne</label>
-                                    <label><input type="checkbox" value="">Cognac</label>
-                                    <label><input type="checkbox" value="">Cordials</label>
-                                    <label><input type="checkbox" value="">Gin</label>
-                                    <label><input type="checkbox" value="">Rum</label>
-                                    <label><input type="checkbox" value="">Rye</label>
-                                    <label><input type="checkbox" value="">Sparkling</label>
-                                    <label><input type="checkbox" value="">Tequila</label>
-                                    <label><input type="checkbox" value="">Vermouth</label>
-                                    <label><input type="checkbox" value="">Vodka</label>
-                                    <label><input type="checkbox" value="">Wine</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn2">Flavor</a></li>
-                            <div id="acrdn2" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Frozen</label>
-                                    <label><input type="checkbox" value="">Fruity</label>
-                                    <label><input type="checkbox" value="">Hot</label>
-                                    <label><input type="checkbox" value="">Savory</label>
-                                    <label><input type="checkbox" value="">Sour</label>
-                                    <label><input type="checkbox" value="">Spicy</label>
-                                    <label><input type="checkbox" value="">Sweet</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn3">Skill Level</a></li>
-                            <div id="acrdn3" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beginner</label>
-                                    <label><input type="checkbox" value="">Intermediate</label>
-                                    <label><input type="checkbox" value="">Advanced</label>
-                                </div>
-                            </div>
+<div class="col-md-9" ng-controller="PublicController">
+    <div class="dreamcrub">
+        <ul class="breadcrumbs">
+            <li class="home">
+                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
+                <span>&gt;</span>
+            </li>
+            <li class="women">
+                View User
+            </li>
+        </ul>
+        <ul class="previous">
+            <li><a href="#/home">Back to Previous Page</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="singel_right">
+        <div class="labout span_1_of_a1">
+            <div class="flexslider">
+                <br/>
+                <img src="images/pic11.jpg" alt="">
+            </div>
+        </div>
+        <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
+            <br/>
+            <h1>Coco Chanel</h1>
+            <div class="login-right">
+                <form>
+                    <a type="login" href="#/profile_public">Follow !!!</a>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+            <h2 class="quick">About Me:</h2>
+            <p class="quick_desc">I'm a professional bartender. So glad here is a platform for me to share my recipes. I'm experienced with all kinds of classic cocktail recipes.</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <br/>
+    <div class="sap_tabs">
+        <div id="horizontalTab">
+            <ul class="resp-tabs-list">
+                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Recipes</span></li>
+                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Following</span></li>
+                <div class="clear"></div>
+            </ul>
+            <div class="resp-tabs-container">
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                    <div class="cbp-vm-view-grid">
+                        <ul>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Chocolate Martini</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic2.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Cinnamon Mojito</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic3.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Ginger Black Spiced</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic4.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Puquena Colada</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic5.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Sunday Funday</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="#/recipe">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="images/pic6.jpg" class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">Naked Cosmo</p>
+                                                </div>
+                                                <br/>
+                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="dreamcrub">
-                        <ul class="breadcrumbs">
-                            <li class="home">
-                                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
-                                <span>&gt;</span>
-                            </li>
-                            <li class="women">
-                                View User
-                            </li>
-                        </ul>
-                        <ul class="previous">
-                            <li><a href="#/home">Back to Previous Page</a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="singel_right">
-                        <div class="labout span_1_of_a1">
-                            <div class="flexslider">
-                                <br/>
-                                <img src="images/pic11.jpg" alt="">
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                    <br/>
+                    <div class="cart-header">
+                        <a class="button close1" href="#/profile_public">Follow !!!</a>
+                        <div class="cart-sec simpleCart_shelfItem">
+                            <div class="cart-item cyc">
+                                <img src="images/pic10.jpg" class="img-responsive" alt="">
                             </div>
-                        </div>
-                        <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-                            <br/>
-                            <h1>Coco Chanel</h1>
-                            <div class="login-right">
-                            <form>
-                                <a type="login" href="#/profile_public">Follow !!!</a>
-                            </form>
+                            <div class="cart-item-info">
+                                <h3><a href="#/profile_public">Marc Jacobs</a></h3>
+                                <div class="delivery">
+                                    <p>Recipe: 10</p>
+                                    <p>Followed by: 32</p>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
-                            <br/>
-                            <h2 class="quick">About Me:</h2>
-                            <p class="quick_desc">I'm a professional bartender. So glad here is a platform for me to share my recipes. I'm experienced with all kinds of classic cocktail recipes.</p>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <br/>
-                    <div class="sap_tabs">
-                        <div id="horizontalTab">
-                            <ul class="resp-tabs-list">
-                                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Recipes</span></li>
-                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Following</span></li>
-                                <div class="clear"></div>
-                            </ul>
-                            <div class="resp-tabs-container">
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                    <div class="cbp-vm-view-grid">
-                                        <ul>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic1.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Chocolate Martini</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Cinnamon Mojito</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Ginger Black Spiced</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Puquena Colada</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic5.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Sunday Funday</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="cbp-vm-image" href="#/recipe">
-                                                    <div class="inner_content clearfix">
-                                                        <div class="product_image">
-                                                            <img src="images/pic6.jpg" class="img-responsive" alt=""/>
-                                                            <div class="product_container">
-                                                                <div class="cart-left">
-                                                                    <p class="title">Naked Cosmo</p>
-                                                                </div>
-                                                                <br/>
-                                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                                    <br/>
-                                    <div class="cart-header">
-                                        <a class="button close1" href="#/profile_public">Follow !!!</a>
-                                        <div class="cart-sec simpleCart_shelfItem">
-                                            <div class="cart-item cyc">
-                                                <img src="images/pic10.jpg" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="cart-item-info">
-                                                <h3><a href="#/profile_public">Marc Jacobs</a></h3>
-                                                <div class="delivery">
-                                                    <p>Recipe: 10</p>
-                                                    <p>Followed by: 32</p>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-header">
-                                        <a class="button close1" href="#/profile_public">Follow !!!</a>
-                                        <div class="cart-sec simpleCart_shelfItem">
-                                            <div class="cart-item cyc">
-                                                <img src="images/pic11.jpg" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="cart-item-info">
-                                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
-                                                <div class="delivery">
-                                                    <p>Recipe: 16</p>
-                                                    <p>Followed by: 45</p>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
+                    <div class="cart-header">
+                        <a class="button close1" href="#/profile_public">Follow !!!</a>
+                        <div class="cart-sec simpleCart_shelfItem">
+                            <div class="cart-item cyc">
+                                <img src="images/pic11.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="cart-item-info">
+                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
+                                <div class="delivery">
+                                    <p>Recipe: 16</p>
+                                    <p>Followed by: 45</p>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

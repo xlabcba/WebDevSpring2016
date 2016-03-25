@@ -1,0 +1,70 @@
+<div class="col-md-3" ng-controller="SidebarController as model">
+    <div class="menu_box">
+        <h3 class="menu_head">Menu</h3>
+        <ul class="nav">
+            <li><a data-toggle="collapse" data-target="#acrdn1"
+                   ng-hide="model.isProfileOrAdmin()">Liquor</a></li>
+            <div id="acrdn1" class="collapse">
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Beer</label>
+                    <label><input type="checkbox" value="">Bourbon</label>
+                    <label><input type="checkbox" value="">Whisky</label>
+                    <label><input type="checkbox" value="">Champagne</label>
+                    <label><input type="checkbox" value="">Cognac</label>
+                    <label><input type="checkbox" value="">Cordials</label>
+                    <label><input type="checkbox" value="">Gin</label>
+                    <label><input type="checkbox" value="">Rum</label>
+                    <label><input type="checkbox" value="">Rye</label>
+                    <label><input type="checkbox" value="">Sparkling</label>
+                    <label><input type="checkbox" value="">Tequila</label>
+                    <label><input type="checkbox" value="">Vermouth</label>
+                    <label><input type="checkbox" value="">Vodka</label>
+                    <label><input type="checkbox" value="">Wine</label>
+                </div>
+            </div>
+            <li><a data-toggle="collapse" data-target="#acrdn2"
+                   ng-hide="model.isProfileOrAdmin()">Flavor</a></li>
+            <div id="acrdn2" class="collapse">
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Frozen</label>
+                    <label><input type="checkbox" value="">Fruity</label>
+                    <label><input type="checkbox" value="">Hot</label>
+                    <label><input type="checkbox" value="">Savory</label>
+                    <label><input type="checkbox" value="">Sour</label>
+                    <label><input type="checkbox" value="">Spicy</label>
+                    <label><input type="checkbox" value="">Sweet</label>
+                </div>
+            </div>
+            <li><a data-toggle="collapse" data-target="#acrdn3"
+                   ng-hide="model.isProfileOrAdmin()">Skill Level</a></li>
+            <div id="acrdn3" class="collapse">
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Beginner</label>
+                    <label><input type="checkbox" value="">Intermediate</label>
+                    <label><input type="checkbox" value="">Advanced</label>
+                </div>
+            </div>
+            <li ng-class="{'active' : model.$location.url() == 'profile_info'}">
+                <a href="#/profile_info" ng-show="model.isProfile()">Profile</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'profile_myrecipe'}">
+                <a href="#/profile_myrecipe" ng-show="model.isProfile()">My Recipe</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'profile_reviewed'}">
+                <a href="#/profile_reviewed" ng-show="model.isProfile()">Reviewed</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'profile_favorite'}">
+                <a href="#/profile_favorite" ng-show="model.isProfile()">Favorite</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'profile_following'}">
+                <a href="#/profile_following" ng-show="model.isProfile()">Following</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'admin_user'}">
+                <a href="#/admin_user" ng-show="model.isAdmin()">Manage<br/>Users</a>
+            </li>
+            <li ng-class="{'active' : model.$location.url() == 'admin_recipe'}">
+                <a href="#/admin_recipe" ng-show="model.isAdmin()">Manage<br/>Recipes and Comments</a>
+            </li>
+        </ul>
+    </div>
+</div>

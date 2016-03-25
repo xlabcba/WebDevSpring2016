@@ -1,5 +1,5 @@
 [
-  {"_id":123, "photo":"./images/pic11.jpg",
+  {"_id":123, "photo":"./images/pic11.jpg", "gender":"Female",
     "firstName":"Alice", "lastName":"Wonderland", "username":"alice",
     "password":"alice", "email":"alice@gmail.com", "birthday":"",
     "follow":[234, 456], "followBy":[234, 345, 456, 567],
@@ -7,7 +7,7 @@
     "intro":"Only one life, live it!",
     "roles":["admin","user"]},
 
-  {"_id":234, "photo":"./images/pic10.jpg",
+  {"_id":234, "photo":"./images/pic10.jpg", "gender":"Male",
     "firstName":"Bob", "lastName":"Hope", "username":"bob",
     "password":"bob", "email":"bob@gmail.com", "birthday":"",
     "follow":[123, 567], "followBy":[123, 345, 456, 567],
@@ -15,7 +15,7 @@
     "intro":"Professional Bartender. Enjoy Sharing My Favorite Recipes with You!",
     "roles":["user"]},
 
-  {"_id":345, "photo":"./images/pic12.jpg",
+  {"_id":345, "photo":"./images/pic12.jpg", "gender":"Male",
     "firstName":"Charlie", "lastName":"Brown", "username":"charlie",
     "password":"charlie", "email":"charlie@gmail.com", "birthday":"",
     "follow":[123, 234], "followBy":[],
@@ -23,7 +23,7 @@
     "intro":"Charlie Brown, Hi there!",
     "roles":["user"]},
 
-  {"_id":456, "photo":"./images/pic13.jpg",
+  {"_id":456, "photo":"./images/pic13.jpg", "gender":"Male",
     "firstName":"Dan", "lastName":"Craig", "username":"dan",
     "password":"dan", "email":"dan@gmail.com", "birthday":"",
     "follow":[123, 234], "followBy":[123],
@@ -31,7 +31,7 @@
     "intro":"Dan Craig, a wine lover!",
     "roles":["user"]},
 
-  {"_id":567, "photo":"./images/pic14.jpg",
+  {"_id":567, "photo":"./images/pic14.jpg", "gender":"Male",
     "firstName":"Edward", "lastName":"Norton", "username":"ed",
     "password":"ed", "email":"ed@gmail.com", "birthday":"",
     "follow":[123, 234], "followBy":[234],

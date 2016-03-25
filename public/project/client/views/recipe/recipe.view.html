@@ -1,239 +1,186 @@
-<div class="main" ng-controller="RecipeController">
-    <div class="content_box">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu_box">
-                        <h3 class="menu_head">Menu</h3>
-                        <ul class="nav">
-                            <li><a data-toggle="collapse" data-target="#acrdn1">Liquor</a></li>
-                            <div id="acrdn1" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beer</label>
-                                    <label><input type="checkbox" value="">Bourbon</label>
-                                    <label><input type="checkbox" value="">Whisky</label>
-                                    <label><input type="checkbox" value="">Champagne</label>
-                                    <label><input type="checkbox" value="">Cognac</label>
-                                    <label><input type="checkbox" value="">Cordials</label>
-                                    <label><input type="checkbox" value="">Gin</label>
-                                    <label><input type="checkbox" value="">Rum</label>
-                                    <label><input type="checkbox" value="">Rye</label>
-                                    <label><input type="checkbox" value="">Sparkling</label>
-                                    <label><input type="checkbox" value="">Tequila</label>
-                                    <label><input type="checkbox" value="">Vermouth</label>
-                                    <label><input type="checkbox" value="">Vodka</label>
-                                    <label><input type="checkbox" value="">Wine</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn2">Flavor</a></li>
-                            <div id="acrdn2" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Frozen</label>
-                                    <label><input type="checkbox" value="">Fruity</label>
-                                    <label><input type="checkbox" value="">Hot</label>
-                                    <label><input type="checkbox" value="">Savory</label>
-                                    <label><input type="checkbox" value="">Sour</label>
-                                    <label><input type="checkbox" value="">Spicy</label>
-                                    <label><input type="checkbox" value="">Sweet</label>
-                                </div>
-                            </div>
-                            <li><a data-toggle="collapse" data-target="#acrdn3">Skill Level</a></li>
-                            <div id="acrdn3" class="collapse">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="">Beginner</label>
-                                    <label><input type="checkbox" value="">Intermediate</label>
-                                    <label><input type="checkbox" value="">Advanced</label>
-                                </div>
-                            </div>
+<div class="col-md-9" ng-controller="RecipeController">
+    <div class="dreamcrub">
+        <ul class="breadcrumbs">
+            <li class="home">
+                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
+                <span>&gt;</span>
+            </li>
+            <li class="women">
+                Current Recipe
+            </li>
+        </ul>
+        <ul class="previous">
+            <li><a href="#/home">Back to Previous Page</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="singel_right">
+        <div class="labout span_1_of_a1">
+            <div class="flexslider">
+                <br>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="images/s1.jpg">
+                        </div>
+
+                        <div class="item">
+                            <img src="images/s2.jpg">
+                        </div>
+
+                        <div class="item">
+                            <img src="images/s3.jpg">
+                        </div>
+
+                        <div class="item">
+                            <img src="images/s4.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="register-but">
+                <form>
+                    <a type="submit" href="#/recipe">Add to Favorite</a>
+                </form>
+            </div>
+        </div>
+        <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
+            <h1>Bloody Mary</h1>
+            <ul class="rating">
+                <li><img class="img-rating" src="images/5-star.png"></li>
+                <br/>
+                <li><a href="#/recipe_edit">Edit Recipe</a></li>
+                <div class="clearfix"></div>
+            </ul>
+            <br/>
+            <h2 class="quick">Quick Overview:</h2>
+            <p class="quick_desc">Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon.</p>
+            <ul class="size">
+                <h3>Base: Vodka</h3>
+                <li></li>
+            </ul>
+            <ul class="size">
+                <h3>Flavor: Savory</h3>
+                <li></li>
+
+            </ul>
+            <ul class="size">
+                <h3>Skill Level: Advance</h3>
+                <li></li>
+
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="sap_tabs">
+        <div id="horizontalTab">
+            <ul class="resp-tabs-list">
+                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Ingredients</span></li>
+                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Steps</span></li>
+                <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Reviews</span></li>
+                <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span>Author</span></li>
+                <div class="clear"></div>
+            </ul>
+            <div class="resp-tabs-container">
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                    <div class="facts">
+                        <ul class="tab_list">
+                            <li><p>1 part Pinnacle® Original Vodka</p><a href="#/search" class="api-btn">Where to Buy</a></li>
+                            <li><p>1 part DeKuyper® Lemon Drop Shots</p><a href="#/search" class="api-btn">Where to Buy</a></li>
+                            <li><p>2 parts Tomato Juice</p></li>
+                            <li><p>1 dash Hot Sauce</p></li>
+                            <li><p>1 dash Horseradish</p></li>
+                            <li><p>1 dash Worcestershire sauce</p></li>
+                            <li><p>Celery</p></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="dreamcrub">
-                        <ul class="breadcrumbs">
-                            <li class="home">
-                                <a href="#/home" title="Go to Home Page">Home</a>&nbsp;
-                                <span>&gt;</span>
-                            </li>
-                            <li class="women">
-                                Current Recipe
-                            </li>
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                    <div class="facts">
+                        <ul class="tab_list">
+                            <li><p>Use bottled Bloody Mary Mix of your choice or Homemade Bloody Mary Mix:<br/>¼ part Tomato Juice<br/>¼ part Beef Stock<br/>½ tsp. Horseradish </p></li>
+                            <li><p>Add Basil Hayden’s® Bourbon, jalapeño juice, Bloody Mary mix, lemon juice, celery bitters, Tabasco®, cracked black pepper and ice to a cocktail shaker. Shake vigorously and strain into a chilled cocktail glass rimmed with black sea salt. Garnish with a slice of cooked bacon, clapped basil leaf and a lemon wedge.</p></li>
                         </ul>
-                        <ul class="previous">
-                            <li><a href="#/home">Back to Previous Page</a></li>
-                        </ul>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="singel_right">
-                        <div class="labout span_1_of_a1">
-                            <div class="flexslider">
-                                <br>
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                                    </ol>
-
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner" role="listbox">
-                                        <div class="item active">
-                                            <img src="images/s1.jpg">
-                                        </div>
-
-                                        <div class="item">
-                                            <img src="images/s2.jpg">
-                                        </div>
-
-                                        <div class="item">
-                                            <img src="images/s3.jpg">
-                                        </div>
-
-                                        <div class="item">
-                                            <img src="images/s4.jpg">
-                                        </div>
-                                    </div>
-                                </div>
+                </div>
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+                    <ul class="tab_list">
+                        <div class="cart-sec simpleCart_shelfItem">
+                            <div class="cart-item cyc">
+                                <img src="images/pic11.jpg" class="img-responsive" alt="">
                             </div>
-                            <div class="register-but">
-                                <form>
-                                    <a type="submit" href="#/recipe">Add to Favorite</a>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-                            <h1>Bloody Mary</h1>
-                            <ul class="rating">
-                                <li><img class="img-rating" src="images/5-star.png"></li>
+                            <div class="cart-item-info">
+                                <a class="button close1" href="#/recipe">Delete</a>
+                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
+                                <ul class="qty">
+                                    <li><p>Recipe: 10</p></li>
+                                    <br/>
+                                    <li><p>Followed by: 32</p></li>
+                                </ul>
+                                <img src="images/5-star.png" class="img-rating">
                                 <br/>
-                                <li><a href="#/recipe_edit">Edit Recipe</a></li>
-                                <div class="clearfix"></div>
-                            </ul>
-                            <br/>
-                            <h2 class="quick">Quick Overview:</h2>
-                            <p class="quick_desc">Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon.</p>
-                            <ul class="size">
-                                <h3>Base: Vodka</h3>
-                                <li></li>
-                            </ul>
-                            <ul class="size">
-                                <h3>Flavor: Savory</h3>
-                                <li></li>
-
-                            </ul>
-                            <ul class="size">
-                                <h3>Skill Level: Advance</h3>
-                                <li></li>
-
-                            </ul>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="sap_tabs">
-                        <div id="horizontalTab">
-                            <ul class="resp-tabs-list">
-                                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Ingredients</span></li>
-                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Steps</span></li>
-                                <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Reviews</span></li>
-                                <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span>Author</span></li>
-                                <div class="clear"></div>
-                            </ul>
-                            <div class="resp-tabs-container">
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                    <div class="facts">
-                                        <ul class="tab_list">
-                                            <li><p>1 part Pinnacle® Original Vodka</p><a href="#/search" class="api-btn">Where to Buy</a></li>
-                                            <li><p>1 part DeKuyper® Lemon Drop Shots</p><a href="#/search" class="api-btn">Where to Buy</a></li>
-                                            <li><p>2 parts Tomato Juice</p></li>
-                                            <li><p>1 dash Hot Sauce</p></li>
-                                            <li><p>1 dash Horseradish</p></li>
-                                            <li><p>1 dash Worcestershire sauce</p></li>
-                                            <li><p>Celery</p></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                                    <div class="facts">
-                                        <ul class="tab_list">
-                                            <li><p>Use bottled Bloody Mary Mix of your choice or Homemade Bloody Mary Mix:<br/>¼ part Tomato Juice<br/>¼ part Beef Stock<br/>½ tsp. Horseradish </p></li>
-                                            <li><p>Add Basil Hayden’s® Bourbon, jalapeño juice, Bloody Mary mix, lemon juice, celery bitters, Tabasco®, cracked black pepper and ice to a cocktail shaker. Shake vigorously and strain into a chilled cocktail glass rimmed with black sea salt. Garnish with a slice of cooked bacon, clapped basil leaf and a lemon wedge.</p></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-                                    <ul class="tab_list">
-                                        <div class="cart-sec simpleCart_shelfItem">
-                                            <div class="cart-item cyc">
-                                                <img src="images/pic11.jpg" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="cart-item-info">
-                                                <a class="button close1" href="#/recipe">Delete</a>
-                                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
-                                                <ul class="qty">
-                                                    <li><p>Recipe: 10</p></li>
-                                                    <br/>
-                                                    <li><p>Followed by: 32</p></li>
-                                                </ul>
-                                                <img src="images/5-star.png" class="img-rating">
-                                                <br/>
-                                                <div class="delivery">
-                                                    <p>Love it! Awesome!</p>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <hr>
-                                        <div class="cart-sec simpleCart_shelfItem">
-                                            <div class="cart-item cyc">
-                                                <img src="images/pic10.jpg" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="cart-item-info">
-                                                <a class="button close1" href="#/recipe">Post</a>
-                                                <input type="text" placeholder="title">
-                                                <br/>
-                                                <img src="images/5-star.png" class="img-rating">
-                                                <br/>
-                                                <div class="delivery">
-                                                    <textarea rows="5">Comments...</textarea>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </ul>
-                                </div>
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
-                                    <ul class="tab_list">
-                                        <div class="cart-header">
-                                            <a class="button close1" href="#/recipe">Follow !!!</a>
-                                            <div class="cart-sec simpleCart_shelfItem">
-                                                <div class="cart-item cyc">
-                                                    <img src="images/pic10.jpg" class="img-responsive" alt="">
-                                                </div>
-                                                <div class="cart-item-info">
-                                                    <h3><a href="#/profile_public">Marc Jacobs</a></h3>
-                                                    <div class="delivery">
-                                                        <p>Recipe: 10</p>
-                                                        <p>Followed by: 32</p>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </ul>
+                                <div class="delivery">
+                                    <p>Love it! Awesome!</p>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
-                    </div>
+                        <hr>
+                        <div class="cart-sec simpleCart_shelfItem">
+                            <div class="cart-item cyc">
+                                <img src="images/pic10.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="cart-item-info">
+                                <a class="button close1" href="#/recipe">Post</a>
+                                <input type="text" placeholder="title">
+                                <br/>
+                                <img src="images/5-star.png" class="img-rating">
+                                <br/>
+                                <div class="delivery">
+                                    <textarea rows="5">Comments...</textarea>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+                    <ul class="tab_list">
+                        <div class="cart-header">
+                            <a class="button close1" href="#/recipe">Follow !!!</a>
+                            <div class="cart-sec simpleCart_shelfItem">
+                                <div class="cart-item cyc">
+                                    <img src="images/pic10.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="cart-item-info">
+                                    <h3><a href="#/profile_public">Marc Jacobs</a></h3>
+                                    <div class="delivery">
+                                        <p>Recipe: 10</p>
+                                        <p>Followed by: 32</p>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {

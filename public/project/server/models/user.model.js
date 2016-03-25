@@ -62,8 +62,9 @@ module.exports = function(recipeModel, commentModel) {
 
     function createUser(user) {
         var newUser = {
-            _id:345,
+            _id: Guid.create(),
             photo: user.photo,
+            gender: user.gender,
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,

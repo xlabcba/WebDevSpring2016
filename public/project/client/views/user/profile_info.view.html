@@ -1,82 +1,61 @@
-<div class="main" ng-controller="InfoController">
-    <div class="content_box">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu_box">
-                        <h3 class="menu_head">Menu</h3>
-                        <ul class="nav">
-                            <li class="active"><a href="#/profile_info">Profile</a></li>
-                            <li><a href="#/profile_myrecipe">My Recipe</a></li>
-                            <li><a href="#/profile_reviewed">Reviewed</a></li>
-                            <li><a href="#/profile_favorite">Favorite</a></li>
-                            <li><a href="#/profile_following">Following</a></li>
-
-                        </ul>
+<div class="col-md-9" ng-controller="InfoController">
+    <div class="register">
+        <form>
+            <div class="register-top-grid">
+                <h3>PERSONAL INFORMATION</h3>
+                <div>
+                    <span>First Name<label>*</label></span>
+                    <input type="text" placeholder="First Name" ng-model="model.user.firstName">
+                </div>
+                <div>
+                    <span>Last Name<label>*</label></span>
+                    <input type="text" placeholder="Last Name" ng-model="model.user.lastName">
+                </div>
+                <div>
+                    <span>Email Address<label>*</label></span>
+                    <input type="email" placeholder="Email Address" ng-model="model.user.email">
+                </div>
+                <div>
+                    <span>Birthday</span>
+                    <input type="date" placeholder="Birthday" ng-model="model.user.birthday">
+                </div>
+                <div>
+                    <span>Gender</span>
+                    <div class="radio">
+                        <label for="radioMale">
+                            <input type="radio" name="radioLicense" id="radioMale" value="Male" ng-model="model.user.gender">
+                            Male
+                        </label>
+                        <label for="radioFemale">
+                            <input type="radio" name="radioLicense" id="radioFemale" value="Female" ng-model="model.user.gender">
+                            Female
+                        </label>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="register">
-                        <form>
-                            <div class="register-top-grid">
-                                <h3>PERSONAL INFORMATION</h3>
-                                <div>
-                                    <span>First Name<label>*</label></span>
-                                    <input type="text" placeholder="First Name" ng-model="model.user.firstName">
-                                </div>
-                                <div>
-                                    <span>Last Name<label>*</label></span>
-                                    <input type="text" placeholder="Last Name" ng-model="model.user.lastName">
-                                </div>
-                                <div>
-                                    <span>Email Address<label>*</label></span>
-                                    <input type="email" placeholder="Email Address" ng-model="model.user.email">
-                                </div>
-                                <div>
-                                    <span>Birthday</span>
-                                    <input type="date" placeholder="Birthday" ng-model="model.user.birthday">
-                                </div>
-                                <div>
-                                    <span>Gender</span>
-                                    <div class="radio">
-                                        <label for="radioMale">
-                                            <input type="radio" name="radioLicense" id="radioMale" value="Male" ng-model="model.user.gender">
-                                            Male
-                                        </label>
-                                        <label for="radioFemale">
-                                            <input type="radio" name="radioLicense" id="radioFemale" value="Female" ng-model="model.user.gender">
-                                            Female
-                                        </label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span>Self Introduction</span>
-                                    <textarea rows="5" placeholder="Tell others anything about your self..." ng-model="model.user.intro"></textarea>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="register-top-grid">
-                                <h3>LOGIN INFORMATION</h3>
-                                <div>
-                                    <span>Username<label>*</label></span>
-                                    <input type="text" placeholder="Username" ng-model="model.user.username">
-                                </div>
-                                <div>
-                                    <span>Password<label>*</label></span>
-                                    <input type="password" placeholder="Pasword" ng-model="model.user.password">
-                                </div>
-                            </div>
-                        </form>
-                        <div class="clearfix"> </div>
-                        <div class="register-but">
-                            <form>
-                                <a type="submit" ng-click="model.update(model.user)">Update</a>
-                                <div class="clearfix"> </div>
-                            </form>
-                        </div>
-                    </div>
+                <div>
+                    <span>Self Introduction</span>
+                    <textarea rows="5" placeholder="Tell others anything about your self..." ng-model="model.user.intro"></textarea>
                 </div>
             </div>
+            <br/>
+            <div class="register-top-grid">
+                <h3>LOGIN INFORMATION</h3>
+                <div>
+                    <span>Username<label>*</label></span>
+                    <input type="text" placeholder="Username" ng-model="model.user.username">
+                </div>
+                <div>
+                    <span>Password<label>*</label></span>
+                    <input type="password" placeholder="Pasword" ng-model="model.user.password">
+                </div>
+            </div>
+        </form>
+        <div class="clearfix"> </div>
+        <div class="register-but">
+            <form>
+                <a type="submit" ng-click="model.update(model.user)">Update</a>
+                <div class="clearfix"> </div>
+            </form>
         </div>
     </div>
 </div>
