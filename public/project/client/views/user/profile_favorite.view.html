@@ -20,167 +20,23 @@
     </div>
     <div class="cbp-vm-view-grid">
         <ul>
-            <li>
+            <li ng-repeat="likedRecipe in model.likedRecipes">
                 <a class="cbp-vm-image" href="#/recipe">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+                            <img ng-src={{likedRecipe.titleImg}} class="img-responsive" alt=""/>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Chocolate Martini</p>
+                                    <p class="title">{{likedRecipe.title}}</p>
                                 </div>
                                 <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                <span><img ng-src={{likedRecipe.rateImg}} class="img-rating" alt=""/></span>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
                 </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Cinnamon Mojito</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Ginger Black Spiced</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Puquena Colada</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic5.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Sunday Funday</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic6.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Naked Cosmo</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic7.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Razz Sangria</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic8.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Peach Tea</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
-            </li>
-            <li>
-                <a class="cbp-vm-image" href="#/recipe">
-                    <div class="inner_content clearfix">
-                        <div class="product_image">
-                            <img src="images/pic9.jpg" class="img-responsive" alt=""/>
-                            <div class="product_container">
-                                <div class="cart-left">
-                                    <p class="title">Long Island Ice Tea</p>
-                                </div>
-                                <br/>
-                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="button cbp-vm-add" href="#/profile_favorite">Delete</a>
+                <a class="button cbp-vm-add" ng-click="model.unlikeRecipe(likedRecipe)">Delete</a>
             </li>
         </ul>
     </div>

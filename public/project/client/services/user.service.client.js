@@ -10,10 +10,12 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
+            findAllFollowedUsersForUser: findAllFollowedUsersForUser,
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser,
             followUser: followUser,
+            unfollowUser: unfollowUser,
             getCurrentUser: getCurrentUser,
             getCurrentUsername: getCurrentUsername,
             setCurrentUser: setCurrentUser,
@@ -32,13 +34,15 @@
         }
 
         function findUserByCredentials(username, password) {
-            console.log(username);
-            console.log(password);
             return $http.get("/api/project/user?username="+username+"&password="+password);
         }
 
         function findAllUsers() {
             return $http.get("/api/project/user");
+        }
+
+        function findAllFollowedUsersForUser(followedUsers) {
+            return $http.post("/api/project/user/searchFollowedUsers", followedUsers);
         }
 
         function createUser(user) {
@@ -55,6 +59,10 @@
 
         function followUser(followerId, followedId) {
             return $http.post("/api/project/user/"+followerId+"/user/"+followedId);
+        }
+
+        function unfollowUser(followerId, followedId) {
+            return $http.put("/api/project/user/"+followerId+"/user/"+followedId);
         }
 
         function setCurrentUser(user) {

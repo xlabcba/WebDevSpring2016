@@ -8,10 +8,12 @@
         var service = {
             createRecipeForUser: createRecipeForUser,
             findAllRecipesForUser: findAllRecipesForUser,
+            findAllLikedRecipesForUser: findAllLikedRecipesForUser,
             deleteRecipeById: deleteRecipeById,
             updateRecipeById: updateRecipeById,
             getRecipeById: getRecipeById,
-            likeRecipe: likeRecipe
+            likeRecipe: likeRecipe,
+            userUnlikesRecipe: userUnlikesRecipe
         };
 
         return service;
@@ -22,6 +24,10 @@
 
         function findAllRecipesForUser(userId) {
             return $http.get("/api/project/user/"+userId+"/recipe");
+        }
+
+        function findAllLikedRecipesForUser(likedRecipes) {
+            return $http.post("/api/project/recipe/searchLikedRecipes", likedRecipes);
         }
 
         function deleteRecipeById(recipeId) {
@@ -38,6 +44,10 @@
 
         function likeRecipe(userId, recipeId) {
             return $http.post("/api/project/user/"+userId+"/recipe/"+recipeId);
+        }
+
+        function userUnlikesRecipe(userId, recipeId) {
+            return $http.put("/api/project/user/"+userId+"/recipe/"+recipeId);
         }
     }
 })();

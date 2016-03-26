@@ -22,6 +22,10 @@
                         ng-show="model.isAdmin()">
                         <a href="#/admin_user">Admin</a>
                     </li>
+                    <li ng-class="{'active' : model.$location.url() == '/recipe_edit'}"
+                        ng-show="model.isLoggedIn()">
+                        <a href="#/recipe_edit">+Recipe</a>
+                    </li>
                     <li ng-show="model.isLoggedIn()">
                         <a ng-click="model.logout()">Logout</a>
                     </li>

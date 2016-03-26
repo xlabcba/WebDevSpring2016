@@ -78,8 +78,8 @@ module.exports = function(recipeModel) {
             if(mock[c]._id == commentId) {
                 var recipeId = mock[c].recipeId;
                 mock.splice(c,1);
-                calculateRating(recipeId);
-                recipeModel.updateRating(recipeId, rating);
+                var newRating = calculateRating(recipeId);
+                recipeModel.updateRating(recipeId, newRating);
                 return mock;
             }
         }
@@ -90,6 +90,8 @@ module.exports = function(recipeModel) {
         for(var c in mock) {
             if(mock[c]._id == commentId) {
                 mock.splice(c,1,newComment);
+                var newRating = calculateRating(newComment.recipeId);
+                recipeModel.updateRating(newComment.recipeId, newRating);
                 return mock;
             }
         }
@@ -99,10 +101,13 @@ module.exports = function(recipeModel) {
     function deleteCommentOfRecipe(recipeId) {
         for(var c in mock) {
             if(mock[c].recipeId == recipeId) {
-                deleteCommentById(mock[c]._id);
+                mock.splice(c,1);
             }
         }
-        return null;
+        var newRating = calculateRating(recipeId);
+        recipeModel.updateRating(recipeId, newRating);
+        console.log("deleted comment!");
+        return 1;
     }
 
     function deleteCommentOfUser(userId) {
@@ -111,7 +116,7 @@ module.exports = function(recipeModel) {
                 deleteCommentById(mock[c]._id);
             }
         }
-        return null;
+        return 1;
     }
 
     function calculateRating(recipeId) {
@@ -120,11 +125,12 @@ module.exports = function(recipeModel) {
         var rating = 0;
         for(var c in mock) {
             if(mock[c].recipeId == recipeId) {
-                sum = sum + mock[c].rating;
-                count ++;
+                console.log(recipeId);
+                sum = sum + parseInt(mock[c].rating);
+                count = count + 1;
             }
         }
-        rating = sum / count;
+        rating = Math.round(sum / count);
         return rating;
     }
 

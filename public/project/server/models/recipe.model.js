@@ -6,7 +6,7 @@
 var mock = require("./recipe.mock.json");
 var Guid = require("../js/guid.js");
 
-module.exports = function(userModel, commentModel) {
+module.exports = function() {
 
     var api = {
 
@@ -19,16 +19,19 @@ module.exports = function(userModel, commentModel) {
         deleteRecipeOfUser: deleteRecipeOfUser,
         updateRating: updateRating,
         likeByUser: likeByUser,
-        unlikeByUser: unlikeByUser
+        unlikeByUser: unlikeByUser,
+        findAllLikedRecipesForUser: findAllLikedRecipesForUser
 
     };
     return api;
 
     function createRecipeForUser(userId, recipe) {
         var newRecipe = {
-            _id: Guid.create(), //"ID_" + (new Date()).getTime(),
+            _id: Guid.create(),  //"ID_" + (new Date()).getTime(),
             userId: userId,
             title: recipe.title,
+            titleImg: recipe.titleImg,
+            recipeImg: recipe.recipeImg,
             rating: "0",
             rateImg: "./images/star0.png",
             likeBy:[],
@@ -59,7 +62,7 @@ module.exports = function(userModel, commentModel) {
 
     function findRecipeById(recipeId) {
         for(var r in mock) {
-            if(mock[r].recipeId == recipeId) {
+            if(mock[r]._id == recipeId) {
                 return mock[r];
             }
         }
@@ -67,8 +70,6 @@ module.exports = function(userModel, commentModel) {
     }
 
     function deleteRecipeById(recipeId) {
-        userModel.deleteRecipeFromLike(recipeId);
-        commentModel.deleteCommentOfRecipe(recipeId);
         for(var r in mock) {
             if(mock[r]._id == recipeId) {
                 mock.splice(r,1);
@@ -94,7 +95,7 @@ module.exports = function(userModel, commentModel) {
                 deleteRecipeById(mock[r]._id);
             }
         }
-        return null;
+        return 1;
     }
 
     function updateRating(recipeId, rating) {
@@ -113,13 +114,13 @@ module.exports = function(userModel, commentModel) {
             rateImg = "./images/star0.png";
         }
         for(var r in mock) {
-            if(mock[r].recipeId == recipeId) {
+            if(mock[r]._id == recipeId) {
                 mock[r].rating = rating;
                 mock[r].rateImg = rateImg;
-                return true;
+                return mock[r];
             }
         }
-        return false;
+        return null;
     }
 
     function likeByUser(userId, recipeId) {
@@ -145,5 +146,17 @@ module.exports = function(userModel, commentModel) {
         }
         return null;
     }
+
+    function findAllLikedRecipesForUser(likedRecipes) {
+        var ret_recipes = [];
+        for(var r in likedRecipes) {
+            var recipe = findRecipeById(likedRecipes[r]);
+            if(recipe) {
+                ret_recipes.push(recipe);
+            }
+        }
+        return ret_recipes;
+    }
+
 
 };

@@ -6,7 +6,7 @@
 var mock = require("./user.mock.json");
 var Guid = require("../js/guid.js");
 
-module.exports = function(recipeModel, commentModel) {
+module.exports = function() {
 
     var api = {
 
@@ -24,7 +24,8 @@ module.exports = function(recipeModel, commentModel) {
         likeRecipe: likeRecipe,
         unlikeRecipe: unlikeRecipe,
         deleteRecipeFromLike: deleteRecipeFromLike,
-        deleteUserFromFollower: deleteUserFromFollower
+        deleteUserFromFollower: deleteUserFromFollower,
+        findFollowedUsersForUser: findFollowedUsersForUser
 
     };
     return api;
@@ -131,6 +132,7 @@ module.exports = function(recipeModel, commentModel) {
                 for(var v in mock[u].follow) {
                     if(mock[u].follow[v] == followedId) {
                         mock[u].follow.splice(v,1);
+                        console.log("success unfollow!");
                         return mock[u];
                     }
                 }
@@ -145,6 +147,7 @@ module.exports = function(recipeModel, commentModel) {
                 for(var v in mock[u].followBy) {
                     if(mock[u].followBy[v] == followerId) {
                         mock[u].followBy.splice(v,1);
+                        console.log("success unfollowBy!");
                         return mock[u];
                     }
                 }
@@ -197,6 +200,17 @@ module.exports = function(recipeModel, commentModel) {
             }
         }
         return null;
+    }
+
+    function findFollowedUsersForUser(followingUsers) {
+        var ret_users = [];
+        for(var u in followingUsers) {
+            var user = findUserById(followingUsers[u]);
+            if(user) {
+                ret_users.push(user);
+            }
+        }
+        return ret_users;
     }
 
 

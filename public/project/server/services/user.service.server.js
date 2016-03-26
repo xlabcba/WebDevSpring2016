@@ -2,7 +2,7 @@
  * Created by lixie on 16/3/23.
  */
 
-module.exports = function(app, userModel) {
+module.exports = function(app, userModel, recipeModel, commentModel) {
 
     app.post("/api/project/user", createNewUser);
     app.get("/api/project/user", getUser);
@@ -10,6 +10,9 @@ module.exports = function(app, userModel) {
     app.put("/api/project/user/:id", updateUser);
     app.delete("/api/project/user/:id", deleteUser);
     app.post("/api/project/user/:followerId/user/:followedId", userFollowsUser);
+    app.put("/api/project/user/:followerId/user/:followedId", userUnfollowsUser);
+    app.post("/api/project/user/searchFollowedUsers", getFollowedUsersForUser);
+
 
 
     function createNewUser(req, res) {
@@ -20,7 +23,6 @@ module.exports = function(app, userModel) {
     }
 
     function getUser(req, res) {
-        console.log("I'm here!");
         if (Object.keys(req.query).length === 0) {
             var users = userModel.findAllUsers();
             res.json(users);
@@ -29,7 +31,6 @@ module.exports = function(app, userModel) {
             var user = userModel.findUserByUsername(username);
             res.json(user);
         } else if (Object.keys(req.query).length === 2) {
-            console.log("Right if!");
             var username = req.query.username;
             var password = req.query.password;
             var user = userModel.findUserByCredentials(username, password);
@@ -61,17 +62,25 @@ module.exports = function(app, userModel) {
     function userFollowsUser(req, res) {
         var followerId = req.params.followerId;
         var followedId = req.params.followedId;
-        userModel
-            .followByUser(followerId, followedId)
-            .then(function(response){
-                if (response == null) {
-                    res.json(null);
-                } else {
-                    return userModel.followUser(followerId, followedId);
-                }
-            })
-            .then(function(response){
-                res.json(response);
-            });
+        userModel.followByUser(followerId, followedId);
+        var user = userModel.followUser(followerId, followedId);
+        res.json(user);
+    }
+
+    function userUnfollowsUser(req, res) {
+        var followerId = req.params.followerId;
+        var followedId = req.params.followedId;
+        console.log(followerId);
+        console.log(followedId);
+        userModel.unfollowByUser(followerId, followedId);
+        var user = userModel.unfollowUser(followerId, followedId);
+        console.log(user);
+        res.json(user);
+    }
+
+    function getFollowedUsersForUser(req, res) {
+        var followedUsers = req.body;
+        var users = userModel.findFollowedUsersForUser(followedUsers);
+        res.json(users);
     }
 };

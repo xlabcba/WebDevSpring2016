@@ -19,37 +19,28 @@
         <div class="clearfix"></div>
     </div>
     <h1>Recipe Reviewed</h1>
-    <div class="cart-header">
-        <a class="button close1" href="#/profile_reviewed">Delete</a>
-        <a class="button update" href="#/profile_reviewed">Update</a>
+    <div class="cart-header" ng-repeat="comment in model.comments">
+        <a class="button close1" ng-click="model.deleteComment(comment)">Delete</a>
+        <a class="button update" ng-click="model.updateComment(comment)">Update</a>
         <div class="cart-sec simpleCart_shelfItem">
             <div class="cart-item cyc">
-                <img src="images/pic1.jpg" class="img-responsive" alt="">
+                <img ng-src={{comment.recipeImg}} class="img-responsive">
             </div>
             <div class="cart-item-info">
-                <h3><a href="#/recipe">Chocolate Martini</a></h3>
-                <img src="images/5-star.png" class="img-rating">
+                <h3><a href="#/recipe">{{comment.recipeTitle}}</a></h3>
+                <span class="star-rating">
+                    <input type="radio" ng-model="comment.rating" value="1"><i></i>
+                    <input type="radio" ng-model="comment.rating" value="2"><i></i>
+                    <input type="radio" ng-model="comment.rating" value="3"><i></i>
+                    <input type="radio" ng-model="comment.rating" value="4"><i></i>
+                    <input type="radio" ng-model="comment.rating" value="5"><i></i>
+                </span>
                 <br/>
                 <div class="delivery">
-                    <textarea onfocus="this.value = 'Awesome!';" onblur="if (this.value == '') {this.value = 'Awesome!';}">Awesome!</textarea>
+                    <input placeholder="CommentTitle" ng-model="comment.title">
                 </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="cart-header">
-        <a class="button close1" href="#/profile_reviewed">Delete</a>
-        <a class="button update" href="#/profile_reviewed">Update</a>
-        <div class="cart-sec simpleCart_shelfItem">
-            <div class="cart-item cyc">
-                <img src="images/pic2.jpg" class="img-responsive" alt="">
-            </div>
-            <div class="cart-item-info">
-                <h3><a href="#/recipe">Mojito</a></h3>
-                <img src="images/5-star.png" class="img-rating">
-                <br/>
                 <div class="delivery">
-                    <textarea onfocus="this.value = 'I love it!';" onblur="if (this.value == '') {this.value = 'I love it!';}">I love it!</textarea>
+                    <textarea placeholder="CommentContent" ng-model="comment.content"></textarea>
                 </div>
             </div>
             <div class="clearfix"></div>

@@ -43,7 +43,7 @@
         }
 
         function updateCommentById(commentId, newComment) {
-            return $http.put("/api/project/comment/"+commentId);
+            return $http.put("/api/project/comment/"+commentId, newComment);
         }
 
     }
