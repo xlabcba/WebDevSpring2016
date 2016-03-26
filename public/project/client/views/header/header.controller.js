@@ -16,6 +16,7 @@
         vm.isLoggedIn = isLoggedIn;
         vm.isAdmin = isAdmin;
         vm.getCurrentUsername = getCurrentUsername;
+        vm.localSearch = localSearch;
 
         function init() {
             vm.$location = $location;
@@ -36,6 +37,9 @@
 
         function getCurrentUsername() {
             return UserService.getCurrentUsername();
+        }
+        function localSearch(searchStr) {
+            $location.url("/home/"+searchStr);
         }
     }
 

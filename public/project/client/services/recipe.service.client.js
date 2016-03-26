@@ -7,6 +7,8 @@
 
         var service = {
             createRecipeForUser: createRecipeForUser,
+            findAllRecipes: findAllRecipes,
+            findAllRecipesForStr: findAllRecipesForStr,
             findAllRecipesForUser: findAllRecipesForUser,
             findAllLikedRecipesForUser: findAllLikedRecipesForUser,
             deleteRecipeById: deleteRecipeById,
@@ -20,6 +22,14 @@
 
         function createRecipeForUser(userId, recipe) {
             return $http.post("/api/project/user/"+userId+"/recipe", recipe);
+        }
+
+        function findAllRecipesForStr(searchStr) {
+            return $http.get("/api/project/recipe/localSearch/"+searchStr);
+        }
+
+        function findAllRecipes() {
+            return $http.get("/api/project/recipe");
         }
 
         function findAllRecipesForUser(userId) {

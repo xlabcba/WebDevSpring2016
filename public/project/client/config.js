@@ -12,6 +12,11 @@
                     controller: "HomeController",
                     controllerAs: "model"
                 })
+                .when("/home/:searchStr", {
+                    templateUrl: "./views/home/home.view.html",
+                    controller: "HomeController",
+                    controllerAs: "model"
+                })
                 .when("/profile_public", {
                     templateUrl: "./views/user/profile_public.view.html",
                     controller: "PublicController",
@@ -62,7 +67,7 @@
                     controller: "LoginController",
                     controllerAs: "model"
                 })
-                .when("/recipe", {
+                .when("/recipe/:recipeId", {
                     templateUrl: "./views/recipe/recipe.view.html",
                     controller: "RecipeController",
                     controllerAs: "model"
@@ -70,11 +75,6 @@
                 .when("/recipe_edit", {
                     templateUrl: "./views/recipe/recipe_edit.view.html",
                     controller: "EditController",
-                    controllerAs: "model"
-                })
-                .when("/local_search", {
-                    templateUrl: "./views/home/local_search.view.html",
-                    controller: "LocalSearchController",
                     controllerAs: "model"
                 })
                 .when("/search", {

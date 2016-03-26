@@ -219,7 +219,6 @@ ul.quick_access li.check{
     width:87.22%;
     line-height: 1.5em;
     font-size: 0.8125em;
-    text-transform:uppercase;
 }
 .search input[type="submit"] {
     background: url('../images/search.png') no-repeat 8px 9px #333;

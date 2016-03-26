@@ -37,8 +37,8 @@
         <div class="banner_wrap">
             <div class="bannertop_box">
                 <div class="search">
-                    <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
-                    <a href="#/local_search"><input type="submit" value=""></a>
+                    <input type="text" placeholder="Cosmo, Bloody Mary..." ng-model="model.searchStr">
+                    <a ng-click="model.localSearch(model.searchStr)"><input type="submit" value=""></a>
                 </div>
                 <div class="welcome_box">
                     <h2>Welcome to OurBar</h2>

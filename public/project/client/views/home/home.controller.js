@@ -8,8 +8,36 @@
         .module("RecipeApp")
         .controller("HomeController", HomeController);
 
-    function HomeController($scope)
+    function HomeController($scope, $routeParams, $rootScope, RecipeService, $location)
     {
+        /*    <h3 class="m_1">Top Rated</h3>*/
+        var vm = this;
+
+        vm.currUser = $rootScope.currentUser;
+        vm.searchStr = $routeParams.searchStr;
+
+        if(vm.searchStr) {
+            localSearch(vm.searchStr);
+        } else {
+            init();
+        }
+
+        function init() {
+            RecipeService
+                .findAllRecipes()
+                .then(function(response){
+                    vm.recipes = response.data;
+                });
+        }
+
+        function localSearch(searchStr) {
+            RecipeService
+                .findAllRecipesForStr(searchStr)
+                .then(function(response){
+                    vm.recipes = response.data;
+                    console.log(vm.recipes);
+                })
+        }
 
     }
 })();

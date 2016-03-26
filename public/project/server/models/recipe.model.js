@@ -20,7 +20,8 @@ module.exports = function() {
         updateRating: updateRating,
         likeByUser: likeByUser,
         unlikeByUser: unlikeByUser,
-        findAllLikedRecipesForUser: findAllLikedRecipesForUser
+        findAllLikedRecipesForUser: findAllLikedRecipesForUser,
+        findAllRecipesForStr: findAllRecipesForStr
 
     };
     return api;
@@ -156,6 +157,41 @@ module.exports = function() {
             }
         }
         return ret_recipes;
+    }
+
+    function findAllRecipesForStr(searchStr) {
+        var ret_recipes = [];
+        for(var r in mock) {
+            if(mock[r].title.search(searchStr) >= 0
+                || isInStrArray(searchStr, mock[r].ingredientSpirit)
+                || isInStrArray(searchStr, mock[r].ingredientOther)
+                || isInStrArray(searchStr, mock[r].step)
+                || isInStrArray(searchStr, mock[r].tag1)
+                || isInStrArray(searchStr, mock[r].tag2)
+                || mock[r].tag3.search(searchStr) >= 0) {
+
+                ret_recipes.push(mock[r]);
+            }
+        }
+        if (ret_recipes.length == 0) {
+            ret_recipes = findAllRecipes();
+            console.log("empty!");
+            console.log(ret_recipes);
+            return ret_recipes;
+        } else {
+            console.log("NOT empty!");
+            console.log(ret_recipes);
+            return ret_recipes;
+        }
+    }
+
+    function isInStrArray(searchStr, strArray) {
+        for (var s in strArray) {
+            if (s.search(searchStr) >= 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

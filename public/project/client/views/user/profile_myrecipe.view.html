@@ -21,7 +21,7 @@
     <div class="cbp-vm-view-grid">
         <ul>
             <li ng-repeat="recipe in model.recipes">
-                <a class="cbp-vm-image" href="#/recipe">
+                <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img ng-src={{recipe.titleImg}} class="img-responsive" alt=""/>

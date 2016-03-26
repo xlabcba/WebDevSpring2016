@@ -2,18 +2,19 @@
   {
     "_id": "000", "userId": 123, "title": "Cosmo",
     "titleImg": "./images/pic6.jpg",
-    "recipeImg":[],
+    "recipeImg":["./images/pic6.jpg"],
     "rating": "5", "rateImg":"./images/star5.png",
     "likeBy":[234, 345, 567],
     "tag1": ["Vodka"], "tag2": ["sweet"], "tag3": "beginner",
     "ingredientSpirit": ["1 1/2 parts Vodka", "Splash Triple Sec Liqueur"],
     "ingredientOther": ["2 parts Cranberry Juice", "Splash Lime Juice", "Lime Wedges", "Cranberries"],
-    "step": ["Shake with ice", "Pour into a martini glass", "Garnish with fresh lime wedge or cranberries"]
+    "step": ["Shake with ice", "Pour into a martini glass", "Garnish with fresh lime wedge or cranberries"],
+    "overview": "1 Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon."
   },
   {
     "_id": "010", "userId": 123, "title": "Bloody Mary",
     "titleImg": "./images/pic5.jpg",
-    "recipeImg":[""],
+    "recipeImg":["./images/pic5.jpg"],
     "rating": "3", "rateImg":"./images/star3.png",
     "likeBy":[345, 456, 567],
     "tag1": ["Vodka"], "tag2": ["savory", "spicy"], "tag3": "intermediate",
@@ -21,12 +22,13 @@
     "ingredientOther": ["Dash Hot Sauce", "2 parts Low-Sodium Tomato Juice", "Squeeze fresh Lemon Juice",
       "Squeeze fresh Lime Juice", "Dash Worcestershire sauce", "Celery Salt", "Lime", "Cucumber, Sliced"],
     "step": ["Shake ingredients well in a three-piece shaker filled with ice", "Strain into a glass over ice",
-      "Garnish with lime, cucumber and a celery stalk", "Sprinkle with celery salt"]
+      "Garnish with lime, cucumber and a celery stalk", "Sprinkle with celery salt"],
+    "overview": "2 Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon."
   },
   {
     "_id": "020", "userId": 234, "title": "Long Island Ice Tea",
     "titleImg": "./images/pic9.jpg",
-    "recipeImg":["images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg"],
+    "recipeImg":["./images/pic9.jpg","images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg"],
     "rating": "0", "rateImg":"./images/star0.png",
     "likeBy":[123, 456, 567],
     "tag1": ["Rum","Vodka","Gin"], "tag2": ["sweet"], "tag3": "advanced",
@@ -34,6 +36,7 @@
       "1/2 part Gin"],
     "ingredientOther": ["3 parts Sour Mix", "3 parts Cola"],
     "step": ["Fill a Collins glass 3/4 full with ice", "Add all ingredients except for the cola into a cocktail tin",
-      "Shake and pour into glass", " Add Cola"]
+      "Shake and pour into glass", " Add Cola"],
+    "overview": "3 Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon."
   }
 ]

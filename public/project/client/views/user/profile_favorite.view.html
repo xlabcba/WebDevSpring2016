@@ -21,7 +21,7 @@
     <div class="cbp-vm-view-grid">
         <ul>
             <li ng-repeat="likedRecipe in model.likedRecipes">
-                <a class="cbp-vm-image" href="#/recipe">
+                <a class="cbp-vm-image" href="#/recipe/{{likedRecipe._id}}">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img ng-src={{likedRecipe.titleImg}} class="img-responsive" alt=""/>

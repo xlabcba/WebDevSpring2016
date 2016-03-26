@@ -5,6 +5,7 @@
 module.exports = function(app, userModel, recipeModel, commentModel) {
 
     app.get("/api/project/recipe", getAllRecipes);
+    app.get("/api/project/recipe/localSearch/:searchStr", getAllRecipesForStr);
     app.get("/api/project/user/:userId/recipe", getAllRecipesForUser);
     app.get("/api/project/recipe/:recipeId", getRecipeById);
     app.delete("/api/project/recipe/:recipeId", deleteRecipe);
@@ -17,7 +18,13 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
 
     function getAllRecipes(req, res) {
         var recipes = recipeModel.findAllRecipes();
-        res.json(forms);
+        res.json(recipes);
+    }
+
+    function getAllRecipesForStr(req, res) {
+        var searchStr = req.params.searchStr;
+        var recipes = recipeModel.findAllRecipesForStr(searchStr);
+        res.json(recipes);
     }
 
     function getAllRecipesForUser(req, res) {

@@ -20,29 +20,15 @@
                 <br>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <ol class="carousel-indicators" ng-repeat="imgIndex in model.imgIndexes">
+                        <li data-target="#myCarousel" data-slide-to={{imgIndex}}
+                            ng-class="{'active' : model.currImgIndex == imgIndex}"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="images/s1.jpg">
-                        </div>
-
-                        <div class="item">
-                            <img src="images/s2.jpg">
-                        </div>
-
-                        <div class="item">
-                            <img src="images/s3.jpg">
-                        </div>
-
-                        <div class="item">
-                            <img src="images/s4.jpg">
+                        <div class="item active" ng-repeat="recipeImg in model.recipe.recipeImg">
+                            <img ng-src={{recipeImg}}>
                         </div>
                     </div>
                 </div>
@@ -54,27 +40,27 @@
             </div>
         </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-            <h1>Bloody Mary</h1>
+            <h1>{{model.recipe.title}}</h1>
             <ul class="rating">
-                <li><img class="img-rating" src="images/5-star.png"></li>
+                <li><img class="img-rating" ng-src={{model.recipe.rateImg}}></li>
                 <br/>
                 <li><a href="#/recipe_edit">Edit Recipe</a></li>
                 <div class="clearfix"></div>
             </ul>
             <br/>
             <h2 class="quick">Quick Overview:</h2>
-            <p class="quick_desc">Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon.</p>
+            <p class="quick_desc">{{model.recipe.overview}}</p>
             <ul class="size">
-                <h3>Base: Vodka</h3>
+                <h3>Base: {{model.recipe.tag1.join(",")}}</h3>
                 <li></li>
             </ul>
             <ul class="size">
-                <h3>Flavor: Savory</h3>
+                <h3>Flavor: {{model.recipe.tag2.join(",")}}</h3>
                 <li></li>
 
             </ul>
             <ul class="size">
-                <h3>Skill Level: Advance</h3>
+                <h3>Skill Level: {{model.recipe.tag3}}</h3>
                 <li></li>
 
             </ul>
@@ -94,21 +80,15 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                     <div class="facts">
                         <ul class="tab_list">
-                            <li><p>1 part Pinnacle® Original Vodka</p><a href="#/search" class="api-btn">Where to Buy</a></li>
-                            <li><p>1 part DeKuyper® Lemon Drop Shots</p><a href="#/search" class="api-btn">Where to Buy</a></li>
-                            <li><p>2 parts Tomato Juice</p></li>
-                            <li><p>1 dash Hot Sauce</p></li>
-                            <li><p>1 dash Horseradish</p></li>
-                            <li><p>1 dash Worcestershire sauce</p></li>
-                            <li><p>Celery</p></li>
+                            <li ng-repeat="liquor in model.recipe.ingredientSpirit"><p>{{liquor}}</p><a href="#/search" class="api-btn">Where to Buy</a></li>
+                            <li ng-repeat="other in model.recipe.ingredientOther"><p>{{other}}</p></li>
                         </ul>
                     </div>
                 </div>
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                     <div class="facts">
                         <ul class="tab_list">
-                            <li><p>Use bottled Bloody Mary Mix of your choice or Homemade Bloody Mary Mix:<br/>¼ part Tomato Juice<br/>¼ part Beef Stock<br/>½ tsp. Horseradish </p></li>
-                            <li><p>Add Basil Hayden’s® Bourbon, jalapeño juice, Bloody Mary mix, lemon juice, celery bitters, Tabasco®, cracked black pepper and ice to a cocktail shaker. Shake vigorously and strain into a chilled cocktail glass rimmed with black sea salt. Garnish with a slice of cooked bacon, clapped basil leaf and a lemon wedge.</p></li>
+                            <li ng-repeat="step in model.recipe.step"><p>{{step}}</p></li>
                         </ul>
                     </div>
                 </div>
