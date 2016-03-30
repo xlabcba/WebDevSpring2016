@@ -6,8 +6,17 @@
 var mock = require("./user.mock.json");
 var Guid = require("../js/guid.js");
 
+// load q promise library
+var q = require("q");
+
 // pass app reference to model
-module.exports = function() {
+module.exports = function(db, mongoose) {
+
+    // load user schema
+    var UserSchema = require("./user.schema.server.js")(mongoose);
+
+    // create user model from schema
+    var UserModel = mongoose.model('User', UserSchema);
 
     var api = {
         createUser: createUser,
@@ -21,35 +30,121 @@ module.exports = function() {
     return api;
 
     function createUser(user) {
+        /*
         user._id = Guid.create(); //"ID_" + (new Date()).getTime();
         user.roles = [];
         mock.push(user);
         return mock;
+        */
+        console.log(user);
+
+        // use q to defer the response
+        var deferred = q.defer();
+
+        // insert new user with mongoose user model's create()
+        UserModel.create(user, function (err, doc) {
+
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function findAllUsers() {
+        /*
         return mock;
+        */
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.find(
+
+            // first argument is predicate
+            {},
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
     }
 
     function findUserById(userId) {
+        /*
         for(var u in mock) {
             if( mock[u]._id == userId ) {
                 return mock[u];
             }
         }
         return null;
+        */
+
+        var deferred = q.defer();
+
+        UserModel.findById(userId, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
+            }
+        });
+        return deferred.promise;
     }
 
     function findUserByUsername(username) {
+        /*
         for(var u in mock) {
             if( mock[u].username == username ) {
                 return mock[u];
             }
         }
         return null;
+        */
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findOne(
+
+            // first argument is predicate
+            { username: username },
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
     }
 
     function findUserByCredentials(credentials) {
+        /*
         for(var u in mock) {
             if( mock[u].username == credentials.username &&
                 mock[u].password == credentials.password) {
@@ -57,9 +152,39 @@ module.exports = function() {
             }
         }
         return null;
+        */
+
+        //console.log(credentials);
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findOne(
+
+            // first argument is predicate
+            { username: credentials.username,
+                password: credentials.password },
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    console.log("fail find one by credentials!");
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    //console.log(doc);
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
     }
 
     function updateUserById(userId, newUser) {
+        /*
         for(var u in mock) {
             if(mock[u]._id == userId) {
                 mock.splice(u,1, newUser);
@@ -67,9 +192,38 @@ module.exports = function() {
             }
         }
         return null;
+        */
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findByIdAndUpdate(
+
+            // first argument is id
+            userId,
+
+            // second argument is object to update
+            newUser,
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    console.log(doc);
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
     }
 
     function deleteUserById(userId) {
+        /*
         for(var u in mock) {
             if(mock[u]._id == userId) {
                 mock.splice(u,1);
@@ -77,6 +231,32 @@ module.exports = function() {
             }
         }
         return null;
+        */
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findByIdAndRemove(
+
+            // first argument is id
+            userId,
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
+
+
     }
 
 };

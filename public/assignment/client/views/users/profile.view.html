@@ -29,9 +29,27 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail1" class="col-sm-2 control-label">Email:</label>
+                        <label class="col-sm-2 control-label">Email:</label>
+                        <div class="col-sm-10" ng-repeat="email in model.user.emails track by $index">
+                            <input type="email" class="form-control" placeholder="Email {{$index + 1}}"
+                                   ng-model="model.user.emails[$index]" empty-to-null />
+                            <br/>
+                        </div>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail1" placeholder="Email" ng-model="model.user.email">
+                            <input type="email" class="form-control" placeholder="Add New Email"
+                                   ng-model="model.newEmail" empty-to-null />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Phone:</label>
+                        <div class="col-sm-10" ng-repeat="phone in model.user.phones track by $index">
+                            <input type="text" class="form-control" placeholder="Phone {{$index + 1}}"
+                                   ng-model="model.user.phones[$index]" empty-to-null />
+                            <br/>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Add New Phone"
+                                   ng-model="model.newPhone" empty-to-null />
                         </div>
                     </div>
                     <div class="form-group">

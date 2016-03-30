@@ -6,7 +6,14 @@
 var mock = require("./form.mock.json");
 var Guid = require("../js/guid.js");
 
-module.exports = function() {
+// pass db and mongoose reference to model
+module.exports = function(db, mongoose) {
+
+    // load movie schema from movie model
+    var FormSchema = require("./form.schema.server.js")(mongoose);
+
+    // create movie from schema
+    var Form  = mongoose.model("Form", FormSchema);
 
     var api = {
         createFormForUser: createFormForUser,

@@ -10,17 +10,15 @@
 
     function ProfileController($rootScope, UserService)
     {
-        var currUser = $rootScope.currentUser;
-
         var vm = this;
-
-        //var username = $routeParams.username;
-        //console.log(username);
 
         vm.update = update;
         vm.user = {};
+        vm.newEmail = null;
+        vm.newPhone = null;
 
         function init() {
+            var currUser = UserService.getCurrentUser();
             UserService
                 .findUserById(currUser._id)
                 .then(function (response) {
@@ -30,22 +28,23 @@
         return init();
 
         function update(user) {
+            if (vm.newEmail) {
+                user.emails.push(vm.newEmail);
+                vm.newEmail = null;
+            }
+            if (vm.newPhone) {
+                user.phones.push(vm.newPhone);
+                vm.newPhone = null;
+            }
+
+            user.emails = user.emails.filter(function(val) { return (val !== null && val !== undefined); });
+            user.phones = user.phones.filter(function(val) { return (val !== null && val !== undefined); });
+
             UserService
                 .updateUser(user._id, user)
                 .then(function(response){
-                    setUser(user);
-                });
-        }
-
-        function setUser(user) {
-            UserService
-                .findUserByCredentials(user.username, user.password)
-                .then(function(response){
-                    var currentUser = response.data;
-                    if(currentUser != null) {
-                        UserService.setCurrentUser(currentUser);
-                        vm.user = currentUser;
-                    }
+                    UserService.setCurrentUser(response.data);
+                    init();
                 });
         }
 

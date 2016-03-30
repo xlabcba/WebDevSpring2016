@@ -13,6 +13,8 @@
         var vm = this;
 
         vm.register = register;
+        vm.newEmail = null;
+        vm.newPhone = null;
 
         function init() {
 
@@ -23,19 +25,8 @@
             UserService
                 .createUser(user)
                 .then(function(response){
-                    setUser(user);
-                });
-        }
-
-        function setUser(user) {
-            UserService
-                .findUserByCredentials(user.username, user.password)
-                .then(function(response){
-                    var currentUser = response.data;
-                    if(currentUser != null) {
-                        UserService.setCurrentUser(currentUser);
-                        $location.url("/profile");
-                    }
+                    UserService.setCurrentUser(response.data);
+                    $location.url("/profile");
                 });
         }
     }

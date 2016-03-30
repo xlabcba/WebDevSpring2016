@@ -3,5 +3,5 @@
  */
 
 (function(){
-    angular.module("FormBuilderApp", ["ngRoute", "jgaSortable"]);
+    angular.module("FormBuilderApp", ["ngRoute", "jgaSortable", "emptyToNull"]);
 })();
