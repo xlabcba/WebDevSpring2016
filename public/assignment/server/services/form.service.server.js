@@ -54,7 +54,7 @@ module.exports = function(app, formModel) {
 
         var formId = req.params.formId;
 
-        var form = formModel.deleteFormById(formId)
+        formModel.deleteFormById(formId)
             .then(
                 function ( stats ) {
                     res.json(stats);
@@ -89,7 +89,7 @@ module.exports = function(app, formModel) {
         var newForm = req.body;
         var formId = req.params.formId;
 
-        var form = formModel.updateFormById(formId, newForm)
+        formModel.updateFormById(formId, newForm)
             .then(
                 function ( stats ) {
                     res.json(stats);

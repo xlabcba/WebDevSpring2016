@@ -42,8 +42,17 @@
             user.emails = user.emails.filter(function(val) { return (val !== null && val !== undefined); });
             user.phones = user.phones.filter(function(val) { return (val !== null && val !== undefined); });
 
+            var newUser = {
+                username: user.username,
+                password: user.password,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                emails: user.emails,
+                phones: user.phones
+            };
+
             UserService
-                .updateUser(user._id, user)
+                .updateUser(user._id, newUser)
                 .then(function(response){
                     init();
                 });

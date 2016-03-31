@@ -212,10 +212,10 @@ module.exports = function(db, mongoose) {
         FormModel.update(
 
             // first argument is id
-            { "_id": formId },
+            { _id: formId },
 
             // second argument is object to update
-            newForm,
+            { $set: { title: newForm.title }},
 
             // doc is unique instance matches predicate
             function(err, doc) {
@@ -250,7 +250,7 @@ module.exports = function(db, mongoose) {
         FormModel.remove(
 
             // first argument is id
-            { "_id": formId },
+            { _id: formId },
 
             // doc is unique instance matches predicate
             function(err, doc) {

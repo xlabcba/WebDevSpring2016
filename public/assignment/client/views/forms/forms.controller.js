@@ -44,8 +44,12 @@
         }
 
         function updateForm(form) {
+            var newForm = {
+                title: form.title
+            };
+
             FormService
-                .updateFormById(form._id, form)
+                .updateFormById(form._id, newForm)
                 .then(function(response){
                   init();
                 });
