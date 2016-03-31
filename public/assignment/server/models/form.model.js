@@ -209,10 +209,10 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find one retrieves one document
-        FormModel.findByIdAndUpdate(
+        FormModel.update(
 
             // first argument is id
-            formId,
+            { "_id": formId },
 
             // second argument is object to update
             newForm,
@@ -247,10 +247,10 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find one retrieves one document
-        FormModel.findByIdAndRemove(
+        FormModel.remove(
 
             // first argument is id
-            formId,
+            { "_id": formId },
 
             // doc is unique instance matches predicate
             function(err, doc) {

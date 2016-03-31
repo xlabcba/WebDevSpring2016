@@ -18,11 +18,13 @@
         vm.newPhone = null;
 
         function init() {
+            console.log("HERE I AM!");
             var currUser = UserService.getCurrentUser();
             UserService
                 .findUserById(currUser._id)
                 .then(function (response) {
                     vm.user = response.data;
+                    UserService.setCurrentUser(response.data);
                 });
         }
         return init();
@@ -43,7 +45,6 @@
             UserService
                 .updateUser(user._id, user)
                 .then(function(response){
-                    UserService.setCurrentUser(response.data);
                     init();
                 });
         }

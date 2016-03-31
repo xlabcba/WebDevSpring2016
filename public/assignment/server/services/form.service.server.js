@@ -56,8 +56,8 @@ module.exports = function(app, formModel) {
 
         var form = formModel.deleteFormById(formId)
             .then(
-                function ( doc ) {
-                    res.json(doc);
+                function ( stats ) {
+                    res.json(stats);
                 },
                 function ( err ) {
                     res.status(400).send(err);
@@ -91,8 +91,8 @@ module.exports = function(app, formModel) {
 
         var form = formModel.updateFormById(formId, newForm)
             .then(
-                function ( doc ) {
-                    res.json(doc);
+                function ( stats ) {
+                    res.json(stats);
                 },
                 function ( err ) {
                     res.status(400).send(err);

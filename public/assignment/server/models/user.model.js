@@ -45,12 +45,12 @@ module.exports = function(db, mongoose) {
         // insert new user with mongoose user model's create()
         UserModel.create(user, function (err, doc) {
 
-            if (err) {
-                // reject promise if error
-                deferred.reject(err);
-            } else {
+            if (!err) {
                 // resolve promise
                 deferred.resolve(doc);
+            } else {
+                // reject promise if error
+                deferred.reject(err);
             }
 
         });
@@ -68,21 +68,15 @@ module.exports = function(db, mongoose) {
 
         // find one retrieves one document
         UserModel.find(
-
-            // first argument is predicate
-            {},
-
             // doc is unique instance matches predicate
-            function(err, doc) {
-
+            function(err, users) {
                 if (err) {
                     // reject promise if error
                     deferred.reject(err);
                 } else {
                     // resolve promise
-                    deferred.resolve(doc);
+                    deferred.resolve(users);
                 }
-
             });
 
         return deferred.promise;
@@ -108,6 +102,7 @@ module.exports = function(db, mongoose) {
             }
         });
         return deferred.promise;
+
     }
 
     function findUserByUsername(username) {
@@ -119,6 +114,7 @@ module.exports = function(db, mongoose) {
         }
         return null;
         */
+
 
         var deferred = q.defer();
 
@@ -142,6 +138,8 @@ module.exports = function(db, mongoose) {
             });
 
         return deferred.promise;
+
+
     }
 
     function findUserByCredentials(credentials) {
@@ -182,6 +180,7 @@ module.exports = function(db, mongoose) {
             });
 
         return deferred.promise;
+
     }
 
     function updateUserById(userId, newUser) {
@@ -198,23 +197,23 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find one retrieves one document
-        UserModel.findByIdAndUpdate(
+        UserModel.update(
 
             // first argument is id
-            userId,
+            { _id: userId },
 
             // second argument is object to update
-            newUser,
+            { $set: newUser },
 
             // doc is unique instance matches predicate
-            function(err, doc) {
+            function(err, stats) {
 
-                if (err) {
+                if (!err) {
+                    // resolve promise
+                    deferred.resolve(stats);
+                } else {
                     // reject promise if error
                     deferred.reject(err);
-                } else {
-                    // resolve promise
-                    deferred.resolve(doc);
                 }
 
             });
@@ -236,20 +235,20 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find one retrieves one document
-        UserModel.findByIdAndRemove(
+        UserModel.remove(
 
             // first argument is id
-            userId,
+            { _id: userId },
 
             // doc is unique instance matches predicate
-            function(err, doc) {
+            function(err, stats) {
 
-                if (err) {
+                if (!err) {
+                    // resolve promise
+                    deferred.resolve(stats);
+                } else {
                     // reject promise if error
                     deferred.reject(err);
-                } else {
-                    // resolve promise
-                    deferred.resolve(doc);
                 }
 
             });

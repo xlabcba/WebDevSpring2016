@@ -20,13 +20,13 @@ module.exports = function(app, userModel) {
 
         var user = req.body;
 
-        user = userModel.createUser(user)
+        userModel.createUser(user)
             // handle model promise
             .then(
                 // login user if promise resolved
-                function ( doc ) {
+                function ( user ) {
                     //req.session.currentUser = doc;
-                    res.json(doc);
+                    res.json(user);
                 },
                 // send error if promise rejected
                 function ( err ) {
@@ -37,10 +37,10 @@ module.exports = function(app, userModel) {
 
     function getUser(req, res) {
         if (Object.keys(req.query).length === 0) {
-            var users = userModel.findAllUsers()
+            userModel.findAllUsers()
                 .then(
-                    function ( doc ) {
-                        res.json(doc);
+                    function ( users ) {
+                        res.json(users);
                     },
                     function ( err ) {
                         res.status(400).send(err);
@@ -48,10 +48,10 @@ module.exports = function(app, userModel) {
                 );
         } else if (Object.keys(req.query).length === 1) {
             var username = req.query.username;
-            var user = userModel.findUserByUsername(username)
+            userModel.findUserByUsername(username)
                 .then(
-                    function ( doc ) {
-                        res.json(doc);
+                    function ( user ) {
+                        res.json(user);
                     },
                     function ( err ) {
                         res.status(400).send(err);
@@ -62,10 +62,10 @@ module.exports = function(app, userModel) {
             var password = req.query.password;
             var credentials = {"username": username, "password": password};
             //console.log(credentials);
-            var user = userModel.findUserByCredentials(credentials)
+            userModel.findUserByCredentials(credentials)
                 .then(
-                    function ( doc ) {
-                        res.json(doc);
+                    function ( user ) {
+                        res.json(user)
                     },
                     function ( err ) {
                         res.status(400).send(err);
@@ -78,10 +78,10 @@ module.exports = function(app, userModel) {
 
     function getUserById(req, res) {
         var userId = req.params.id;
-        var user = userModel.findUserById(userId)
+        userModel.findUserById(userId)
             .then(
-                function ( doc ) {
-                    res.json(doc);
+                function ( user ) {
+                    res.json(user)
                 },
                 function ( err ) {
                     res.status(400).send(err);
@@ -92,10 +92,10 @@ module.exports = function(app, userModel) {
     function updateUserById(req, res) {
         var userId = req.params.id;
         var newUser = req.body;
-        var users = userModel.updateUserById(userId, newUser)
+        userModel.updateUserById(userId, newUser)
             .then(
-                function ( doc ) {
-                    res.json(doc);
+                function ( stats ) {
+                    res.send(200);
                 },
                 function ( err ) {
                     res.status(400).send(err);
@@ -105,10 +105,10 @@ module.exports = function(app, userModel) {
 
     function deleteUserById(req, res) {
         var userId = req.params.id;
-        var users = userModel.deleteUserById(userId)
+        userModel.deleteUserById(userId)
             .then(
-                function ( doc ) {
-                    res.json(doc);
+                function ( stats ) {
+                    res.send(200);
                 },
                 function ( err ) {
                     res.status(400).send(err);
