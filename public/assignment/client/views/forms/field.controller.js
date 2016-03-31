@@ -14,14 +14,18 @@
         var formId = $routeParams.formId;
 
         vm.options = [
-            {"label":"Single Line Text Field",
-                "value":{"_id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"}},
+            {"label":"Single Line Text Field (TEXT)",
+                "value":{"label": "New Text Field (TEXT)", "type": "TEXT", "placeholder": "New Field"}},
+            {"label":"Single Line Text Field (EMAIL)",
+                "value":{"label": "New Text Field (EMAIL)", "type": "EMAIL", "placeholder": "New Field"}},
+            {"label":"Single Line Text Field (PASSWORD)",
+                "value":{"label": "New Text Field (PASSWORD)", "type": "PASSWORD", "placeholder": "New Field"}},
             {"label":"Multi Line Text Field",
-                "value":{"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"}},
+                "value":{"label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"}},
             {"label":"Date Field",
-                "value":{"_id": null, "label": "New Date Field", "type": "DATE"}},
+                "value":{"label": "New Date Field", "type": "DATE"}},
             {"label":"Dropdown Field",
-                "value": {"_id": null, "label": "New Dropdown", "type": "OPTIONS",
+                "value": {"label": "New Dropdown", "type": "OPTIONS",
                     "options": [
                         {"label": "Option 1", "value": "OPTION_1"},
                         {"label": "Option 2", "value": "OPTION_2"},
@@ -30,7 +34,7 @@
                 }
             },
             {"label":"Checkboxes Field",
-                "value": {"_id": null, "label": "New Checkboxes", "type": "CHECKBOXES",
+                "value": {"label": "New Checkboxes", "type": "CHECKBOXES",
                     "options": [
                         {"label": "Option A", "value": "OPTION_A"},
                         {"label": "Option B", "value": "OPTION_B"},
@@ -41,7 +45,7 @@
             {
                 "label": "Radio Buttons Field",
                 "value": {
-                    "_id": null, "label": "New Radio Buttons", "type": "RADIOS",
+                    "label": "New Radio Buttons", "type": "RADIOS",
                     "options": [
                         {"label": "Option X", "value": "OPTION_X"},
                         {"label": "Option Y", "value": "OPTION_Y"},
@@ -105,7 +109,7 @@
         function setCurrField(field) {
             vm.curField = field;
             vm.modalfield.label = field.label;
-            if(field.type=="TEXT"||field.type=="TEXTAREA"||field.type=="EMAIL"){
+            if(field.type=="TEXT"||field.type=="TEXTAREA"||field.type=="EMAIL"||field.type=="PASSWORD"){
                 vm.modalfield.content = field.placeholder;
             }else if(field.type=="DATE"){
                 vm.modalfield.content = "";
@@ -119,7 +123,10 @@
 
         function editField(){
             vm.curField.label = vm.modalfield.label;
-            if(vm.curField.type=="TEXT"||vm.curField.type=="TEXTAREA"||vm.curField.type=="EMAIL"){
+            if(vm.curField.type=="TEXT"
+                ||vm.curField.type=="TEXTAREA"
+                ||vm.curField.type=="EMAIL"
+                ||vm.curField.type=="PASSWORD") {
                 vm.curField.placeholder = vm.modalfield.content;
             }else if(vm.curField.type=="CHECKBOXES"||vm.curField.type=="OPTIONS"||vm.curField.type=="RADIOS"){
                 vm.curField.options = [];
@@ -131,9 +138,13 @@
                     }
                 }
             }
+            console.log("~~~~~~~~~~~~FINISHED GIVING VALUE!~~~~~~~~~~~");
+            console.log(vm.curField);
+            console.log("~~~~~~~~~~~~~~GOING TO SERVICE!~~~~~~~~~~~~~~");
             FieldService
                 .updateField(formId, vm.curField._id, vm.curField)
                 .then(function(response){
+                    console.log(response.data);
                     vm.fields = response.data;
                 });
         }

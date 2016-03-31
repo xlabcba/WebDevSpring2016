@@ -6,7 +6,7 @@ module.exports = function(mongoose) {
     var FormSchema = mongoose.Schema({
         userId: String,
         title: {type: String, default: 'New Form'},
-        fields: [FieldSchema],
+        fields: {type: [FieldSchema], default: []},
         created: {type: Date, default: Date.now},
         updated: {type: Date, default: Date.now}
     }, {collection: 'project.form'});

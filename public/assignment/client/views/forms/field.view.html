@@ -26,6 +26,9 @@
                                                 <div ng-switch-when="EMAIL">
                                                     <input type="email" class="form-control" placeholder={{field.placeholder}}>
                                                 </div>
+                                                <div ng-switch-when="PASSWORD">
+                                                    <input type="password" class="form-control" placeholder={{field.placeholder}}>
+                                                </div>
                                                 <div ng-switch-when="DATE">
                                                     <input type="date" class="form-control">
                                                 </div>
@@ -126,8 +129,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" ng-if="model.curField.type == 'TEXT' || model.curField.type == 'EMAIL'">
-                        Single Line Field
+                    <h4 class="modal-title" ng-if="model.curField.type == 'TEXT'
+                    || model.curField.type == 'EMAIL'
+                    || model.curField.type == 'PASSWORD'">
+                        Single Line Field ({{model.curField.type}})
                     </h4>
                     <h4 class="modal-title" ng-if="model.curField.type == 'TEXTAREA'">
                         Multiple Lines Field
@@ -153,7 +158,10 @@
                             <input type="text" class="form-control" ng-model="model.modalfield.label">
                         </div>
                         <div class="form-group"
-                             ng-if="model.curField.type == 'TEXT' || model.curField.type == 'TEXTAREA' || model.curField.type == 'EMAIL'">
+                             ng-if="model.curField.type == 'TEXT'
+                             || model.curField.type == 'EMAIL'
+                             || model.curField.type == 'PASSWORD'
+                             || model.curField.type == 'TEXTAREA'">
                             <label >Placeholder</label>
                             <br/>
                             <input type="text" class="form-control" ng-model="model.modalfield.content"/>

@@ -3,8 +3,10 @@
  */
 
 // load mock users data
-var mock = require("./user.mock.json");
-var Guid = require("../js/guid.js");
+//var mock = require("./user.mock.json");
+
+// load guid
+//var Guid = require("../js/guid.js");
 
 // load q promise library
 var q = require("q");
@@ -36,7 +38,6 @@ module.exports = function(db, mongoose) {
         mock.push(user);
         return mock;
         */
-        console.log(user);
 
         // use q to defer the response
         var deferred = q.defer();
@@ -212,7 +213,6 @@ module.exports = function(db, mongoose) {
                     // reject promise if error
                     deferred.reject(err);
                 } else {
-                    console.log(doc);
                     // resolve promise
                     deferred.resolve(doc);
                 }
@@ -255,8 +255,6 @@ module.exports = function(db, mongoose) {
             });
 
         return deferred.promise;
-
-
     }
 
 };

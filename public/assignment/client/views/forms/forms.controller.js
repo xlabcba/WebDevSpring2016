@@ -29,9 +29,16 @@
         init();
 
         function addForm(form) {
+            console.log(form);
+            var newForm = {
+                title: form.title,
+                userId: currUser._id
+            };
+            console.log(newForm);
             FormService
-                .createFormForUser(currUser._id, form)
+                .createFormForUser(currUser._id, newForm)
                 .then(function(response){
+                    console.log(response.data);
                     init();
                 });
         }
