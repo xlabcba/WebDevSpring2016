@@ -25,7 +25,7 @@
             vm.imgIndexes = [];
             vm.currImgIndex = 0;
             vm.comments = [];
-            vm.usersOfComments = [];
+            // vm.usersOfComments = [];
             vm.currComment={};
 
             RecipeService
@@ -35,36 +35,34 @@
                     for(var i in vm.recipe.recipeImg) {
                         vm.imgIndexes.push(i);
                     }
-                    getCommentOfRecipe(vm.recipeId);
                 });
+
+            CommentService
+                .findAllCommentsForRecipe(vm.recipeId)
+                .then(function(response){
+                    getUsersOfComments(response.data);
+                });
+
         }
         init();
 
-        function getCommentOfRecipe(recipeId) {
-            CommentService
-                .findAllCommentsForRecipe(recipeId)
-                .then(function(response){
-                   vm.comments = response.data;
-                    getUsersOfComments();
-                });
-        }
-
-        function getUsersOfComments() {
-            for (var c in vm.comments) {
+        function getUsersOfComments(comments) {
+            for (var c in comments) {
                 (function() {
                     var i = c;
                     UserService
-                        .findUserById(vm.comments[i].userId)
+                        .findUserById(comments[i].userId)
                         .then(function(response) {
                             RecipeService
                                 .findAllRecipesForUser(response.data._id)
                                 .then(function(res){
                                     response.data.recipeNumber = res.data.length;
-                                    vm.usersOfComments.push(response.data);
+                                    comments[i].author = response.data;
                                 });
                         });
                 })();
             }
+            vm.comments = comments;
         }
 
         function isAdminOrAuthor(authorId) {

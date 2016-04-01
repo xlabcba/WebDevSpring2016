@@ -97,22 +97,22 @@
                 <!-- Tab 3 : Comments -->
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                     <ul class="tab_list">
-                        <div class="cart-header" ng-repeat="comment in model.comments track by $index">
-                            <a class="button close1" ng-show="model.isAdminOrAuthor(model.usersOfComments[$index]._id)"
+                        <div class="cart-header" ng-repeat="comment in model.comments">
+                            <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
                                ng-click="model.deleteComment(comment)">Delete</a>
                             <a class="button update"
-                               ng-show="model.isAuthor(model.usersOfComments[$index]._id)"
+                               ng-show="model.isAuthor(comment.author._id)"
                                data-toggle="modal" data-target="#myModal"
                                ng-click="model.setCurrComment(comment)">Change</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
-                                    <img ng-src={{model.usersOfComments[$index].photo}} class="img-responsive" alt="">
+                                    <img ng-src={{comment.author.photo}} class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
-                                    <h3><a href="#/profile_public">{{model.usersOfComments[$index].username}}</a></h3>
+                                    <h3><a href="#/profile_public">{{comment.author.username}}</a></h3>
                                     <ul class="qty">
-                                        <p>Recipe: {{model.usersOfComments[$index].recipeNumber}}</p>
-                                        <p>Followed by: {{model.usersOfComments[$index].followBy.length}}</p>
+                                        <p>Recipe: {{comment.author.recipeNumber}}</p>
+                                        <p>Followed by: {{comment.author.followBy.length}}</p>
                                     </ul>
                                     <img ng-src={{comment.rateImg}} class="img-rating">
                                     <br/>
