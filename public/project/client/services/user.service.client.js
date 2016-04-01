@@ -20,7 +20,8 @@
             getCurrentUsername: getCurrentUsername,
             setCurrentUser: setCurrentUser,
             isLoggedIn: isLoggedIn,
-            isAdmin: isAdmin
+            isAdmin: isAdmin,
+            isMe: isMe
         };
 
         return service;
@@ -89,5 +90,8 @@
             return (isLoggedIn() && $rootScope.currentUser.roles.indexOf("admin") >= 0);
         }
 
+        function isMe(userId) {
+            return (isLoggedIn() && $rootScope.currentUser._id == userId);
+        }
     }
 })();

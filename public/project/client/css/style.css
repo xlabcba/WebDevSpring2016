@@ -1087,6 +1087,7 @@ ul.rating li a:hover, .price_single a:hover, ul.size li a:hover{
     color:#ee4a02;
     text-decoration:none;
 }
+
 .product-label {
     width: 54px;
     height: 24px;
@@ -1264,7 +1265,7 @@ h3.recent{
 }
 
 /******** IMG ************/
-.img-rating, .cart-item-info.img-rating {
+img.img-rating {
     display: block;
     width: 100px;
     height: 100%;
@@ -1524,8 +1525,8 @@ i.mail{
     margin-bottom:1em;
 }
 /*--login--*/
-.login-left {
-    padding: 0;
+.login-left, .login-right{
+    padding-top: 2em;
 }
 .login-left h3, .login-right h3 {
     color:#000;
@@ -2153,7 +2154,7 @@ a.cpns {
         width: 27%;
     }
     .login-right {
-        padding: 0;
+        padding-top: 1em;
         margin-top: 2em;
     }
     .footer-grid {
@@ -2845,10 +2846,12 @@ a.cpns {
 }
 
 /* star rating*/
+/*
 .rating {
     width: 125px;
     height: 22px;
 }
+*/
 .star-rating {
     font-size: 0;
     white-space: nowrap;
