@@ -13,8 +13,6 @@
         var vm = this;
 
         vm.register = register;
-        vm.newEmail = null;
-        vm.newPhone = null;
 
         function init() {
 
@@ -22,11 +20,19 @@
         init();
 
         function register(user) {
+            if (!user.emails) {
+                alert("Please input one email address!");
+                return;
+            }
+            if (!user.phones) {
+                alert("Please input one phone number!");
+                return;
+            }
+            console.log(user.phones);
             UserService
                 .createUser(user)
                 .then(function(response){
                     UserService.setCurrentUser(response.data);
-                    console.log($rootScope.currentUser);
                     $location.url("/profile");
                 });
         }
