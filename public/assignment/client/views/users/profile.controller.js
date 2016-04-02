@@ -28,7 +28,14 @@
             UserService
                 .findUserById(currUser._id)
                 .then(function (response) {
-                    vm.user = response.data;
+                    vm.user = {
+                        username: response.data.username,
+                        password: response.data.password,
+                        firstName: response.data.firstName,
+                        lastName: response.data.lastName,
+                        emails: response.data.emails,
+                        phones: response.data.phones
+                    };
                     UserService.setCurrentUser(response.data);
                 });
         }
@@ -59,6 +66,15 @@
         }
 
         function update(user) {
+
+            if (!user.username) {
+                alert("username cannot be empty!");
+                return;
+            }
+            if (!user.password) {
+                alert("password cannot be empty!");
+                return;
+            }
 
             vm.originalEmails = [];
             vm.originalPhones = [];

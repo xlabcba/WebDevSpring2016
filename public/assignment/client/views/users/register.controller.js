@@ -15,17 +15,33 @@
         vm.register = register;
 
         function init() {
-
+            vm.user = {};
         }
         init();
 
         function register(user) {
+            if (!user.username) {
+                alert("Please input username!");
+                return;
+            }
+            if (!user.password) {
+                alert("Please input password!");
+                return;
+            }
+            if (!vm.confirmPassword) {
+                alert("Please confirm password!");
+                return;
+            }
             if (!user.emails) {
                 alert("Please input one email address!");
                 return;
             }
             if (!user.phones) {
                 alert("Please input one phone number!");
+                return;
+            }
+            if (user.password !== vm.confirmPassword) {
+                alert("Confirm password doesnlt match the original one!");
                 return;
             }
             console.log(user.phones);
