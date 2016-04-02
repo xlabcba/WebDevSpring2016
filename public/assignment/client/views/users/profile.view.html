@@ -30,15 +30,13 @@
                     </div>
                     <div class="form-group" ng-repeat="email in model.user.emails track by $index">
                         <label class="col-sm-2 control-label">Email {{$index + 1}}:</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" placeholder="Email {{$index + 1}}"
-                                   ng-model="model.user.emails[$index]" empty-to-null />
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info" ng-click="model.deleteEmail($index)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                </button>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="Email {{$index + 1}}" aria-describedby="basic-addon1"
+                                       ng-model="model.user.emails[$index]" empty-to-null />
+                                <span class="input-group-addon" id="basic-addon1"
+                                      ng-click="model.deleteEmail($index)">Delete</span>
                             </div>
                         </div>
                     </div>
@@ -50,29 +48,25 @@
                     </div>
                     <div class="form-group" ng-repeat="email in model.newEmails track by $index">
                         <label class="col-sm-2 control-label">New Email {{$index + 1}}:</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" placeholder="Add New Email"
-                                   ng-model="model.newEmails[$index]" empty-to-null />
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info" ng-click="model.deleteNewEmail($index)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                </button>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="New Email {{$index + 1}}" aria-describedby="basic-addon2"
+                                       ng-model="model.newEmails[$index]" empty-to-null />
+                                <span class="input-group-addon" id="basic-addon2"
+                                      ng-click="model.deleteNewEmail($index)">Delete</span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group" ng-repeat="phone in model.user.phones track by $index">
                         <label class="col-sm-2 control-label">Phone {{$index + 1}}:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Phone {{$index + 1}}"
-                                   ng-model="model.user.phones[$index]" empty-to-null />
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info" ng-click="model.deletePhone($index)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                </button>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="Phone {{$index + 1}}" aria-describedby="basic-addon3"
+                                       ng-model="model.user.phones[$index]" empty-to-null />
+                                <span class="input-group-addon" id="basic-addon3"
+                                      ng-click="model.deletePhone($index)">Delete</span>
                             </div>
                         </div>
                     </div>
@@ -84,15 +78,13 @@
                     </div>
                     <div class="form-group" ng-repeat="newPhone in model.newPhones track by $index">
                         <label class="col-sm-2 control-label">New Phone {{$index + 1}}:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Add New Phone"
-                                   ng-model="model.newPhones[$index]" empty-to-null />
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info" ng-click="model.deleteNewPhone($index)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                </button>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="New Phone {{$index + 1}}" aria-describedby="basic-addon4"
+                                       ng-model="model.newPhones[$index]" empty-to-null />
+                                <span class="input-group-addon" id="basic-addon4"
+                                      ng-click="model.deleteNewPhone($index)">Delete</span>
                             </div>
                         </div>
                     </div>
