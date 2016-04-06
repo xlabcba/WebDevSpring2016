@@ -126,8 +126,11 @@ module.exports = function(recipeModel) {
         for(var c in mock) {
             if(mock[c].recipeId == recipeId) {
                 console.log(recipeId);
+                console.log(mock[c].rating);
                 sum = sum + parseInt(mock[c].rating);
                 count = count + 1;
+                console.log(sum);
+                console.log(count);
             }
         }
         rating = Math.round(sum / count);

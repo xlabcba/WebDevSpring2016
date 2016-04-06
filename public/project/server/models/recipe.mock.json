@@ -1,10 +1,10 @@
 [
   {
-    "_id": "000", "userId": 123, "title": "Cosmo",
+    "_id": "000", "userId": "123", "title": "Cosmo",
     "titleImg": "./images/pic6.jpg",
     "recipeImg":["./images/pic6.jpg"],
     "rating": "5", "rateImg":"./images/star5.png",
-    "likeBy":[234, 345, 567],
+    "likeBy":["234", "345", "567"],
     "tag1": ["Vodka"], "tag2": ["sweet"], "tag3": "beginner",
     "ingredientSpirit": ["1 1/2 parts Vodka", "Splash Triple Sec Liqueur"],
     "ingredientOther": ["2 parts Cranberry Juice", "Splash Lime Juice", "Lime Wedges", "Cranberries"],
@@ -12,11 +12,11 @@
     "overview": "1 Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon."
   },
   {
-    "_id": "010", "userId": 123, "title": "Bloody Mary",
+    "_id": "010", "userId": "123", "title": "Bloody Mary",
     "titleImg": "./images/pic5.jpg",
     "recipeImg":["./images/pic5.jpg"],
     "rating": "3", "rateImg":"./images/star3.png",
-    "likeBy":[345, 456, 567],
+    "likeBy":["345", "456", "567"],
     "tag1": ["Vodka"], "tag2": ["savory", "spicy"], "tag3": "intermediate",
     "ingredientSpirit": ["2 parts Cucumber Vodka"],
     "ingredientOther": ["Dash Hot Sauce", "2 parts Low-Sodium Tomato Juice", "Squeeze fresh Lemon Juice",
@@ -26,11 +26,11 @@
     "overview": "2 Add some zest to your Sunday with a spicy Bloody Mary recipe that's sure to turn up the fun. Savory flavors come together to create the perfect crowd pleasers for football parties, Sunday brunch or just a relaxing weekend afternoon."
   },
   {
-    "_id": "020", "userId": 234, "title": "Long Island Ice Tea",
+    "_id": "020", "userId": "234", "title": "Long Island Ice Tea",
     "titleImg": "./images/pic9.jpg",
     "recipeImg":["./images/pic9.jpg","images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg"],
     "rating": "0", "rateImg":"./images/star0.png",
-    "likeBy":[123, 456, 567],
+    "likeBy":["123", "456", "567"],
     "tag1": ["Rum","Vodka","Gin"], "tag2": ["sweet"], "tag3": "advanced",
     "ingredientSpirit": ["1/2 part Triple Sec Liqueur", "1/2 part Original Vodka", "1/2 part Aged Dark Rum",
       "1/2 part Gin"],

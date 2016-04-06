@@ -14,7 +14,7 @@
             deleteRecipeById: deleteRecipeById,
             updateRecipeById: updateRecipeById,
             getRecipeById: getRecipeById,
-            likeRecipe: likeRecipe,
+            userLikesRecipe: userLikesRecipe,
             userUnlikesRecipe: userUnlikesRecipe
         };
 
@@ -52,7 +52,7 @@
             return $http.get("/api/project/recipe/"+recipeId);
         }
 
-        function likeRecipe(userId, recipeId) {
+        function userLikesRecipe(userId, recipeId) {
             return $http.post("/api/project/user/"+userId+"/recipe/"+recipeId);
         }
 

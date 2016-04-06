@@ -126,7 +126,7 @@ module.exports = function() {
 
     function likeByUser(userId, recipeId) {
         for(var r in mock) {
-            if(mock[r].recipeId == recipeId) {
+            if(mock[r]._id == recipeId) {
                 mock[r].likeBy.push(userId);
                 return mock[r];
             }
@@ -136,7 +136,7 @@ module.exports = function() {
 
     function unlikeByUser(userId, recipeId) {
         for(var r in mock) {
-            if(mock[r].recipeId == recipeId) {
+            if(mock[r]._id == recipeId) {
                 for(var l in mock[r].likeBy) {
                     if(mock[r].likeBy[l] == userId) {
                         mock[r].likeBy.splice(l,1);

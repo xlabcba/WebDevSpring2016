@@ -64,7 +64,7 @@ body a.slide {
 ul.social {
     padding: 0;
     list-style: none;
-    float:left;
+    float:right;
     margin-right: 2em;
     white-space: nowrap;
 }
@@ -734,42 +734,7 @@ ul.brand_icons li{
     display: inline-block;
     margin-right: 1em;
 }
-ul.brand_icons li.last{
-    margin:0;
-}
-.instagram_top{
-    padding:3em 0;
-    background:#eaeaea;
-}
-ul.instagram_grid{
-    padding:0;
-    list-style:none;
-}
-ul.instagram_grid li{
-    width: 15.936%;
-    float: left;
-    margin-right: 10px;
-}
-ul.instagram_grid li img{
-    border:8px solid #fff;
-}
-ul.instagram_grid li.last_instagram{
-    margin:0;
-}
-i.insta_icon{
-    width: 35px;
-    height: 35px;
-    display: inline-block;
-    background: url(../images/img-sprite.png)no-repeat -101px -52px;
-    vertical-align: middle;
-}
-.instagram h3 {
-    color: #333;
-    font-size:1.5em;
-    font-family: 'Audiowide', cursive;
-    font-weight:400;
-    margin: 0 0 1em 0;
-}
+
 span.small{
     font-size:20px;
     color:#333;
@@ -795,24 +760,7 @@ ul.footer_social li {
 ul.footer_social li a:hover i.fb, ul.footer_social li a:hover i.tw, ul.footer_social li a:hover i.pin{
     opacity:0.9;
 }
-i.fb{
-    width:379px;
-    height: 150px;
-    display: block;
-    background: url(../images/fb.png)#3b5997 no-repeat 145px 25px;
-}
-i.tw{
-    width: 380px;
-    height: 150px;
-    display: block;
-    background: url(../images/tw.png)#3fccfd no-repeat 145px 25px;
-}
-i.pin{
-    width: 380px;
-    height: 150px;
-    display: block;
-    background: url(../images/pin.png)#cb2027 no-repeat 145px 25px;
-}
+
 /*--footer--*/
 .footer{
     background:#373737;
@@ -1064,6 +1012,7 @@ ul.category_nav li a:hover {
     font-size:1.7em;
     font-weight:400;
     font-family: 'Audiowide', cursive;
+    margin-left: 10px;
 }
 ul.rating{
     padding:0;
@@ -1071,11 +1020,11 @@ ul.rating{
 }
 ul.rating li{
     float: left;
+    margin-right:15px;
 }
 
 ul.rating li a{
     color: #08080B;
-    margin-right:15px;
     padding: 0.1em 0;
     font-size: 0.8em;
     transition: 0.5s all;
@@ -1114,8 +1063,7 @@ span.actual {
     font-size: 13px;
 }
 h2.quick{
-    color:#555;
-    font-size:0.85em;
+    font-size: 16px;
     text-transform:uppercase;
 }
 p.quick_desc{
@@ -1134,7 +1082,9 @@ ul.size h3{
     text-transform: uppercase;
 }
 ul.size li {
-    display: inline-block;
+    font-size: 16px;
+    text-transform:uppercase;
+    display: block;
     margin: 0 10px 0 0;
 }
 ul.size li a {
@@ -1405,6 +1355,13 @@ ul.tab_list li a.api-btn{
     line-height: 1.8em;
     vertical-align: top;
     text-decoration: none;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 3px solid #eeeeee;
 }
 
 /*--contact--*/
@@ -2139,7 +2096,7 @@ a.cpns {
         padding: 0.7em 0 2em;
     }
     .header_right {
-        width:39%;
+        width:45%;
     }
     ul.brand_icons li {
         width: 11.2%;
@@ -2903,5 +2860,22 @@ a.cpns {
     width: 100%;
 }
 
+/* start favorite */
 
+.favorite-icon
+{
+    color: #c00000;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 5px;
 
+}
+
+.favorite-icon:hover
+{
+    color: #f00000;
+}
+
+/* end favorite */

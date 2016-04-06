@@ -33,37 +33,38 @@
                     </div>
                 </div>
             </div>
-            <div class="register-but">
-                <form>
-                    <a type="submit" href="#/recipe">Add to Favorite</a>
-                </form>
-            </div>
         </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-            <h1>{{model.recipe.title}}</h1>
+            <div class="row">
+            <h1>{{model.recipe.title}}
+                <a ng-hide="model.cannotAddToFavorite()"
+                   ng-click="model.addRecipeToFavorite(model.currUser._id, model.recipeId)">
+                    <span class="favorite-icon glyphicon glyphicon-heart-empty"
+                          aria-hidden="true">{{model.recipe.likeBy.length}}</span>
+                </a>
+                <a ng-show="model.canDeleteFromFavorite()"
+                   ng-click="model.deleteRecipeFromFavorite(model.currUser._id, model.recipeId)">
+                    <span class="favorite-icon glyphicon glyphicon-heart"
+                          aria-hidden="true">{{model.recipe.likeBy.length}}</span>
+                </a>
+            </h1>
+            </div>
             <ul class="rating">
-                <img class="img-rating" ng-src={{model.recipe.rateImg}}>
-                <br/>
-                <li><a href="#/recipe_edit">Edit Recipe</a></li>
+                <li><img class="img-rating" ng-src={{model.recipe.rateImg}}></li>
+                <li><a id="list1" scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
+                <li><a id="list2" scroll-to-item scroll-to="#postComment">Add Review</a></li>
+                <li ng-show="model.isAuthor(model.recipeAuthor._id)"><a href="#/recipe_edit">Edit Recipe</a></li>
                 <div class="clearfix"></div>
             </ul>
             <br/>
             <h2 class="quick">Quick Overview:</h2>
             <p class="quick_desc">{{model.recipe.overview}}</p>
             <ul class="size">
-                <h3>Base: {{model.recipe.tag1.join(",")}}</h3>
-                <li></li>
+                <li>Base: {{model.recipe.tag1.join(",")}}</li>
+                <li>Flavor: {{model.recipe.tag2.join(",")}}</li>
+                <li>Skill Level: {{model.recipe.tag3}}</li>
             </ul>
-            <ul class="size">
-                <h3>Flavor: {{model.recipe.tag2.join(",")}}</h3>
-                <li></li>
 
-            </ul>
-            <ul class="size">
-                <h3>Skill Level: {{model.recipe.tag3}}</h3>
-                <li></li>
-
-            </ul>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -97,12 +98,12 @@
                 <!-- Tab 3 : Comments -->
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                     <ul class="tab_list">
-                        <div class="cart-header" ng-repeat="comment in model.comments">
+                        <div id="currComments" class="cart-header" ng-repeat="comment in model.comments">
                             <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
                                ng-click="model.deleteComment(comment)">Delete</a>
                             <a class="button update"
                                ng-show="model.isAuthor(comment.author._id)"
-                               data-toggle="modal" data-target="#myModal"
+                               data-toggle="modal" data-target="#changeReviewModal"
                                ng-click="model.setCurrComment(comment)">Change</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
@@ -126,21 +127,32 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="cart-header">
+                        <div id="postComment" class="cart-header">
                             <div class="cart-sec simpleCart_shelfItem">
-                                <div class="cart-item cyc">
-                                    <img src="images/pic10.jpg" class="img-responsive" alt="">
+                                <div class="cart-item cyc" ng-show = "model.isLoggedIn()">
+                                    <img ng-src={{model.currUser.photo}} class="img-responsive" />
                                 </div>
-                                <div class="cart-item-info">
-                                    <a class="button close1" href="#/recipe">Post</a>
-                                    <input type="text" placeholder="title">
+                                <div class="cart-item-info" ng-show = "model.isLoggedIn()">
+                                    <a class="button close1" ng-click="model.postComment(model.newComment)">Post</a>
+                                    <input type="text" placeholder="title"
+                                           ng-model="model.newComment.title" empty-to-null />
                                     <br/>
-                                    <img src="images/5-star.png" class="img-rating">
+                                    <span class="star-rating">
+                                        <input type="radio" ng-model="model.newComment.rating" value="1"><i></i>
+                                        <input type="radio" ng-model="model.newComment.rating" value="2"><i></i>
+                                        <input type="radio" ng-model="model.newComment.rating" value="3"><i></i>
+                                        <input type="radio" ng-model="model.newComment.rating" value="4"><i></i>
+                                        <input type="radio" ng-model="model.newComment.rating" value="5"><i></i>
+                                    </span>
                                     <br/>
                                     <div class="delivery">
-                                        <textarea rows="5">Comments...</textarea>
+                                        <textarea rows="5" placeholder="Comments..."
+                                                  ng-model="model.newComment.content" empty-to-null></textarea>
                                         <div class="clearfix"></div>
                                     </div>
+                                </div>
+                                <div class="cart-item-info" ng-hide = "model.isLoggedIn()">
+                                    <p>You are guest. How about <a href="#/register">register</a> or <a href="#/login">login</a> to post a review on this recipe!</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -151,16 +163,19 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
                     <ul class="tab_list">
                         <div class="cart-header">
-                            <a class="button close1" href="#/recipe">Follow !!!</a>
+                            <a class="button close1" ng-hide="model.cannotFollow()"
+                               ng-click="model.followRecipeAuthor(model.currUser._id, model.recipe.userId)">Follow !!!</a>
+                            <a class="button close1" ng-show="model.canUnfollow()"
+                               ng-click="model.unfollowRecipeAuthor(model.currUser._id, model.recipe.userId)">Unfollow</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
-                                    <img src="images/pic10.jpg" class="img-responsive" alt="">
+                                    <img ng-src={{model.recipeAuthor.photo}} class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
-                                    <h3><a href="#/profile_public">Marc Jacobs</a></h3>
+                                    <h3><a href="#/profile_public">{{model.recipeAuthor.username}}</a></h3>
                                     <div class="delivery">
-                                        <p>Recipe: 10</p>
-                                        <p>Followed by: 32</p>
+                                        <p>Recipe: {{model.recipeAuthor.recipeNumber}}</p>
+                                        <p>Followed by: {{model.recipeAuthor.followBy.length}}</p>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
@@ -173,8 +188,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
+    <!-- Change Review Modal -->
+    <div class="modal fade" id="changeReviewModal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -221,15 +236,16 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+
 </div>
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#horizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true   // 100% fit in a container
-        });
-    });
-</script>

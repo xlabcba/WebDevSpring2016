@@ -3,6 +3,5 @@
  */
 
 (function(){
-    angular
-        .module("RecipeApp", ["ngRoute"])
+    angular.module("RecipeApp", ["ngRoute", "emptyToNull", "scrollToItem"])
 })();
