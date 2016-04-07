@@ -17,7 +17,7 @@
                     controller: "HomeController",
                     controllerAs: "model"
                 })
-                .when("/profile_public", {
+                .when("/profile_public/:userId", {
                     templateUrl: "./views/user/profile_public.view.html",
                     controller: "PublicController",
                     controllerAs: "model"

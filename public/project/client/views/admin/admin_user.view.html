@@ -24,7 +24,7 @@
                 <img ng-src={{user.photo}} class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">
-                <h3><a href="#/profile_public">{{user.username}}</a></h3>
+                <h3><a href="#/profile_public/{{user._id}}">{{user.username}}</a></h3>
                 <div class="delivery">
                     <p>Password: {{user.password}}</p>
                     <P>Status: {{user.roles.join('|')}}</P>

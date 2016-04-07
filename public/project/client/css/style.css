@@ -1502,6 +1502,7 @@ i.mail{
     color: #FFF;
     font-size: 0.8em;
     padding: 0.7em 1.2em;
+    border-radius: 10px;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -1511,6 +1512,7 @@ i.mail{
 }
 .acount-btn:hover, .login-right button[type="login"]:hover, .login-right a[type="login"]:hover {
     background: #fbd400;
+    border-radius: 10px;
     text-decoration:none;
     color:#fff;
 }
@@ -1518,6 +1520,7 @@ i.mail{
 .api-btn {
     background: #e09915;
     margin-bottom: 10px;
+    border-radius: 10px;
     color: #fff;
     font-size: 0.8em;
     padding: 0.7em 1.2em;
@@ -1568,6 +1571,7 @@ i.mail{
     color: #FFF;
     font-size: 0.8em;
     padding: 0.7em 1.2em;
+    border-radius: 10px;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -1700,6 +1704,7 @@ a.forgot {
 .register-but{
     margin-top:1em;
     margin-right:4.2em;
+    border-radius: 10px;
     float:right;
 
 }
@@ -1708,6 +1713,7 @@ a.forgot {
     color: #FFF;
     font-size: 0.8em;
     padding: 0.8em 2em;
+    border-radius: 10px;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -1762,7 +1768,7 @@ a.forgot {
     color: #fff;
     background: #d97118;
     padding: 8px 10px;
-    border-radius: 2px;
+    border-radius: 10px;
     position: absolute;
     right: 20px;
     display: block;
@@ -1775,7 +1781,7 @@ a.forgot {
     color: #fff;
     background: #d97118;
     padding: 8px 10px;
-    border-radius: 2px;
+    border-radius: 10px;
     position: absolute;
     right: 20px;
     top: 40px;
@@ -2865,8 +2871,9 @@ a.cpns {
 .favorite-icon
 {
     color: #c00000;
-    font-size: 20px;
-    letter-spacing: 2px;
+    font-size: 22px;
+    letter-spacing: 0px;
+
     line-height: 30px;
     text-align: center;
     margin-left: 5px;
@@ -2876,6 +2883,25 @@ a.cpns {
 .favorite-icon:hover
 {
     color: #f00000;
+}
+
+/* favorite */
+
+.follow-icon
+{
+    color: #fda406;
+    font-size: 22px;
+    letter-spacing: 0px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: lowercase;
+    margin-left: 15px;
+
+}
+
+.follow-icon:hover
+{
+    color: #fdc50b;
 }
 
 /* carousel indicator */

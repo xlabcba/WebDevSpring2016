@@ -18,21 +18,31 @@
         <div class="labout span_1_of_a1">
             <div class="flexslider">
                 <br/>
-                <img src="images/pic11.jpg" alt="">
+                <img ng-src={{model.visitUser.photo}} alt="">
             </div>
         </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-            <br/>
-            <h1>Coco Chanel</h1>
-            <div class="login-right">
-                <form>
-                    <a type="login" href="#/profile_public">Follow !!!</a>
-                </form>
+            <div class="row">
+                <h1>{{model.visitUser.username}}
+                    <a ng-hide="model.cannotFollow(model.visitUserId)"
+                       ng-click="model.followUser(model.currUser._id, model.visitUserId)">
+                    <span class="follow-icon glyphicon glyphicon-star-empty"
+                          aria-hidden="true">Follow</span>
+                    </a>
+                    <a ng-show="model.canUnfollow(model.visitUserId)"
+                       ng-click="model.unfollowUser(model.currUser._id, model.visitUserId)">
+                    <span class="follow-icon glyphicon glyphicon-star"
+                          aria-hidden="true">Followed!</span>
+                    </a>
+                </h1>
             </div>
-            <div class="clearfix"></div>
+            <ul class="size">
+                <li>Recipes: {{model.myRecipes.length}}</li>
+                <li>Follow By: {{model.visitUser.followBy.length}}</li>
+            </ul>
             <br/>
             <h2 class="quick">About Me:</h2>
-            <p class="quick_desc">I'm a professional bartender. So glad here is a platform for me to share my recipes. I'm experienced with all kinds of classic cocktail recipes.</p>
+            <p class="quick_desc">{{model.visitUser.intro}}</p>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -41,6 +51,7 @@
         <div id="horizontalTab">
             <ul class="resp-tabs-list">
                 <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Recipes</span></li>
+                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Favorite</span></li>
                 <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Following</span></li>
                 <div class="clear"></div>
             </ul>
@@ -48,102 +59,17 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                     <div class="cbp-vm-view-grid">
                         <ul>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
+                            <li ng-repeat="recipe in model.myRecipes">
+                                <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                                     <div class="inner_content clearfix">
                                         <div class="product_image">
-                                            <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+                                            <img ng-src={{recipe.titleImg}} class="img-responsive" alt=""/>
                                             <div class="product_container">
                                                 <div class="cart-left">
-                                                    <p class="title">Chocolate Martini</p>
+                                                    <p class="title">{{recipe.title}}</p>
                                                 </div>
                                                 <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">Cinnamon Mojito</p>
-                                                </div>
-                                                <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">Ginger Black Spiced</p>
-                                                </div>
-                                                <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">Puquena Colada</p>
-                                                </div>
-                                                <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="images/pic5.jpg" class="img-responsive" alt=""/>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">Sunday Funday</p>
-                                                </div>
-                                                <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="cbp-vm-image" href="#/recipe">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="images/pic6.jpg" class="img-responsive" alt=""/>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">Naked Cosmo</p>
-                                                </div>
-                                                <br/>
-                                                <span><img src="images/4-star.png" class="img-rating" alt=""/></span>
+                                                <span><img ng-src={{recipe.rateImg}} class="img-rating" alt=""/></span>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -154,35 +80,44 @@
                     </div>
                 </div>
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                    <br/>
-                    <div class="cart-header">
-                        <a class="button close1" href="#/profile_public">Follow !!!</a>
-                        <div class="cart-sec simpleCart_shelfItem">
-                            <div class="cart-item cyc">
-                                <img src="images/pic10.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="cart-item-info">
-                                <h3><a href="#/profile_public">Marc Jacobs</a></h3>
-                                <div class="delivery">
-                                    <p>Recipe: 10</p>
-                                    <p>Followed by: 32</p>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+                    <div class="cbp-vm-view-grid">
+                        <ul>
+                            <li ng-repeat="recipe in model.likedRecipes">
+                                <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img ng-src={{recipe.titleImg}} class="img-responsive" alt=""/>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">{{recipe.title}}</p>
+                                                </div>
+                                                <br/>
+                                                <span><img ng-src={{recipe.rateImg}} class="img-rating" alt=""/></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="cart-header">
-                        <a class="button close1" href="#/profile_public">Follow !!!</a>
+                </div>
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+                    <br/>
+                    <div class="cart-header" ng-repeat="user in model.followedUsers">
+                        <a class="button close1" ng-hide="model.cannotFollow(user._id)"
+                           ng-click="model.followRecipeAuthor(model.currUser._id, user._id)">Follow !!!</a>
+                        <a class="button close1" ng-show="model.canUnfollow(user._id)"
+                           ng-click="model.unfollowRecipeAuthor(model.currUser._id, user._id)">Unfollow</a>
                         <div class="cart-sec simpleCart_shelfItem">
                             <div class="cart-item cyc">
-                                <img src="images/pic11.jpg" class="img-responsive" alt="">
+                                <img ng-src={{user.photo}} class="img-responsive" alt="">
                             </div>
                             <div class="cart-item-info">
-                                <h3><a href="#/profile_public">Coco Chanel</a></h3>
+                                <h3><a href="#/profile_public/{{user._id}}">{{user.username}}</a></h3>
                                 <div class="delivery">
-                                    <p>Recipe: 16</p>
-                                    <p>Followed by: 45</p>
+                                    <p>Recipe: {{user.recipeNumber}}</p>
+                                    <p>Followed by: {{user.followBy.length}}</p>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>

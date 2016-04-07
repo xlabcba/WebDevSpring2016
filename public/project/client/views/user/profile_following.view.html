@@ -26,7 +26,7 @@
                 <img ng-src={{followedUser.photo}} class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">
-                <h3><a href="#/profile_public">{{followedUser.username}}</a></h3>
+                <h3><a href="#/profile_public/{{followedUser._id}}">{{followedUser.username}}</a></h3>
                 <div class="delivery">
                     <p>Recipe: {{followedUser.recipeNumber}}</p>
                     <p>Followed by: {{followedUser.followBy.length}}</p>

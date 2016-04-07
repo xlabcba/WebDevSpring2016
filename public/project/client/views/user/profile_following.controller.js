@@ -16,7 +16,7 @@
 
         function init() {
             vm.followedUsers = [];
-            vm.currUser = $rootScope.currentUser;
+            vm.currUser = UserService.getCurrentUser();
             UserService
                 .findAllFollowedUsersForUser(vm.currUser.follow)
                 .then(function(response){

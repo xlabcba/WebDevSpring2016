@@ -14,11 +14,11 @@
 
         vm.deleteRecipe = deleteRecipe;
 
-        var currUser = $rootScope.currentUser;
-
         function init() {
+            vm.currUser = UserService.getCurrentUser();
+
             RecipeService
-                .findAllRecipesForUser(currUser._id)
+                .findAllRecipesForUser(vm.currUser._id)
                 .then(function(response){
                     vm.recipes = response.data;
                 });

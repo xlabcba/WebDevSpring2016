@@ -10,19 +10,19 @@
 
     function InfoController($rootScope, UserService)
     {
-        var currUser = $rootScope.currentUser;
-
         var vm = this;
 
         //var username = $routeParams.username;
         //console.log(username);
 
         vm.update = update;
-        vm.user = {};
 
         function init() {
+            vm.user = {};
+            vm.currUser = UserService.getCurrentUser();
+
             UserService
-                .findUserById(currUser._id)
+                .findUserById(vm.currUser._id)
                 .then(function (response) {
                     vm.user = response.data;
                     vm.user.birthday = new Date(response.data.birthday);

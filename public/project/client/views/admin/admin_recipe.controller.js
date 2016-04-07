@@ -10,7 +10,6 @@
 
     function AdminRecipeController($rootScope, $scope, $location, RecipeService)
     {
-        console.log("enterred admin recipe controller!");
         var vm = this;
 
         vm.deleteRecipe = deleteRecipe;
@@ -20,7 +19,6 @@
             RecipeService
                 .findAllRecipes()
                 .then(function(response){
-                    console.log(response.data);
                     vm.recipes = response.data;
                 });
 

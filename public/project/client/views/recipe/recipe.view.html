@@ -68,7 +68,6 @@
                 <li>Flavor: {{model.recipe.tag2.join(",")}}</li>
                 <li>Skill Level: {{model.recipe.tag3}}</li>
             </ul>
-
         </div>
         <div class="clearfix"></div>
     </div>
@@ -115,7 +114,7 @@
                                     <img ng-src={{comment.author.photo}} class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
-                                    <h3><a href="#/profile_public">{{comment.author.username}}</a></h3>
+                                    <h3><a href="#/profile_public/{{comment.author._id}}">{{comment.author.username}}</a></h3>
                                     <ul class="qty">
                                         <p>Recipe: {{comment.author.recipeNumber}}</p>
                                         <p>Followed by: {{comment.author.followBy.length}}</p>
@@ -177,7 +176,7 @@
                                     <img ng-src={{model.recipeAuthor.photo}} class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
-                                    <h3><a href="#/profile_public">{{model.recipeAuthor.username}}</a></h3>
+                                    <h3><a href="#/profile_public/{{model.recipeAuthor._id}}">{{model.recipeAuthor.username}}</a></h3>
                                     <div class="delivery">
                                         <p>Recipe: {{model.recipeAuthor.recipeNumber}}</p>
                                         <p>Followed by: {{model.recipeAuthor.followBy.length}}</p>

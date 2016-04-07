@@ -30,7 +30,7 @@
 
         function init() {
 
-            vm.currUser = $rootScope.currentUser;
+            vm.currUser = UserService.getCurrentUser();
             vm.recipeId = $routeParams.recipeId;
             vm.imgIndexes = [];
             vm.currImgIndex = 0;

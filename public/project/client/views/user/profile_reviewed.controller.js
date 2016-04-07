@@ -18,7 +18,8 @@
         vm.updateComment = updateComment;
 
         function init() {
-            vm.currUser = $rootScope.currentUser;
+            vm.currUser = UserService.getCurrentUser();
+
             CommentService
                 .findAllCommentsForUser(vm.currUser._id)
                 .then(function(response){
