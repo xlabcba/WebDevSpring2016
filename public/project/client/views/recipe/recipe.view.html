@@ -18,22 +18,26 @@
         <div class="labout span_1_of_a1">
             <div class="flexslider">
                 <br>
+                <!-- Carousel -->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators" ng-repeat="imgIndex in model.imgIndexes">
-                        <li data-target="#myCarousel" data-slide-to={{imgIndex}}
-                            ng-class="{'active' : model.currImgIndex == imgIndex}"></li>
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" ng-repeat="imgIndex in model.imgIndexes"
+                            ng-class="{active: (imgIndex == 0)}" data-slide-to="{{imgIndex}}"></li>
                     </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active" ng-repeat="recipeImg in model.recipe.recipeImg">
-                            <img ng-src={{recipeImg}}>
+                    <div class="carousel-inner">
+                        <div ng-class="{item: true, active: (imgIndex == 0)}"
+                             ng-repeat="imgIndex in model.imgIndexes">
+                            <img ng-src={{model.recipe.recipeImg[imgIndex]}} alt="Slide number {{imgIndex}}">
+                            <div class="container">
+                                <div class="carousel-caption"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <!-- /.carousel -->
             </div>
         </div>
+            </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
             <div class="row">
             <h1>{{model.recipe.title}}
@@ -98,6 +102,7 @@
                 <!-- Tab 3 : Comments -->
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                     <ul class="tab_list">
+                        <p ng-hide="model.comments.length > 0">There is no review yet. You can post the first review!</p>
                         <div id="currComments" class="cart-header" ng-repeat="comment in model.comments">
                             <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
                                ng-click="model.deleteComment(comment)">Delete</a>

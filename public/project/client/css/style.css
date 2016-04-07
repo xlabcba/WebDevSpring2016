@@ -2860,7 +2860,7 @@ a.cpns {
     width: 100%;
 }
 
-/* start favorite */
+/* favorite */
 
 .favorite-icon
 {
@@ -2878,4 +2878,24 @@ a.cpns {
     color: #f00000;
 }
 
-/* end favorite */
+/* carousel indicator */
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000\9;
+    background-color: #ffffff;
+    border: 1.4px solid #fffa00;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fffa00;
+}

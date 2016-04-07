@@ -8,7 +8,7 @@
         .module("RecipeApp")
         .controller("RecipeController", RecipeController);
 
-    function RecipeController($scope, $rootScope, $routeParams, RecipeService, CommentService, UserService)
+    function RecipeController($location, $rootScope, $routeParams, RecipeService, CommentService, UserService)
     {
         var vm = this;
 
@@ -48,6 +48,7 @@
                     for(var i in vm.recipe.recipeImg) {
                         vm.imgIndexes.push(i);
                     }
+                    console.log(vm.imgIndexes);
                 });
 
             CommentService
