@@ -83,10 +83,6 @@ module.exports = function() {
     }
 
     function deleteUserById(userId) {
-        recipeModel.deleteRecipeOfUser(userId);
-        commentModel.deleteCommentOfUser(userId);
-        deleteUserFromFollower(userId);
-        /* delete from mock*/
         for(var w in mock) {
             if(mock[w]._id == userId) {
                 mock.splice(w,1);
@@ -196,6 +192,7 @@ module.exports = function() {
             for(var v in mock[u].follow) {
                 if(mock[u].follow[v] == userId) {
                     mock[u].follow.splice(v,1);
+                    return mock[u].follow;
                 }
             }
         }

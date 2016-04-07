@@ -21,7 +21,8 @@ module.exports = function() {
         likeByUser: likeByUser,
         unlikeByUser: unlikeByUser,
         findAllLikedRecipesForUser: findAllLikedRecipesForUser,
-        findAllRecipesForStr: findAllRecipesForStr
+        findAllRecipesForStr: findAllRecipesForStr,
+        deleteUserFromLikeBy: deleteUserFromLikeBy
 
     };
     return api;
@@ -91,9 +92,10 @@ module.exports = function() {
     }
 
     function deleteRecipeOfUser(userId) {
-        for(var r in mock) {
+        for(var r = 0; r < mock.length; r++) {
             if(mock[r].userId == userId) {
-                deleteRecipeById(mock[r]._id);
+                mock.splice(r,1);
+                r--;
             }
         }
         return 1;
@@ -194,5 +196,15 @@ module.exports = function() {
         return false;
     }
 
-
+    function deleteUserFromLikeBy(userId) {
+        for(var r in mock) {
+            for(var u in mock[r].likeBy) {
+                if(mock[r].likeBy[u] == userId) {
+                    mock[r].likeBy.splice(u,1);
+                    return mock[r].likeBy;
+                }
+            }
+        }
+        return null;
+    }
 };

@@ -1,16 +1,16 @@
 [
   {
-    "_id": "001", "userId": 234, "recipeId":"000", "title": "Recommend!!!",
+    "_id": "001", "userId": "234", "recipeId":"000", "title": "Recommend!!!",
     "rating": 5, "rateImg":"./images/star5.png",
     "content": "This recipe is really amazing. I love it!"
   },
   {
-    "_id": "002", "userId": 234, "recipeId":"010", "title": "This is what I want!",
+    "_id": "002", "userId": "234", "recipeId":"010", "title": "This is what I want!",
     "rating": 4, "rateImg":"./images/star4.png",
     "content": "It is good! Highly recommended!"
   },
   {
-    "_id": "003", "userId": 123, "recipeId":"010", "title":"I love it!",
+    "_id": "003", "userId": "123", "recipeId":"010", "title":"I love it!",
     "rating": 2, "rateImg":"./images/star2.png",
     "content":"Classic and Must try!"
   }

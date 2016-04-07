@@ -55,6 +55,10 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
 
     function deleteUser(req, res) {
         var userId = req.params.id;
+        recipeModel.deleteRecipeOfUser(userId);
+        commentModel.deleteCommentOfUser(userId);
+        userModel.deleteUserFromFollower(userId);
+        recipeModel.deleteUserFromLikeBy(userId);
         var users = userModel.deleteUserById(userId);
         res.json(users);
     }

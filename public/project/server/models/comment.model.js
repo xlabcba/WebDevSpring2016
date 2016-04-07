@@ -99,23 +99,32 @@ module.exports = function(recipeModel) {
     }
 
     function deleteCommentOfRecipe(recipeId) {
-        for(var c in mock) {
+        for(var c = 0; c < mock.length; c++) {
             if(mock[c].recipeId == recipeId) {
                 mock.splice(c,1);
+                c--;
             }
         }
         var newRating = calculateRating(recipeId);
         recipeModel.updateRating(recipeId, newRating);
-        console.log("deleted comment!");
         return 1;
     }
 
     function deleteCommentOfUser(userId) {
-        for(var c in mock) {
+        for(var c = 0; c < mock.length; c++) {
+            console.log(userId);
+            console.log(mock[c].userId);
             if(mock[c].userId == userId) {
-                deleteCommentById(mock[c]._id);
+                console.log("HERE!!!");
+                var recipeId = mock[c].recipeId;
+                mock.splice(c,1);
+                c--;
+                var newRating = calculateRating(recipeId);
+                recipeModel.updateRating(recipeId, newRating);
+                console.log("deleted comment!");
             }
         }
+        console.log(mock);
         return 1;
     }
 

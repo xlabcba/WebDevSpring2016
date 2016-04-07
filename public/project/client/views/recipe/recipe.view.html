@@ -54,7 +54,7 @@
             </h1>
             </div>
             <ul class="rating">
-                <li><img class="img-rating" ng-src={{model.recipe.rateImg}}></li>
+                <img class="img-rating" ng-src={{model.recipe.rateImg}}>
                 <li><a id="list1" scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
                 <li><a id="list2" scroll-to-item scroll-to="#postComment">Add Review</a></li>
                 <li ng-show="model.isAuthor(model.recipeAuthor._id)"><a href="#/recipe_edit">Edit Recipe</a></li>

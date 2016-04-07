@@ -74,6 +74,7 @@
         }
 
         function getUsersOfComments(comments) {
+            console.log(comments);
             for (var c in comments) {
                 (function() {
                     var i = c;

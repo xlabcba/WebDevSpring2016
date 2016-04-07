@@ -23,6 +23,7 @@
         }
 
         function init() {
+            vm.recipes = [];
             RecipeService
                 .findAllRecipes()
                 .then(function(response){
@@ -31,6 +32,7 @@
         }
 
         function localSearch(searchStr) {
+            vm.recipes = [];
             RecipeService
                 .findAllRecipesForStr(searchStr)
                 .then(function(response){

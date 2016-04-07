@@ -6,7 +6,7 @@
 }
 
 h4, h5, h6,
-h1, h2, h3 {margin-top: 0;}
+h1, h2, h3 { font-size: 1.5em; margin-top: 0;}
 ul, ol {margin: 0; padding-left: 0;}
 p {margin: 0;}
 html, body{
@@ -1020,7 +1020,7 @@ ul.rating{
 }
 ul.rating li{
     float: left;
-    margin-right:15px;
+    margin-left: 15px;
 }
 
 ul.rating li a{
