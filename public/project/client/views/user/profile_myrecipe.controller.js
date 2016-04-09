@@ -8,7 +8,7 @@
         .module("RecipeApp")
         .controller("MyRecipeController", MyRecipeController);
 
-    function MyRecipeController($rootScope, $scope, $location, RecipeService)
+    function MyRecipeController($rootScope, $scope, $location, UserService, RecipeService)
     {
         var vm = this;
 

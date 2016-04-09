@@ -8,7 +8,7 @@
         .module("RecipeApp")
         .controller("ReviewedController", ReviewedController);
 
-    function ReviewedController($rootScope, $scope, $location, CommentService, RecipeService)
+    function ReviewedController($rootScope, $scope, $location, UserService, CommentService, RecipeService)
     {
         /*onfocus="this.value = 'Awesome!';" onblur="if (this.value == '') {this.value = 'Awesome!';}"*/
 

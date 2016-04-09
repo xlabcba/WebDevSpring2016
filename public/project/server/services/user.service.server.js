@@ -12,8 +12,10 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
     app.post("/api/project/user/:followerId/user/:followedId", userFollowsUser);
     app.put("/api/project/user/:followerId/user/:followedId", userUnfollowsUser);
     app.post("/api/project/user/searchFollowedUsers", getFollowedUsersForUser);
+    app.post("/api/project/user/photo", uploadPhotoForUserById);
+    app.get("/api/project/user/photo", getPhotoForUserById);
 
-
+    files = [];
 
     function createNewUser(req, res) {
         var user = req.body;
@@ -87,4 +89,32 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
         var users = userModel.findFollowedUsersForUser(followedUsers);
         res.json(users);
     }
+
+    function uploadPhotoForUserById(req, res) {
+        console.log('body: ' + JSON.stringify(req));
+        /*
+        var myFile = req.files.myFile;
+
+        var file = {
+            path: myFile.path,
+            name: myFile.name,
+            size: myFile.size,
+            type: myFile.type
+        };
+
+        // optionally rename the file to its original name
+        var oldPath = __dirname + "/../../" + myFile.path;
+        var newPath = __dirname + "/../../public/uploads/" + myFile.name;
+        files.push(file);
+        res.json(files);
+        /*
+        res.redirect("/experiments/upload/file-list.view.html");
+        */
+        res.json(null);
+    }
+
+    function getPhotoForUserById(req, res) {
+        res.json(files);
+    }
+
 };

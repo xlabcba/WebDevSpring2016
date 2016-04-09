@@ -1020,7 +1020,7 @@ ul.rating{
 }
 ul.rating li{
     float: left;
-    margin-left: 15px;
+    margin-right: 15px;
 }
 
 ul.rating li a{
@@ -1296,7 +1296,6 @@ h2.resp-accordion {
 }
 h2.resp-accordion {
     font-size:1em;
-    margin: 0px;
     padding: 10px 15px;
     background: #d97118;
     margin:10px 0;
@@ -1482,6 +1481,7 @@ i.mail{
     margin-bottom:1em;
 }
 /*--login--*/
+
 .login-left, .login-right{
     padding-top: 2em;
 }
@@ -1542,6 +1542,36 @@ i.mail{
 .login-right form div {
     padding: 0 0 0.5em 0;
 }
+
+.login-right form div.delete{
+    padding: 0 0 0.5em 0;
+    width: 100%;
+    display: table;
+}
+
+.login-right form div.form-group{
+    padding: 0 0 0.5em 0;
+    margin-bottom: 10px;
+}
+
+ .login-right button.btn-add {
+     width: 96%;
+     background: rgba(255, 166, 6, 0.61);
+     color: white;
+     border: 1px solid #EEE;
+     font-size:13px;
+     text-align: center;
+     padding: 0.5em;
+ }
+
+.login-right button.btn-add:hover,
+.login-right button.btn-add:focus,
+.login-right button.btn-add:active {
+    background: rgb(255, 166, 6);
+    outline: none;
+
+}
+
 .login-right span {
     color: #555;
     font-size:0.8125em;
@@ -1556,6 +1586,33 @@ i.mail{
     width: 96%;
     font-size:0.8125em;
     padding: 0.5em;
+    padding-right: 10%;
+}
+
+.login-right input[type="text-with-delete"] {
+    border: 1px solid #EEE;
+    outline-color:#fb4d01;
+    width: 88%;
+    font-size:0.8125em;
+    padding: 0.5em;
+}
+
+.login-right input[type="delete"] {
+    background: rgba(255, 166, 6, 0.61);
+    margin-right: 4%;
+    border: 1px solid #EEE;
+    border-left: 0;
+    width: 8%;
+    font-size:13px;
+    text-align: center;
+    padding: 0.5em;
+    color: white;
+    outline: none;
+}
+
+.login-right input[type="delete"]:hover{
+    background: rgb(255, 166, 6);
+    cursor: pointer;
 }
 
 .login-right textarea {
@@ -1577,12 +1634,14 @@ i.mail{
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
     display: inline-block;
-    float:left;
+    float:right;
     margin-top: 1.5em;
+    margin-right: 4%;
     text-transform: uppercase;
     border:none;
     outline:none;
 }
+
 a.forgot {
     font-size: 0.8125em;
 }
@@ -1596,10 +1655,17 @@ a.forgot {
     padding-bottom: 5px;
     margin: 0;
 }
-.register-top-grid div, .register-bottom-grid div {
+.register-top-grid div, .register-bottom-grid div,
+div.upload-img {
     width: 96%;
     float: left;
-    margin: 10px 0;
+    margin: 15px 0;
+}
+
+div.upload-imgs {
+    width: 100%;
+    float: left;
+    margin: 15px 0;
 }
 
 .register-top-grid span, .register-bottom-grid span {
@@ -1722,6 +1788,7 @@ a.forgot {
     text-transform: uppercase;
     border:none;
     outline:none;
+    cursor: pointer;
 }
 .register-but button[type="submit"]:hover, .register-but a[type="submit"]:hover {
     background: #fbd400;
@@ -2067,6 +2134,13 @@ a.cpns {
     }
 }
 @media (max-width:800px){
+    .login-right input[type="text-with-delete"] {
+        width: 84%;
+    }
+
+    .login-right input[type="delete"] {
+        width: 12%;
+    }
     .banner_right h1 {
         font-size: 2em;
     }
@@ -2350,6 +2424,13 @@ a.cpns {
     }
 }
 @media (max-width:480px){
+    .login-right input[type="text-with-delete"] {
+        width: 80%;
+    }
+
+    .login-right input[type="delete"] {
+        width: 16%;
+    }
     .logo img{
         width:90px;
     }
@@ -2507,6 +2588,13 @@ a.cpns {
     }
 }
 @media (max-width:414px){
+    .login-right input[type="text-with-delete"] {
+        width: 76%;
+    }
+
+    .login-right input[type="delete"] {
+        width: 20%;
+    }
     .search input[type="text"] {
         width: 83.5%;
     }
@@ -2518,6 +2606,12 @@ a.cpns {
     }
 }
 @media (max-width: 320px) {
+    .login-right input[type="text-with-delete"] {
+        width: 74%;
+    }
+    .login-right input[type="delete"] {
+        width: 22%;
+    }
     .side_banner .banner_holder {
         left: -96px;
     }
@@ -2873,7 +2967,6 @@ a.cpns {
     color: #c00000;
     font-size: 22px;
     letter-spacing: 0px;
-
     line-height: 30px;
     text-align: center;
     margin-left: 5px;

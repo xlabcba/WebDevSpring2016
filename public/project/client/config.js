@@ -77,6 +77,11 @@
                     controller: "EditController",
                     controllerAs: "model"
                 })
+                .when("/recipe_edit/:recipeId", {
+                    templateUrl: "./views/recipe/recipe_edit.view.html",
+                    controller: "EditController",
+                    controllerAs: "model"
+                })
                 .when("/search", {
                     templateUrl: "./views/search/search.view.html",
                     controller: "SearchController",

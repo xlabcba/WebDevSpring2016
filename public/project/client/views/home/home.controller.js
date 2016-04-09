@@ -8,12 +8,12 @@
         .module("RecipeApp")
         .controller("HomeController", HomeController);
 
-    function HomeController($scope, $routeParams, $rootScope, RecipeService, $location)
+    function HomeController($scope, $routeParams, $rootScope, UserService, RecipeService, $location)
     {
         /*    <h3 class="m_1">Top Rated</h3>*/
         var vm = this;
 
-        vm.currUser = $rootScope.currentUser;
+        vm.currUser = UserService.getCurrentUser();
         vm.searchStr = $routeParams.searchStr;
 
         if(vm.searchStr) {

@@ -14,50 +14,83 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+    <h1>Edit Recipe</h1>
     <div class="login-right">
         <form>
-            <div>
+            <div class="form-group">
                 <span>Recipe Name<label>*</label></span>
-                <input type="text" placeholder="Recipe Name">
+                <input type="text" placeholder="Recipe Name" ng-model="model.currRecipe.title" empty-to-null />
             </div>
-            <div>
+            <div class="form-group">
                 <span>Base Liquor<label>*</label></span>
-                <input type="text" placeholder="Base Liquor">
+                <div class="delete" ng-repeat="base in model.currRecipe.tag1 track by $index">
+                    <input type="text-with-delete" placeholder="Base Liquor {{$index + 1}}"
+                           ng-model="model.currRecipe.tag1[$index]" empty-to-null />
+                    <input type="delete" ng-click="model.deleteBase($index)" value="Delete" />
+                </div>
+                <button type="button" ng-click="model.addBase()" class="btn btn-add">Add Base Liquor</button>
             </div>
-            <div>
+            <div class="form-group">
                 <span>Flavor<label>*</label></span>
-                <input type="text" placeholder="Flavor">
+                <div class="delete" ng-repeat="flavor in model.currRecipe.tag2 track by $index">
+                    <input type="text-with-delete" placeholder="Flavor {{$index + 1}}"
+                           ng-model="model.currRecipe.tag2[$index]" empty-to-null />
+                    <input type="delete" ng-click="model.deleteFlavor($index)" value="Delete" />
+                </div>
+                <button type="button" ng-click="model.addFlavor()" class="btn btn-add">Add Flavor</button>
             </div>
-            <div>
+            <div class="form-group">
                 <span>Skill Level<label>*</label></span>
                 <div class="radio">
                     <label for="Beginner">
-                        <input type="radio" name="level" id="Beginner" value="Beginner" checked>
+                        <input type="radio" id="Beginner" ng-model="model.currRecipe.tag3" value="beginner">
                         Beginner
                     </label>
+                    <br/>
                     <label for="Intermediate">
-                        <input type="radio" name="level" id="Intermediate" value="Intermediate">
+                        <input type="radio" id="Intermediate" ng-model="model.currRecipe.tag3" value="intermediate">
                         Intermediate
                     </label>
+                    <br/>
                     <label for="Advanced">
-                        <input type="radio" name="level" id="Advanced" value="Advanced">
+                        <input type="radio" id="Advanced" ng-model="model.currRecipe.tag3" value="advanced">
                         Advanced
                     </label>
                 </div>
             </div>
-            <div>
+            <div class="form-group">
                 <span>Quick Overview<label>*</label></span>
-                <textarea rows="4" placeholder="Please briefly introduce this recipe..."></textarea>
+                <textarea rows="4" placeholder="Please briefly introduce this recipe..."
+                          ng-model="model.currRecipe.overview" empty-to-null></textarea>
             </div>
-            <div>
-                <span>Ingredients<label>*</label></span>
-                <textarea rows="6" placeholder="List all ingredients, separated with ';'. e.g. '1 1/2 parts Vodka;Splash Triple Sec Liqueur;' "></textarea>
+            <div class="form-group">
+                <span>Ingredients (Liquor)<label>*</label></span>
+                <div class="delete" ng-repeat="liquor in model.currRecipe.ingredientSpirit track by $index">
+                    <input type="text-with-delete" placeholder="Liquor Indegredient {{$index + 1}}"
+                           ng-model="model.currRecipe.ingredientSpirit[$index]" empty-to-null />
+                    <input type="delete" ng-click="model.deleteLiquorIngredient($index)" value="Delete">
+                </div>
+                <button type="button" ng-click="model.addLiquorIngredient()" class="btn btn-add">Add Ingredient (Liquor)</button>
             </div>
-            <div>
+            <div class="form-group">
+                <span>Ingredients (Other)<label>*</label></span>
+                <div class="delete" ng-repeat="other in model.currRecipe.ingredientOther track by $index">
+                    <input type="text-with-delete" type="text" placeholder="Other Indegredient {{$index + 1}}"
+                           ng-model="model.currRecipe.ingredientOther[$index]" empty-to-null />
+                    <input type="delete" ng-click="model.deleteOtherIngredient($index)" value="Delete">
+                </div>
+                <button type="button" ng-click="model.addOtherIngredient()" class="btn btn-add">Add Ingredient (Other)</button>
+            </div>
+            <div class="form-group">
                 <span>Steps<label>*</label></span>
-                <textarea rows="6" placeholder="List all steps, separated with ';'. e.g. 'Shake with ice;Pour into a martini glass;Garnish with fresh lime wedge or cranberries' "></textarea>
+                <div class="delete" ng-repeat="step in model.currRecipe.step track by $index">
+                    <input type="text-with-delete" placeholder="Step {{$index + 1}}"
+                           ng-model="model.currRecipe.step[$index]" empty-to-null />
+                    <input type="delete" ng-click="model.deleteStep($index)" value="Delete">
+                </div>
+                <button type="button" ng-click="model.addStep()" class="btn btn-add">Add Step</button>
             </div>
-            <a type="login" href="#/recipe">Save</a>
+            <a type="login" ng-click="model.saveRecipe(model.currRecipe)">Save</a>
         </form>
     </div>
 </div>
