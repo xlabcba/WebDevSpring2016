@@ -78,6 +78,20 @@
         var currUser = $rootScope.currentUser;
 
         function addUser(user) {
+
+            if(!user.username){
+                alert("username cannot be empty!");
+                return;
+            }
+            if(!user.password){
+                alert("password cannot be empty!");
+                return;
+            }
+            if(!vm.newUserRoles){
+                alert("roles cannot be empty!");
+                return;
+            }
+
             var newUser = {
                 "username": user.username,
                 "password": user.password,
@@ -102,6 +116,10 @@
             }
             if(!user.password){
                 alert("password cannot be empty!");
+                return;
+            }
+            if(!vm.newUserRoles){
+                alert("roles cannot be empty!");
                 return;
             }
             var newUser = {
