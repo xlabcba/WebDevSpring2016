@@ -95,7 +95,15 @@
         }
 
         function updateUser(user) {
-            console.log(user);
+
+            if(!user.username){
+                alert("username cannot be empty!");
+                return;
+            }
+            if(!user.password){
+                alert("password cannot be empty!");
+                return;
+            }
             var newUser = {
                 "username": user.username,
                 "password": user.password,
@@ -105,7 +113,6 @@
                 "emails": user.emails,
                 "phones": user.phones
             };
-            console.log(newUser);
 
             UserService
                 .updateUserByAdmin(user._id, newUser)
