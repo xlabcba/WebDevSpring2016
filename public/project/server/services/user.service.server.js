@@ -2,7 +2,9 @@
  * Created by lixie on 16/3/23.
  */
 
-module.exports = function(app, userModel, recipeModel, commentModel) {
+module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
+
+    var files = [];
 
     app.post("/api/project/user", createNewUser);
     app.get("/api/project/user", getUser);
@@ -12,10 +14,8 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
     app.post("/api/project/user/:followerId/user/:followedId", userFollowsUser);
     app.put("/api/project/user/:followerId/user/:followedId", userUnfollowsUser);
     app.post("/api/project/user/searchFollowedUsers", getFollowedUsersForUser);
-    app.post("/api/project/user/photo", uploadPhotoForUserById);
-    app.get("/api/project/user/photo", getPhotoForUserById);
-
-    files = [];
+    app.post("/api/project/profile_pic_upload", uploadProfilePic);
+    app.get("/api/project/profile_pic_upload", getProfilePic);
 
     function createNewUser(req, res) {
         var user = req.body;
@@ -90,11 +90,9 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
         res.json(users);
     }
 
-    function uploadPhotoForUserById(req, res) {
-        console.log('body: ' + JSON.stringify(req));
-        /*
+    function uploadProfilePic (req,res){
         var myFile = req.files.myFile;
-
+        console.log(myFile);
         var file = {
             path: myFile.path,
             name: myFile.name,
@@ -103,17 +101,21 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
         };
 
         // optionally rename the file to its original name
-        var oldPath = __dirname + "/../../" + myFile.path;
-        var newPath = __dirname + "/../../public/uploads/" + myFile.name;
-        files.push(file);
-        res.json(files);
-        /*
-        res.redirect("/experiments/upload/file-list.view.html");
-        */
-        res.json(null);
+        var oldPath = path.resolve(myFile.path);
+        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + myFile.name);
+
+        console.log(oldPath);
+        console.log(newPath);
+
+        fs.rename(oldPath, newPath, function(err){
+            files.push(file);
+            console.log(files);
+            res.location("/project/client/index.html#/profile_info");
+        });
     }
 
-    function getPhotoForUserById(req, res) {
+    function getProfilePic(req,res) {
+        console.log("Here!!!");
         res.json(files);
     }
 

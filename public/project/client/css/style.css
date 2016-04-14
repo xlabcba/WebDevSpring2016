@@ -1655,17 +1655,93 @@ a.forgot {
     padding-bottom: 5px;
     margin: 0;
 }
-.register-top-grid div, .register-bottom-grid div,
-div.upload-img {
+.register-top-grid div, .register-bottom-grid div {
     width: 96%;
     float: left;
     margin: 15px 0;
 }
 
-div.upload-imgs {
-    width: 100%;
+div.preview-tool {
+    background: rgba(255, 255, 255, 0.7);
+    width: 92%;
+    height: 200px;
+    text-align: center;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #EEE;
+    display: inline-block;
+    overflow:scroll;
+}
+
+div.preview-img {
+    background: #ffffff;
+    vertical-align: middle;
+    margin: 10px;
+    display: inline-block;
+    height: 170px;
+    width: 170px;
+}
+
+img.preview {
+    vertical-align: middle;
+    padding: 10px;
+    height: 150px;
+    display: block;
+}
+
+div.upload-tool {
+    width: 92%;
     float: left;
     margin: 15px 0;
+    border: none;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input.upload-info {
+    width: 90%;
+    margin-right: 1%;
+    height: 31px;
+    border: 1px solid #ccc;
+    color: black;
+    padding-left: 2%;
+}
+
+.custom-file-upload {
+    background: #6f6f6f;
+    border: 1px solid #ccc;
+    color: white;
+    border-right: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    height: 31px;
+    width: 92%;
+}
+
+.custom-file-upload:hover {
+    background: #8a8a8a;
+    border: 1px solid #ccc;
+    border-right: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    height: 31px;
+    width: 92%;
+}
+
+button.upload {
+    border: 1px solid #ccc;
+    height: 31px;
+    outline: none;
+    border-radius: 0;
 }
 
 .register-top-grid span, .register-bottom-grid span {
@@ -2051,8 +2127,16 @@ a.cpns {
 @media (max-width:1366px){
 }
 @media (max-width:1280px){
+    input.upload-info {
+        width: 87%;
+        margin-right: 1%;
+    }
 }
 @media (max-width:1024px){
+    input.upload-info {
+        width: 85%;
+        margin-right: 1%;
+    }
     .header_right {
         width: 30%;
     }
@@ -2332,6 +2416,10 @@ a.cpns {
     }
 }
 @media (max-width:568px){
+    input.upload-info {
+        width: 83%;
+        margin-right: 1%;
+    }
     .logo img {
         width: 110px;
     }
@@ -2424,6 +2512,10 @@ a.cpns {
     }
 }
 @media (max-width:480px){
+    input.upload-info {
+        width: 80%;
+        margin-right: 1%;
+    }
     .login-right input[type="text-with-delete"] {
         width: 80%;
     }
@@ -2588,10 +2680,13 @@ a.cpns {
     }
 }
 @media (max-width:414px){
+    input.upload-info {
+        width: 75%;
+        margin-right: 1%;
+    }
     .login-right input[type="text-with-delete"] {
         width: 76%;
     }
-
     .login-right input[type="delete"] {
         width: 20%;
     }
@@ -2606,6 +2701,10 @@ a.cpns {
     }
 }
 @media (max-width: 320px) {
+    input.upload-info {
+        width: 50%;
+        margin-right: 1%;
+    }
     .login-right input[type="text-with-delete"] {
         width: 74%;
     }

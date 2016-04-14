@@ -16,6 +16,7 @@
             updateUser: updateUser,
             followUser: followUser,
             unfollowUser: unfollowUser,
+            getProfilePhoto: getProfilePhoto,
             getCurrentUser: getCurrentUser,
             getCurrentUsername: getCurrentUsername,
             setCurrentUser: setCurrentUser,
@@ -64,6 +65,11 @@
 
         function unfollowUser(followerId, followedId) {
             return $http.put("/api/project/user/"+followerId+"/user/"+followedId);
+        }
+
+        function getProfilePhoto() {
+            console.log("enterred client service to get pic");
+            return $http.get("/api/project/profile_pic_upload");
         }
 
         function setCurrentUser(user) {

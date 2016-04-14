@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
         fields: {type: [FieldSchema], default: []},
         created: {type: Date, default: Date.now},
         updated: {type: Date, default: Date.now}
-    }, {collection: 'project.form'});
+    }, {collection: 'assignment.form'});
 
     return FormSchema;
 

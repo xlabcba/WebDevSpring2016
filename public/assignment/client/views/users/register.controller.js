@@ -40,17 +40,33 @@
                 alert("Please input one phone number!");
                 return;
             }
-            if (user.password !== vm.confirmPassword) {
-                alert("Confirm password doesnlt match the original one!");
+            if (user.password != vm.confirmPassword) {
+                alert("Your passwords don't match");
                 return;
             }
-            console.log(user.phones);
+
+            UserService
+                .register(user)
+                .then(
+                    function(response) {
+                        var user = response.data;
+                        if(user != null) {
+                            $rootScope.currentUser = user;
+                            $location.url("/profile");
+                        }
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
+            /*
             UserService
                 .createUser(user)
                 .then(function(response){
                     UserService.setCurrentUser(response.data);
                     $location.url("/profile");
                 });
+                */
         }
     }
 })();

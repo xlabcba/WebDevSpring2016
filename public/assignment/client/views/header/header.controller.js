@@ -23,8 +23,21 @@
         init();
 
         function logout() {
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        UserService.setCurrentUser(null);
+                        $location.url("/home");
+                    },
+                    function(err) {
+                        vm.error = err;
+                    }
+                );
+            /*
             UserService.setCurrentUser(null);
             $location.url("/home");
+            */
         }
 
         function isLoggedIn() {

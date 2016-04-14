@@ -18,8 +18,11 @@
         vm.update = update;
 
         function init() {
+            console.log("HERE I AM!");
+            vm.uploadme = {};
             vm.user = {};
             vm.currUser = UserService.getCurrentUser();
+            vm.files = [];
 
             UserService
                 .findUserById(vm.currUser._id)
@@ -27,8 +30,15 @@
                     vm.user = response.data;
                     vm.user.birthday = new Date(response.data.birthday);
                 });
+
+            UserService
+                .getProfilePhoto()
+                .then(function(response){
+                     console.log(response.data);
+                    vm.files = response.data;
+                })
         }
-        return init();
+        init();
 
         function update(user) {
             UserService
@@ -50,5 +60,7 @@
                     }
                 });
         }
+
+
     }
 })();

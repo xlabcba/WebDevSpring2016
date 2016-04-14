@@ -8,12 +8,14 @@
         .module("FormBuilderApp")
         .controller("SidebarController", SidebarController);
 
-    function SidebarController($rootScope, $scope, $location, UserService)
+    function SidebarController($q, $rootScope, $scope, $location, UserService)
     {
         var vm = this;
 
         vm.isLoggedIn = isLoggedIn;
         vm.isAdmin = isAdmin;
+
+        var deferred = null;
 
         function init() {
             vm.$location = $location;
@@ -26,5 +28,6 @@
         function isAdmin() {
             return UserService.isAdmin();
         }
+
     }
 })();

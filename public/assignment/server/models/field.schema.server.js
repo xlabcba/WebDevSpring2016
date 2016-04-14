@@ -6,7 +6,7 @@ module.exports = function(mongoose) {
         type: {type: String, enum: ['TEXT', 'EMAIL', 'PASSWORD', 'TEXTAREA', 'OPTIONS', 'DATE', 'RADIOS', 'CHECKBOXES']},
         placeholder: String,
         options: [{label: String, value: String}]
-    }, {collection: 'project.field'});
+    }, {collection: 'assignment.field'});
 
     return FieldSchema;
 

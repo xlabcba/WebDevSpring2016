@@ -1,5 +1,21 @@
 <div class="col-md-9" ng-controller="InfoController">
     <div class="register">
+        <form enctype="multipart/form-data" action="/api/project/profile_pic_upload" method="post">
+            <h3>Profile Photo</h3>
+            <div class="upload-tool">
+                <label class="custom-file-upload">
+                    <input type="file" name="myFile" fileread="model.uploadme"/>
+                    <input class="upload-info" type="text" ng-model="model.uploadme.name"/>
+                    Select
+                </label>
+                <button class="upload btn-warning" type="submit">Upload</button>
+            </div>
+        </form>
+        <div class="preview-tool">
+            <div class="preview-img" ng-repeat="file in model.files">
+            <img class="preview" ng-src="../../uploads/{{file.name}}"/>
+            </div>
+        </div>
         <form>
             <div class="register-top-grid">
                 <h3>PERSONAL INFORMATION</h3>

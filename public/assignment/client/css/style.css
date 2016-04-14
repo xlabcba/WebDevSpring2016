@@ -16,3 +16,10 @@
     overflow:hidden;
     float: left;
 }
+
+a.btn-admin {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+

@@ -10,6 +10,10 @@
     function UserService($rootScope, $http) {
 
         var service = {
+            login: login,
+            logout: logout,
+            loggedin: loggedin,
+            register: register,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -25,6 +29,24 @@
         };
 
         return service;
+
+        function login(user) {
+            console.log("here login");
+            console.log(user);
+            return $http.post("/api/assignment/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/assignment/logout");
+        }
+
+        function loggedin() {
+            return $http.get("/api/assignment/loggedin");
+        }
+
+        function register(user) {
+            return $http.post("/api/assignment/register", user);
+        }
 
         function findUserById(userId) {
             return $http.get("/api/assignment/user/"+userId);

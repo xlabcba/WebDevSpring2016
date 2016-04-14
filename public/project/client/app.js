@@ -3,5 +3,5 @@
  */
 
 (function(){
-    angular.module("RecipeApp", ["ngRoute", "emptyToNull", "scrollToItem"])
+    angular.module("RecipeApp", ["ngRoute", "emptyToNull", "scrollToItem", "fileread", "angucomplete-alt"])
 })();

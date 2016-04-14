@@ -30,18 +30,16 @@
                     controller: "AdminController",
                     controllerAs: "model",
                     resolve: {
-                        checkLoggedIn: checkLoggedIn
+                        checkAdmin: checkAdmin
                     }
                 })
                 .when("/home", {
                     templateUrl: "./views/home/home.view.html",
                     controller: "HomeController",
-                    controllerAs: "model"
-                    /*
+                    controllerAs: "model",
                     resolve: {
-                        getLoggedIn: getLoggedIn
+                        checkCurrentUser: checkCurrentUser
                     }
-                    */
                 })
                 .when("/forms", {
                     templateUrl: "./views/forms/forms.view.html",
@@ -65,6 +63,71 @@
                 });
         });
 
+    var checkAdmin = function($q, $timeout, $http, $location, $rootScope, UserService)
+    {
+        var deferred = $q.defer();
+
+        UserService
+            .loggedin()
+            .success(function(user){
+                $rootScope.errorMessage = null;
+                // User is Authenticated
+                if (user !== '0' && user.roles.indexOf('admin') != -1)
+                {
+                    UserService.setCurrentUser(user);
+                    deferred.resolve();
+                }
+            });
+
+        return deferred.promise;
+    };
+
+
+    var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope, UserService)
+    {
+        var deferred = $q.defer();
+
+        UserService
+            .loggedin()
+            .success(function(user){
+                $rootScope.errorMessage = null;
+                // User is Authenticated
+                if (user !== '0')
+                {
+                    UserService.setCurrentUser(user);
+                    deferred.resolve();
+                }
+                // User is Not Authenticated
+                else
+                {
+                    $rootScope.errorMessage = 'You need to log in.';
+                    deferred.reject();
+                    $location.url('/login');
+                }
+            });
+
+        return deferred.promise;
+    };
+
+    var checkCurrentUser = function($q, $timeout, $http, $location, $rootScope, UserService)
+    {
+        var deferred = $q.defer();
+
+        UserService
+            .loggedin()
+            .success(function(user){
+                $rootScope.errorMessage = null;
+                // User is Authenticated
+                if (user !== '0') {
+                    UserService.setCurrentUser(user);
+                }
+                deferred.resolve();
+            });
+
+        return deferred.promise;
+    };
+
+    /*
     function getLoggedIn(UserService, $q) {
 
         var deferred = $q.defer();
@@ -73,18 +136,20 @@
             deferred.resolve();
         }
 
-        /*
+
         UserService.getCurrentUser()
             .then(function(response){
                 var currentUser = response.data;
                 UserService.setCurrentUser(currentUser);
                 deferred.resolve();
             });
-        */
+
 
         return deferred.promise;
     }
+    */
 
+    /*
     function checkLoggedIn(UserService, $q, $location) {
 
         var deferred = $q.defer();
@@ -96,8 +161,6 @@
             $location.url("/home");
         }
 
-
-        /*
         UserService
             .getCurrentUser()
             .then(function(response) {
@@ -110,9 +173,9 @@
                     $location.url("/home");
                 }
             });
-            */
 
         return deferred.promise;
     }
+    */
 
 })();

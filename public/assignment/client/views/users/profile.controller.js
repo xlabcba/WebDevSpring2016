@@ -68,12 +68,10 @@
         function update(user) {
 
             if (!user.username) {
-                alert("username cannot be empty!");
-                return;
+                vm.error = "username cannot be empty!";
             }
             if (!user.password) {
-                alert("password cannot be empty!");
-                return;
+                vm.error = "password cannot be empty!";
             }
 
             vm.originalEmails = [];
@@ -87,12 +85,10 @@
             vm.addedPhones = vm.newPhones.filter(function(val) { return (val !== null && val !== undefined); });
 
             if ((vm.originalEmails.length + vm.addedEmails) == 0) {
-                alert("At least one email address is required!");
-                return;
+                vm.error = "At least one email address is required!";
             }
             if ((vm.originalPhones.length + vm.addedPhones) == 0) {
-                alert("At least one phone number is required!");
-                return;
+                vm.error = "At least one phone number is required!";
             }
 
             if (vm.addedEmails.length != 0) {
@@ -113,9 +109,14 @@
 
             UserService
                 .updateUser(user._id, newUser)
-                .then(function(response){
-                    init();
-                });
+                .then(
+                    function(response) {
+                        init();
+                    },
+                    function(err) {
+                        vm.error = err;
+                    }
+                );
         }
 
     }
