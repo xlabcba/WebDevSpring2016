@@ -28,14 +28,7 @@
             UserService
                 .findUserById(currUser._id)
                 .then(function (response) {
-                    vm.user = {
-                        username: response.data.username,
-                        password: response.data.password,
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName,
-                        emails: response.data.emails,
-                        phones: response.data.phones
-                    };
+                    vm.user = response.data;
                     UserService.setCurrentUser(response.data);
                 });
         }
@@ -68,10 +61,12 @@
         function update(user) {
 
             if (!user.username) {
-                vm.error = "username cannot be empty!";
+                alert("username cannot be empty!");
+                return;
             }
             if (!user.password) {
-                vm.error = "password cannot be empty!";
+                alert("password cannot be empty!");
+                return;
             }
 
             vm.originalEmails = [];

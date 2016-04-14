@@ -4,11 +4,18 @@ var LocalStrategy    = require('passport-local').Strategy;
 module.exports = function(app, userModel) {
 
     var auth = authorized;
+    var isAd = isAdmin;
 
     app.post  ("/api/assignment/login", passport.authenticate('local'), login);
     app.get   ("/api/assignment/loggedin",       loggedin);
     app.post  ("/api/assignment/logout",         logout);
     app.post  ("/api/assignment/register",       register);
+
+    app.post  ("/api/assignment/admin/user", isAdmin, creatUserByAdmin);
+    app.get   ("/api/assignment/admin/user", isAdmin, getUser);
+    app.get   ("/api/assignment/admin/user/:userId", isAdmin, getUserById);
+    app.delete("/api/assignment/admin/user/:userId", isAdmin, deleteUserById);
+    app.put   ("/api/assignment/admin/user/:userId", isAdmin, updateUserById);
 
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getUser);
@@ -68,6 +75,24 @@ module.exports = function(app, userModel) {
     function logout(req, res) {
         req.logOut();
         res.send(200);
+    }
+
+    function creatUserByAdmin(req, res) {
+        var user = req.body;
+
+        userModel.createUser(user)
+            // handle model promise
+            .then(
+                // login user if promise resolved
+                function ( user ) {
+                    //req.session.currentUser = doc;
+                    res.json(user);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
 
@@ -178,6 +203,9 @@ module.exports = function(app, userModel) {
 
     function getUserById(req, res) {
         var userId = req.params.id;
+        if (!userId || userId == undefined) {
+            userId = req.params.userId;
+        }
         userModel.findUserById(userId)
             .then(
                 function ( user ) {
@@ -191,7 +219,12 @@ module.exports = function(app, userModel) {
 
     function updateUserById(req, res) {
         var userId = req.params.id;
+        if (!userId || userId == undefined) {
+            userId = req.params.userId;
+        }
         var newUser = req.body;
+        console.log(userId);
+        console.log(newUser);
         userModel.updateUserById(userId, newUser)
             .then(
                 function ( stats ) {
@@ -205,6 +238,9 @@ module.exports = function(app, userModel) {
 
     function deleteUserById(req, res) {
         var userId = req.params.id;
+        if (!userId || userId == undefined) {
+            userId = req.params.userId;
+        }
         userModel.deleteUserById(userId)
             .then(
                 function ( stats ) {
@@ -214,6 +250,20 @@ module.exports = function(app, userModel) {
                     res.status(400).send(err);
                 }
             );
+    }
+
+    function isAdmin (req, res, next) {
+        console.log("checking admin");
+        if (req.isAuthenticated()) {
+            if (req.user.roles.indexOf('admin') >= 0 ) {
+                console.log("passed");
+                next();
+            } else {
+                res.send(403);
+            }
+        } else {
+            res.send(403);
+        }
     }
 
     function authorized (req, res, next) {

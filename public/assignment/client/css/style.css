@@ -23,3 +23,7 @@ a.btn-admin {
     color: #333333;
 }
 
+p.admin-pwd {
+    display: none;
+}
+

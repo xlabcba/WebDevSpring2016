@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.bodyParser({ uploadDir: './public/uploads', keepExtensions: true }));
 multer();
 app.use(session({
-    secret: 'this is a secret', //process.env.PASSPORT_SECRET,
+    secret: process.env.PASSPORT_SECRET,
     resave: true,
     saveUninitialized: true
 }));

@@ -25,7 +25,11 @@
             getCurrentUsername: getCurrentUsername,
             setCurrentUser: setCurrentUser,
             isLoggedIn: isLoggedIn,
-            isAdmin: isAdmin
+            isAdmin: isAdmin,
+            findAllUsersByAdmin: findAllUsersByAdmin,
+            createUserByAdmin: createUserByAdmin,
+            updateUserByAdmin: updateUserByAdmin,
+            deleteUserByAdmin: deleteUserByAdmin
         };
 
         return service;
@@ -98,6 +102,23 @@
 
         function isAdmin() {
             return (isLoggedIn() && $rootScope.currentUser.roles.indexOf("admin") >= 0);
+        }
+
+        function findAllUsersByAdmin() {
+            return $http.get("/api/assignment/admin/user");
+        }
+
+        function createUserByAdmin(newUser) {
+            return $http.post("/api/assignment/admin/user", newUser);
+        }
+
+        function updateUserByAdmin(userId, newUser) {
+            console.log("here I am updating user");
+            return $http.put("/api/assignment/admin/user/"+userId, newUser);
+        }
+
+        function deleteUserByAdmin(userId) {
+            return $http.delete("/api/assignment/admin/user/"+userId);
         }
 
     }

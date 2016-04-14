@@ -18,18 +18,23 @@
         vm.isBottomFirstName = isBottomFirstName;
         vm.isTopLastName = isTopLastName;
         vm.isBottomLastName = isBottomLastName;
+        vm.addUser = addUser;
+        vm.updateUser = updateUser;
+        vm.deleteUser = deleteUser;
+        vm.selectUser = selectUser;
 
         function init() {
             vm.$location = $location;
             vm.users = [];
+            vm.selectedUser = {};
+            vm.newUserRoles = null;
 
             vm.predicate = '';
             vm.reverse = false;
 
             UserService
-                .findAllUsers()
+                .findAllUsersByAdmin()
                 .then(function(response) {
-                        console.log(response.data);
                         vm.users = response.data;
                     },
                     function(err) {
@@ -69,6 +74,69 @@
         function isBottomLastName() {
             return (vm.predicate === 'lastName' && vm.reverse === true);
         }
+
+        var currUser = $rootScope.currentUser;
+
+        function addUser(user) {
+            var newUser = {
+                "username": user.username,
+                "password": user.password,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "roles": vm.newUserRoles.split(","),
+                "emails": user.emails,
+                "phones": user.phones
+            };
+            UserService
+                .createUserByAdmin(newUser)
+                .then(function(response){
+                    init();
+                });
+        }
+
+        function updateUser(user) {
+            console.log(user);
+            var newUser = {
+                "username": user.username,
+                "password": user.password,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "roles": vm.newUserRoles.split(","),
+                "emails": user.emails,
+                "phones": user.phones
+            };
+            console.log(newUser);
+
+            UserService
+                .updateUserByAdmin(user._id, newUser)
+                .then(function(response){
+                    init();
+                });
+        }
+
+        function deleteUser(index) {
+            UserService
+                .deleteUserByAdmin(vm.users[index]._id)
+                .then(function(response){
+                    init()
+                });
+        }
+
+        function selectUser(index) {
+            vm.selectedUser = {
+                "_id": vm.users[index]._id,
+                "username": vm.users[index].username,
+                "password": vm.users[index].password,
+                "firstName": vm.users[index].firstName,
+                "lastName": vm.users[index].lastName,
+                "roles": vm.users[index].roles,
+                "emails": vm.users[index].emails,
+                "phones": vm.users[index].phones
+            };
+            vm.newUserRoles = vm.selectedUser.roles.join(",")
+        }
+
+
     }
 
 })();
