@@ -128,9 +128,11 @@ module.exports = function(db, mongoose) {
             function(err, doc) {
 
                 if (err) {
+                    // console.log("fail to find user by username");
                     // reject promise if error
                     deferred.reject(err);
                 } else {
+                    // console.log("success to find user by username");
                     // resolve promise
                     deferred.resolve(doc);
                 }
@@ -153,7 +155,6 @@ module.exports = function(db, mongoose) {
         return null;
         */
 
-        //console.log(credentials);
 
         var deferred = q.defer();
 
@@ -168,7 +169,6 @@ module.exports = function(db, mongoose) {
             function(err, doc) {
 
                 if (err) {
-                    console.log("fail find one by credentials!");
                     // reject promise if error
                     deferred.reject(err);
                 } else {

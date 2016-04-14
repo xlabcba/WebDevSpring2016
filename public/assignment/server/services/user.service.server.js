@@ -1,5 +1,6 @@
 var passport         = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
+var bcrypt           = require("bcrypt-nodejs");
 
 module.exports = function(app, userModel) {
 
@@ -32,12 +33,17 @@ module.exports = function(app, userModel) {
     function localStrategy(username, password, done) {
         console.log(username);
         console.log(password);
+        // lookup user by username only. cant compare password since it's encrypted
         userModel
-            .findUserByCredentials({username: username, password: password})
+            .findUserByUsername(username)
             .then(
                 function(user) {
-                    if (!user) { return done(null, false); }
-                    return done(null, user);
+                    // if the user exists, compare passwords with bcrypt.compareSync
+                    if (user && bcrypt.compareSync(password, user.password)) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
                 },
                 function(err) {
                     if (err) { return done(err); }
@@ -64,7 +70,6 @@ module.exports = function(app, userModel) {
 
     function login(req, res) {
         var user = req.user;
-        console.log(user);
         res.json(user);
     }
 
@@ -78,18 +83,33 @@ module.exports = function(app, userModel) {
     }
 
     function creatUserByAdmin(req, res) {
-        var user = req.body;
+        var newUser = req.body;
 
-        userModel.createUser(user)
-            // handle model promise
+        userModel
+            .findUserByUsername(newUser.username)
             .then(
-                // login user if promise resolved
-                function ( user ) {
-                    //req.session.currentUser = doc;
-                    res.json(user);
+                function(user){
+                    if(user) {
+                        res.json(null);
+                    } else {
+                        // encrypt the password when registering
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                        userModel
+                            .createUser(newUser)
+                            .then(
+                                // login user if promise resolved
+                                function ( user ) {
+                                    //req.session.currentUser = doc;
+                                    res.json(user);
+                                },
+                                // send error if promise rejected
+                                function ( err ) {
+                                    res.status(400).send(err);
+                                }
+                            )
+                    }
                 },
-                // send error if promise rejected
-                function ( err ) {
+                function(err){
                     res.status(400).send(err);
                 }
             );
@@ -135,6 +155,8 @@ module.exports = function(app, userModel) {
                     if(user) {
                         res.json(null);
                     } else {
+                        // encrypt the password when registering
+                        newUser.password = bcrypt.hashSync(newUser.password);
                         return userModel.createUser(newUser);
                     }
                 },
@@ -223,17 +245,33 @@ module.exports = function(app, userModel) {
             userId = req.params.userId;
         }
         var newUser = req.body;
+        console.log("password check before update profile");
         console.log(userId);
         console.log(newUser);
-        userModel.updateUserById(userId, newUser)
+        userModel
+            .findUserById(userId)
             .then(
-                function ( stats ) {
-                    res.send(200);
+                function(user){
+                    console.log(user);
+                    if (user.password != newUser.password) {
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                    }
+                    console.log(newUser);
+                    userModel
+                        .updateUserById(userId, newUser)
+                        .then(
+                            function ( stats ) {
+                                res.send(200);
+                            },
+                            function ( err ) {
+                                res.status(400).send(err);
+                            }
+                        );
                 },
-                function ( err ) {
+                function(err){
                     res.status(400).send(err);
                 }
-            );
+            )
     }
 
     function deleteUserById(req, res) {

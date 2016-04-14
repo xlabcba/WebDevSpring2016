@@ -29,6 +29,15 @@
                 .findUserById(currUser._id)
                 .then(function (response) {
                     vm.user = response.data;
+                    vm.user = {
+                        _id: response.data._id,
+                        username: response.data.username,
+                        password: response.data.password,
+                        firstName: response.data.firstName,
+                        lastName: response.data.lastName,
+                        emails: response.data.emails,
+                        phones: response.data.phones
+                    };
                     UserService.setCurrentUser(response.data);
                 });
         }
