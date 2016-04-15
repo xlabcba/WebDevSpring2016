@@ -143,11 +143,11 @@ ul.cart a:hover{
 }
 a.item_1{
     position: absolute;
-    bottom:50px;
-    right: 20px;
+    bottom:0px;
+    right: 0px;
     width: 40px;
     height: 40px;
-    background: url(../images/plus.png) no-repeat 8px 8px #831f0b;
+    background: no-repeat 8px 8px #6f6f6f;
     color: #fff;
     text-align: center;
     line-height: 33px;
@@ -3116,4 +3116,14 @@ a.cpns {
     height: 12px;
     margin: 0;
     background-color: #fffa00;
+}
+
+input.extraInfoUpload {
+    display: none;
+}
+
+a.img-delete {
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }

@@ -1,19 +1,36 @@
 <div class="col-md-9" ng-controller="InfoController">
     <div class="register">
-        <form enctype="multipart/form-data" action="/api/project/profile_pic_upload" method="post">
+        <form enctype="multipart/form-data" action="/api/project/profile/upload" method="post">
             <h3>Profile Photo</h3>
             <div class="upload-tool">
                 <label class="custom-file-upload">
                     <input type="file" name="myFile" fileread="model.uploadme"/>
+                    <input class="extraInfoUpload" name="userId" ng-model="model.currUser._id"/>
                     <input class="upload-info" type="text" ng-model="model.uploadme.name"/>
                     Select
                 </label>
                 <button class="upload btn-warning" type="submit">Upload</button>
             </div>
         </form>
-        <div class="preview-tool">
-            <div class="preview-img" ng-repeat="file in model.files">
-            <img class="preview" ng-src="../../uploads/{{file.name}}"/>
+        <div class="preview-tool" ng-show="model.user.photo != null && model.user.photo != undefined">
+            <div class="content_grid">
+                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
+                    <a href="{{model.user.photo}}">
+                        <div class="inner_content clearfix">
+                            <div class="product_image">
+                                <img ng-src="{{model.user.photo}}" class="img-responsive" alt=""/>
+                                <a class="button item_add item_1" ng-click="model.deletePhoto()">
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="preview-tool" ng-show="model.user.photo == null || model.user.photo == undefined">
+            <div class="preview-img">
+                <img class="preview" ng-src="./images/head.jpg"/>
             </div>
         </div>
         <form>

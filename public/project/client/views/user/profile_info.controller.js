@@ -16,27 +16,36 @@
         //console.log(username);
 
         vm.update = update;
+        vm.deletePhoto = deletePhoto;
 
         function init() {
             console.log("HERE I AM!");
             vm.uploadme = {};
             vm.user = {};
             vm.currUser = UserService.getCurrentUser();
-            vm.files = [];
+            //vm.files = [];
+            vm.fileName = null;
 
             UserService
                 .findUserById(vm.currUser._id)
                 .then(function (response) {
                     vm.user = response.data;
                     vm.user.birthday = new Date(response.data.birthday);
+                    if(vm.user.photo) {
+                        var photoArray = vm.user.photo.split("/");
+                        vm.fileName = photoArray[photoArray.length - 1];
+                        console.log(vm.fileName);
+                    }
                 });
 
+            /*
             UserService
                 .getProfilePhoto()
                 .then(function(response){
                      console.log(response.data);
                     vm.files = response.data;
                 })
+                */
         }
         init();
 
@@ -61,6 +70,12 @@
                 });
         }
 
-
+        function deletePhoto() {
+            UserService
+                .deleteProfilePhoto(vm.currUser._id, vm.fileName)
+                .then(function(response){
+                    vm.user.photo = null;
+                })
+        }
     }
 })();

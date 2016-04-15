@@ -25,7 +25,8 @@ module.exports = function() {
         unlikeRecipe: unlikeRecipe,
         deleteRecipeFromLike: deleteRecipeFromLike,
         deleteUserFromFollower: deleteUserFromFollower,
-        findFollowedUsersForUser: findFollowedUsersForUser
+        findFollowedUsersForUser: findFollowedUsersForUser,
+        updateProfilePic: updateProfilePic
 
     };
     return api;
@@ -208,6 +209,16 @@ module.exports = function() {
             }
         }
         return ret_users;
+    }
+
+    function updateProfilePic(userId, savePath) {
+        for(var u in mock) {
+            if(mock[u]._id == userId) {
+                mock[u].photo = savePath;
+                return mock[u];
+            }
+        }
+        return null;
     }
 
 

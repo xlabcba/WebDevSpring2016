@@ -4,7 +4,7 @@
 
 module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
 
-    var files = [];
+    //var files = [];
 
     app.post("/api/project/user", createNewUser);
     app.get("/api/project/user", getUser);
@@ -14,8 +14,9 @@ module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
     app.post("/api/project/user/:followerId/user/:followedId", userFollowsUser);
     app.put("/api/project/user/:followerId/user/:followedId", userUnfollowsUser);
     app.post("/api/project/user/searchFollowedUsers", getFollowedUsersForUser);
-    app.post("/api/project/profile_pic_upload", uploadProfilePic);
-    app.get("/api/project/profile_pic_upload", getProfilePic);
+    app.post("/api/project/profile/upload", uploadProfilePic);
+    //app.get("/api/project/profile_pic_upload", getProfilePic);
+    app.post("/api/project/profile/:userId/delete/:fileName", deleteProfilePic);
 
     function createNewUser(req, res) {
         var user = req.body;
@@ -91,14 +92,21 @@ module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
     }
 
     function uploadProfilePic (req,res){
+        var userId = req.body.userId;
         var myFile = req.files.myFile;
+        console.log(userId);
         console.log(myFile);
+
         var file = {
             path: myFile.path,
             name: myFile.name,
             size: myFile.size,
             type: myFile.type
         };
+
+        var savePath = "../../uploads/" + file.name;
+
+        console.log(savePath);
 
         // optionally rename the file to its original name
         var oldPath = path.resolve(myFile.path);
@@ -107,16 +115,28 @@ module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
         console.log(oldPath);
         console.log(newPath);
 
-        fs.rename(oldPath, newPath, function(err){
-            files.push(file);
-            console.log(files);
-            res.location("/project/client/index.html#/profile_info");
-        });
+        fs.rename(oldPath, newPath);
+
+        userModel.updateProfilePic(userId, savePath);
+        res.location("/project/client/index.html#/profile_info");  //TODO: change to redirect
+
     }
 
+    /*
     function getProfilePic(req,res) {
         console.log("Here!!!");
         res.json(files);
+    }
+    */
+
+    function deleteProfilePic(req, res) {
+        var userId = req.params.userId;
+        var fileName = req.params.fileName;
+        console.log(fileName);
+        userModel.updateProfilePic(userId, null);
+        var thePath = path.resolve(__dirname + "/../../../../public/uploads/" + fileName);
+        fs.unlink(thePath);
+        res.json({});
     }
 
 };
