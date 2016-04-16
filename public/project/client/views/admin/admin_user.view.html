@@ -21,7 +21,10 @@
            ng-click="model.setModalUser(user)">Change</a>
         <div class="cart-sec simpleCart_shelfItem">
             <div class="cart-item cyc">
-                <img ng-src={{user.photo}} class="img-responsive" alt="">
+                <img ng-show="user.photo != null && user.photo != undefined"
+                     ng-src="{{user.photo}}" class="img-responsive" alt="">
+                <img ng-show="user.photo == null || user.photo == undefined"
+                     ng-src="./images/head.jpg" class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">
                 <h3><a href="#/profile_public/{{user._id}}">{{user.username}}</a></h3>

@@ -1,7 +1,7 @@
 [
   {
     "_id": "000", "userId": "123", "title": "Cosmo",
-    "recipeImg":["./images/pic6.jpg"],
+    "recipeImg":["../../uploads/pic6.jpg"],
     "rating": "5", "rateImg":"./images/star5.png",
     "likeBy":["234", "345", "567"],
     "tag1": ["Vodka"], "tag2": ["sweet"], "tag3": "beginner",
@@ -12,7 +12,7 @@
   },
   {
     "_id": "010", "userId": "123", "title": "Bloody Mary",
-    "recipeImg":["./images/pic5.jpg"],
+    "recipeImg":["../../uploads/pic5.jpg"],
     "rating": "3", "rateImg":"./images/star3.png",
     "likeBy":["345", "456", "567"],
     "tag1": ["Vodka"], "tag2": ["savory", "spicy"], "tag3": "intermediate",
@@ -25,7 +25,7 @@
   },
   {
     "_id": "020", "userId": "234", "title": "Long Island Ice Tea",
-    "recipeImg":["./images/pic9.jpg","images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg"],
+    "recipeImg":["../../uploads/pic9.jpg","../../uploads/s1.jpg","../../uploads/s2.jpg","../../uploads/s3.jpg","../../uploads/s4.jpg"],
     "rating": "0", "rateImg":"./images/star0.png",
     "likeBy":["123", "456", "567"],
     "tag1": ["Rum","Vodka","Gin"], "tag2": ["sweet"], "tag3": "advanced",
