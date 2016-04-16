@@ -32,6 +32,7 @@
             UserService
                 .findUserByCredentials(user.username, user.password)
                 .then(function(response){
+                    console.log(response.data);
                     var currentUser = response.data;
                     if(currentUser != null) {
                         UserService.setCurrentUser(currentUser);

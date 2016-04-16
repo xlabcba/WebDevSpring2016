@@ -2,7 +2,10 @@
  * Created by lixie on 16/3/23.
  */
 
-module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
+var fs = require("fs");
+var path = require("path");
+
+module.exports = function(app, userModel, recipeModel, commentModel) {
 
     //var files = [];
 
@@ -15,7 +18,6 @@ module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
     app.put("/api/project/user/:followerId/user/:followedId", userUnfollowsUser);
     app.post("/api/project/user/searchFollowedUsers", getFollowedUsersForUser);
     app.post("/api/project/profile/upload", uploadProfilePic);
-    //app.get("/api/project/profile_pic_upload", getProfilePic);
     app.post("/api/project/profile/:userId/delete/:fileName", deleteProfilePic);
 
     function createNewUser(req, res) {
@@ -121,13 +123,6 @@ module.exports = function(app, fs, path, userModel, recipeModel, commentModel) {
         res.location("/project/client/index.html#/profile_info");  //TODO: change to redirect
 
     }
-
-    /*
-    function getProfilePic(req,res) {
-        console.log("Here!!!");
-        res.json(files);
-    }
-    */
 
     function deleteProfilePic(req, res) {
         var userId = req.params.userId;

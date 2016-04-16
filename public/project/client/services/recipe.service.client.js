@@ -15,7 +15,8 @@
             updateRecipeById: updateRecipeById,
             getRecipeById: getRecipeById,
             userLikesRecipe: userLikesRecipe,
-            userUnlikesRecipe: userUnlikesRecipe
+            userUnlikesRecipe: userUnlikesRecipe,
+            deleteRecipeImage: deleteRecipeImage
         };
 
         return service;
@@ -58,6 +59,10 @@
 
         function userUnlikesRecipe(userId, recipeId) {
             return $http.put("/api/project/user/"+userId+"/recipe/"+recipeId);
+        }
+
+        function deleteRecipeImage(recipeId, fileName) {
+            return $http.post("/api/project/recipe/"+recipeId+"/delete/"+fileName);
         }
     }
 })();

@@ -22,17 +22,16 @@ module.exports = function() {
         unlikeByUser: unlikeByUser,
         findAllLikedRecipesForUser: findAllLikedRecipesForUser,
         findAllRecipesForStr: findAllRecipesForStr,
-        deleteUserFromLikeBy: deleteUserFromLikeBy
-
+        deleteUserFromLikeBy: deleteUserFromLikeBy,
+        updateRecipePic: updateRecipePic
     };
     return api;
 
     function createRecipeForUser(userId, recipe) {
         var newRecipe = {
             _id: Guid.create(),  //"ID_" + (new Date()).getTime(),
-            userId: userId,
+            userId: recipe.userId,
             title: recipe.title,
-            titleImg: recipe.titleImg,
             recipeImg: recipe.recipeImg,
             rating: "0",
             rateImg: "./images/star0.png",
@@ -42,10 +41,11 @@ module.exports = function() {
             tag3: recipe.tag3,
             ingredientSpirit: recipe.ingredientSpirit,
             ingredientOther: recipe.ingredientOther,
-            step: recipe.step
+            step: recipe.step,
+            overview: recipe.overview
         };
         mock.push(newRecipe);
-        return mock;
+        return newRecipe;
     }
 
     function findAllRecipes() {
@@ -84,6 +84,8 @@ module.exports = function() {
     function updateRecipeById(recipeId, newRecipe) {
         for(var r in mock) {
             if(mock[r]._id == recipeId) {
+                newRecipe.rating = mock[r].rating;
+                newRecipe.rateImg = mock[r].rateImg;
                 mock.splice(r,1,newRecipe);
                 return mock;
             }
@@ -202,6 +204,27 @@ module.exports = function() {
                 if(mock[r].likeBy[u] == userId) {
                     mock[r].likeBy.splice(u,1);
                     return mock[r].likeBy;
+                }
+            }
+        }
+        return null;
+    }
+
+    function updateRecipePic(recipeId, savePath, operation) {
+        for(var r in mock) {
+            if(mock[r]._id == recipeId) {
+                if (operation == "delete") {
+                    for (var i in mock[r].recipeImg) {
+                        if (mock[r].recipeImg[i] == savePath) {
+                            mock[r].recipeImg.splice(i, 1);
+                            return mock[r].recipeImg;
+                        }
+                    }
+                } else if (operation == "save") {
+                    mock[r].recipeImg.push(savePath);
+                    return mock[r].recipeImg;
+                } else {
+                    return null;
                 }
             }
         }

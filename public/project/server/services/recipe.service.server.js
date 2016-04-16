@@ -2,6 +2,9 @@
  * Created by lixie on 16/3/23.
  */
 
+var fs = require("fs");
+var path = require("path");
+
 module.exports = function(app, userModel, recipeModel, commentModel) {
 
     app.get("/api/project/recipe", getAllRecipes);
@@ -14,6 +17,8 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
     app.post("/api/project/user/:userId/recipe/:recipeId", userLikesRecipe);
     app.put("/api/project/user/:userId/recipe/:recipeId", userUnlikesRecipe);
     app.post("/api/project/recipe/searchLikedRecipes", getAllLikedRecipesForUser);
+    app.post("/api/project/recipe/upload", uploadRecipePic);
+    app.post("/api/project/recipe/:recipeId/delete/:fileName", deleteRecipePic);
 
 
     function getAllRecipes(req, res) {
@@ -50,8 +55,8 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
     function createNewRecipeForUser(req, res) {
         var recipe = req.body;
         var userId = req.params.userId;
-        var recipes = recipeModel.createRecipeForUser(userId, recipe);
-        res.json(recipes);
+        var newRecipe = recipeModel.createRecipeForUser(userId, recipe);
+        res.json(newRecipe);
     }
 
     function updateRecipe(req, res) {
@@ -81,5 +86,47 @@ module.exports = function(app, userModel, recipeModel, commentModel) {
         var likedRecipes = req.body;
         var recipes = recipeModel.findAllLikedRecipesForUser(likedRecipes);
         res.json(recipes);
+    }
+
+    function uploadRecipePic (req,res){
+        var recipeId = req.body.recipeId;
+        var myFile = req.files.myFile;
+        console.log(recipeId);
+        console.log(myFile);
+
+        var file = {
+            path: myFile.path,
+            name: myFile.name,
+            size: myFile.size,
+            type: myFile.type
+        };
+
+        var savePath = "../../uploads/" + file.name;
+
+        console.log(savePath);
+
+        // optionally rename the file to its original name
+        var oldPath = path.resolve(myFile.path);
+        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + myFile.name);
+
+        console.log(oldPath);
+        console.log(newPath);
+
+        fs.rename(oldPath, newPath);
+
+        recipeModel.updateRecipePic(recipeId, savePath, "save");
+        res.location("/project/client/index.html#/recipe_edit/"+recipeId);  //TODO: change to redirect
+
+    }
+
+    function deleteRecipePic(req, res) {
+        var recipeId = req.params.recipeId;
+        var fileName = req.params.fileName;
+        var savePath = "../../uploads/" + fileName;
+        console.log(fileName);
+        var recipeImgs = recipeModel.updateRecipePic(recipeId, savePath, "delete");
+        var thePath = path.resolve(__dirname + "/../../../../public/uploads/" + fileName);
+        fs.unlink(thePath);
+        res.json(recipeImgs);
     }
 };

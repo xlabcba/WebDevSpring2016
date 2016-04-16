@@ -13,24 +13,32 @@
             </div>
         </form>
         <div class="preview-tool" ng-show="model.user.photo != null && model.user.photo != undefined">
+                <div class="content_grid">
+                    <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
+                        <a href="{{model.user.photo}}">
+                            <div class="inner_content clearfix">
+                                <div class="product_image">
+                                    <img ng-src="{{model.user.photo}}" class="img-responsive" alt=""/>
+                                    <a class="button item_add item_1" ng-click="model.deletePhoto()">
+                                        <i class="fa fa-trash fa-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        </div>
+        <div class="preview-tool" ng-show="model.user.photo == null || model.user.photo == undefined">
             <div class="content_grid">
                 <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                    <a href="{{model.user.photo}}">
+                    <a href="./images/head.jpg">
                         <div class="inner_content clearfix">
                             <div class="product_image">
-                                <img ng-src="{{model.user.photo}}" class="img-responsive" alt=""/>
-                                <a class="button item_add item_1" ng-click="model.deletePhoto()">
-                                    <i class="fa fa-trash fa-lg"></i>
-                                </a>
+                                <img ng-src="./images/head.jpg" class="img-responsive" alt=""/>
                             </div>
                         </div>
                     </a>
                 </div>
-            </div>
-        </div>
-        <div class="preview-tool" ng-show="model.user.photo == null || model.user.photo == undefined">
-            <div class="preview-img">
-                <img class="preview" ng-src="./images/head.jpg"/>
             </div>
         </div>
         <form>

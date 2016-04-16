@@ -1,7 +1,6 @@
 [
   {
     "_id": "000", "userId": "123", "title": "Cosmo",
-    "titleImg": "./images/pic6.jpg",
     "recipeImg":["./images/pic6.jpg"],
     "rating": "5", "rateImg":"./images/star5.png",
     "likeBy":["234", "345", "567"],
@@ -13,7 +12,6 @@
   },
   {
     "_id": "010", "userId": "123", "title": "Bloody Mary",
-    "titleImg": "./images/pic5.jpg",
     "recipeImg":["./images/pic5.jpg"],
     "rating": "3", "rateImg":"./images/star3.png",
     "likeBy":["345", "456", "567"],
@@ -27,7 +25,6 @@
   },
   {
     "_id": "020", "userId": "234", "title": "Long Island Ice Tea",
-    "titleImg": "./images/pic9.jpg",
     "recipeImg":["./images/pic9.jpg","images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg"],
     "rating": "0", "rateImg":"./images/star0.png",
     "likeBy":["123", "456", "567"],

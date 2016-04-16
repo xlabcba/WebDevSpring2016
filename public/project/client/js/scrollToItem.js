@@ -44,6 +44,7 @@
                         $respTabs.find("[aria-controls=" + $tabAria + "]").addClass('resp-tab-active');
                         $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + ']').addClass('resp-tab-content-active').attr('style', 'display:block');
                     }
+
                     $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top }, "slow");
                 });
             }

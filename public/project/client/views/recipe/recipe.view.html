@@ -21,20 +21,24 @@
                 <!-- Carousel -->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <ol ng-show="model.recipe.recipeImg.length > 0" class="carousel-indicators">
                         <li data-target="#myCarousel" ng-repeat="imgIndex in model.imgIndexes"
                             ng-class="{active: (imgIndex == 0)}" data-slide-to="{{imgIndex}}"></li>
                     </ol>
-                    <div class="carousel-inner">
+                    <!-- Inner Content-->
+                    <div ng-show="model.recipe.recipeImg.length > 0" class="carousel-inner">
                         <div ng-class="{item: true, active: (imgIndex == 0)}"
                              ng-repeat="imgIndex in model.imgIndexes">
-                            <img ng-src={{model.recipe.recipeImg[imgIndex]}} alt="Slide number {{imgIndex}}">
+                            <img ng-src="{{model.recipe.recipeImg[imgIndex]}}" alt="Slide number {{imgIndex}}">
                             <div class="container">
                                 <div class="carousel-caption"></div>
                             </div>
                         </div>
                     </div>
-                <!-- /.carousel -->
+                    <!-- If no picture yet-->
+                    <img ng-show="model.recipe.recipeImg.length <= 0"
+                         ng-src="./images/cocktail.jpg" alt="Slide number {{imgIndex}}">
+                    <!-- /.carousel -->
             </div>
         </div>
             </div>
@@ -54,10 +58,10 @@
             </h1>
             </div>
             <ul class="rating">
-                <img class="img-rating" ng-src={{model.recipe.rateImg}}>
+                <img ng-src="{{model.recipe.rateImg}}" class="img-rating" alt="">
                 <br/>
-                <li><a id="list1" scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
-                <li><a id="list2" scroll-to-item scroll-to="#postComment">Add Review</a></li>
+                <li><a scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
+                <li><a scroll-to-item scroll-to="#postComment">Add Review</a></li>
                 <li ng-show="model.isAuthor(model.recipeAuthor._id)">
                     <a href="#/recipe_edit/{{model.recipeId}}">Edit Recipe</a>
                 </li>
@@ -104,8 +108,9 @@
                 <!-- Tab 3 : Comments -->
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                     <ul class="tab_list">
+                        <div id="currComments" name="top">
                         <p ng-hide="model.comments.length > 0">There is no review yet. You can post the first review!</p>
-                        <div id="currComments" class="cart-header" ng-repeat="comment in model.comments">
+                        <div class="cart-header" ng-repeat="comment in model.comments">
                             <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
                                ng-click="model.deleteComment(comment)">Delete</a>
                             <a class="button update"
@@ -114,7 +119,10 @@
                                ng-click="model.setCurrComment(comment)">Change</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
-                                    <img ng-src={{comment.author.photo}} class="img-responsive" alt="">
+                                    <img ng-show="comment.author.photo != null && comment.author.photo != undefined"
+                                         ng-src="{{comment.author.photo}}" class="img-responsive" alt="">
+                                    <img ng-show="comment.author.photo == null || comment.author.photo == undefined"
+                                         ng-src="./images/head.jpg" class="img-responsive" alt=""/>
                                 </div>
                                 <div class="cart-item-info">
                                     <h3><a href="#/profile_public/{{comment.author._id}}">{{comment.author.username}}</a></h3>
@@ -122,7 +130,7 @@
                                         <p>Recipe: {{comment.author.recipeNumber}}</p>
                                         <p>Followed by: {{comment.author.followBy.length}}</p>
                                     </ul>
-                                    <img ng-src={{comment.rateImg}} class="img-rating">
+                                    <img ng-src="{{comment.rateImg}}" class="img-rating" alt="">
                                     <br/>
                                     <div class="delivery">
                                         <p>{{comment.title}}</p>
@@ -133,11 +141,15 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        </div>
                         <hr>
-                        <div id="postComment" class="cart-header">
+                        <div id="postComment" name="top" class="cart-header">
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc" ng-show = "model.isLoggedIn()">
-                                    <img ng-src={{model.currUser.photo}} class="img-responsive" />
+                                    <img ng-show="model.currUser.photo != null && model.currUser.photo != undefined"
+                                         ng-src="{{model.currUser.photo}}" class="img-responsive" alt=""/>
+                                    <img ng-show="model.currUser.photo == null || model.currUser.photo == undefined"
+                                         ng-src="./images/head.jpg" class="img-responsive" alt=""/>
                                 </div>
                                 <div class="cart-item-info" ng-show = "model.isLoggedIn()">
                                     <a class="button close1" ng-click="model.postComment(model.newComment)">Post</a>
@@ -176,7 +188,10 @@
                                ng-click="model.unfollowRecipeAuthor(model.currUser._id, model.recipe.userId)">Unfollow</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
-                                    <img ng-src={{model.recipeAuthor.photo}} class="img-responsive" alt="">
+                                    <img ng-show="model.recipeAuthor.photo != null && model.recipeAuthor.photo != undefined"
+                                         ng-src="{{model.recipeAuthor.photo}}" class="img-responsive" alt="">
+                                    <img ng-show="model.recipeAuthor.photo == null || model.recipeAuthor.photo == undefined"
+                                         ng-src="./images/head.jpg" class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
                                     <h3><a href="#/profile_public/{{model.recipeAuthor._id}}">{{model.recipeAuthor.username}}</a></h3>

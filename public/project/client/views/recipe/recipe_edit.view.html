@@ -15,6 +15,36 @@
         <div class="clearfix"></div>
     </div>
     <h1>Edit Recipe</h1>
+    <br/>
+    <form ng-show="model.currRecipeId != null && model.currRecipeId != undefined"
+          enctype="multipart/form-data" action="/api/project/recipe/upload" method="post">
+        <span>Recipe Photos</span>
+        <div class="upload-tool-recipe">
+            <label class="custom-file-upload">
+                <input type="file" name="myFile" fileread="model.uploadme"/>
+                <input class="extraInfoUpload" name="recipeId" ng-model="model.currRecipeId"/>
+                <input class="upload-info" type="text" ng-model="model.uploadme.name"/>
+                Select
+            </label>
+            <button class="upload btn-warning" type="submit">Upload</button>
+        </div>
+    </form>
+    <div ng-show="model.currRecipeId != null && model.currRecipeId != undefined" class="preview-tool-recipe" >
+            <div class="content_grid">
+                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem" ng-repeat="imgUrl in model.currRecipe.recipeImg">
+                    <a href="{{imgUrl}}">
+                        <div class="inner_content clearfix">
+                            <div class="product_image">
+                                <img ng-src="{{imgUrl}}" class="img-responsive" alt=""/>
+                                <a class="button item_add item_1" ng-click="model.deleteImage(model.currRecipeId, imgUrl)">
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    </div>
     <div class="login-right">
         <form>
             <div class="form-group">

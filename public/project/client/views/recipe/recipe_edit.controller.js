@@ -21,18 +21,26 @@
         vm.addStep = addStep;
         vm.deleteStep = deleteStep;
         vm.saveRecipe = saveRecipe;
+        vm.deleteImage = deleteImage;
 
         if(vm.currRecipeId) {
             init()
         } else {
             vm.currUser = UserService.getCurrentUser();
             vm.currRecipe = {
+                userId: vm.currUser._id,
+                title: null,
+                recipeImg: [],
+                rating: "0",
+                rateImg: "./images/star0.png",
+                likeBy: [],
                 tag1: [],
                 tag2: [],
                 tag3: "beginner",
                 ingredientSpirit: [],
                 ingredientOther: [],
-                step: []
+                step: [],
+                overview: null
             };
         }
 
@@ -156,6 +164,16 @@
                         $location.url("/recipe/"+vm.currRecipeId);
                     });
             }
+        }
+
+        function deleteImage(recipeId, savePath) {
+            var strArray = savePath.split("/");
+            var fileName = strArray[strArray.length - 1];
+            RecipeService
+                .deleteRecipeImage(recipeId, fileName)
+                .then(function(response){
+                    vm.currRecipe.recipeImg = response.data;
+                })
         }
 
     }

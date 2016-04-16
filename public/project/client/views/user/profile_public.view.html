@@ -18,7 +18,10 @@
         <div class="labout span_1_of_a1">
             <div class="flexslider">
                 <br/>
-                <img ng-src={{model.visitUser.photo}} alt="">
+                <img ng-show="model.visitUser.photo != null && model.visitUser.photo != undefined"
+                     ng-src="{{model.visitUser.photo}}" alt="">
+                <img ng-show="model.visitUser.photo == null || model.visitUser.photo == undefined"
+                     ng-src="./images/head.jpg" alt="">
             </div>
         </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
@@ -63,13 +66,16 @@
                                 <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                                     <div class="inner_content clearfix">
                                         <div class="product_image">
-                                            <img ng-src={{recipe.titleImg}} class="img-responsive" alt=""/>
+                                            <img ng-show="recipe.recipeImg.length > 0"
+                                                 ng-src="{{recipe.recipeImg[0]}}" class="img-responsive" alt=""/>
+                                            <img ng-show="recipe.recipeImg.length <= 0"
+                                                 ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                                             <div class="product_container">
                                                 <div class="cart-left">
                                                     <p class="title">{{recipe.title}}</p>
                                                 </div>
                                                 <br/>
-                                                <span><img ng-src={{recipe.rateImg}} class="img-rating" alt=""/></span>
+                                                <span><img ng-src="{{recipe.rateImg}}" class="img-rating" alt=""/></span>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -86,13 +92,16 @@
                                 <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                                     <div class="inner_content clearfix">
                                         <div class="product_image">
-                                            <img ng-src={{recipe.titleImg}} class="img-responsive" alt=""/>
+                                            <img ng-show="recipe.recipeImg.length > 0"
+                                                 ng-src="{{recipe.recipeImg[0]}}" class="img-responsive" alt=""/>
+                                            <img ng-show="recipe.recipeImg.length <= 0"
+                                                 ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                                             <div class="product_container">
                                                 <div class="cart-left">
                                                     <p class="title">{{recipe.title}}</p>
                                                 </div>
                                                 <br/>
-                                                <span><img ng-src={{recipe.rateImg}} class="img-rating" alt=""/></span>
+                                                <span><img ng-src="{{recipe.rateImg}}" class="img-rating" alt=""/></span>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -111,7 +120,10 @@
                            ng-click="model.unfollowRecipeAuthor(model.currUser._id, user._id)">Unfollow</a>
                         <div class="cart-sec simpleCart_shelfItem">
                             <div class="cart-item cyc">
-                                <img ng-src={{user.photo}} class="img-responsive" alt="">
+                                <img ng-show="user.photo == null || user.photo == undefined"
+                                     ng-src="{{user.photo}}" class="img-responsive" alt="">
+                                <img ng-show="user.photo != null && user.photo != undefined"
+                                     ng-src="./images/head.jpg" class="img-responsive" alt="">
                             </div>
                             <div class="cart-item-info">
                                 <h3><a href="#/profile_public/{{user._id}}">{{user.username}}</a></h3>

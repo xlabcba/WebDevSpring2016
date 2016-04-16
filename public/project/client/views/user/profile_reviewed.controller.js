@@ -30,7 +30,11 @@
                                 .getRecipeById(response.data[i].recipeId)
                                 .then(function(res){
                                     response.data[i].recipeTitle = res.data.title;
-                                    response.data[i].recipeImg = res.data.titleImg;
+                                    if (res.data.recipeImg.length > 0) {
+                                        response.data[i].recipeImg = res.data.recipeImg[0];
+                                    } else {
+                                        response.data[i].recipeImg = "./images/cocktail.jpg";
+                                    }
                                 });
                         })();
 

@@ -209,6 +209,7 @@ ul.quick_access li.check{
 }
 .search{
     position: relative;
+    background: #333333;
 }
 .search input[type="text"] {
     padding: 8px 10px;
@@ -220,8 +221,9 @@ ul.quick_access li.check{
     line-height: 1.5em;
     font-size: 0.8125em;
 }
-.search input[type="submit"] {
-    background: url('../images/search.png') no-repeat 8px 9px #333;
+.search a {
+    background: no-repeat 8px 9px #333;
+    color: white;
     padding: 6px 17px;
     border: none;
     cursor: pointer;
@@ -230,8 +232,8 @@ ul.quick_access li.check{
     outline: none;
     right: 0;
 }
-.search input[type="submit"]:hover{
-    background: url('../images/search.png') no-repeat 8px 9px #404040;
+.search a:hover{
+    background: no-repeat 8px 9px #404040;
 }
 .welcome_box{
     padding:5em 1.4em;
@@ -620,7 +622,7 @@ ul.article_links li a{
 .col_1_of_3 {
     display: block;
     float: left;
-    margin: 1% 0 1% 2.6%;
+    margin: 1% 0.7% 1% 0.7%;
 }
 .span_1_of_3 {
     width: 31.6%;
@@ -629,9 +631,11 @@ ul.article_links li a{
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
+/*
 .col_1_of_3:first-child {
-    margin-left: 0;
+    margin-left: 0.8%;
 }
+*/
 .inner_content {
     background: #fff;
     position: relative;
@@ -1664,7 +1668,6 @@ a.forgot {
 div.preview-tool {
     background: rgba(255, 255, 255, 0.7);
     width: 92%;
-    height: 200px;
     text-align: center;
     float: left;
     margin-top: 15px;
@@ -1674,6 +1677,20 @@ div.preview-tool {
     overflow:scroll;
 }
 
+div.preview-tool-recipe {
+    background: rgba(255, 255, 255, 0.7);
+    width: 96%;
+    max-height: 300px;
+    text-align: center;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #EEE;
+    display: inline-block;
+    overflow:scroll;
+}
+
+/*
 div.preview-img {
     background: #ffffff;
     vertical-align: middle;
@@ -1689,9 +1706,19 @@ img.preview {
     height: 150px;
     display: block;
 }
+*/
 
 div.upload-tool {
     width: 92%;
+    float: left;
+    margin: 15px 0;
+    border: none;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+div.upload-tool-recipe {
+    width: 96%;
     float: left;
     margin: 15px 0;
     border: none;
@@ -2301,7 +2328,7 @@ a.cpns {
         padding: 10px;
     }
     a.item_1 {
-        bottom: 37px;
+        bottom: 0px;
     }
     .footer-grid h3 {
         margin-bottom: 1em;
@@ -2364,7 +2391,7 @@ a.cpns {
         float: none;
     }
     a.item_1 {
-        bottom: 65px;
+        bottom: 0px;
     }
     ul.instagram_grid li {
         width: 15.2%;
@@ -2620,7 +2647,7 @@ a.cpns {
         font-size: 0.8125em;
     }
     a.item_1 {
-        bottom: 55px;
+        bottom: 0px;
     }
     .instagram_top {
         padding: 1em 0;
@@ -2814,7 +2841,7 @@ a.cpns {
     text-align: center;
     margin: 20px 0 0;
     display: inline-block;
-    min-height: 420px;
+    min-height: 40px;
     vertical-align: top;
     padding: 5px;
 }

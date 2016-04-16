@@ -23,7 +23,10 @@
         <a class="button close1" ng-click="model.unfollowUser(followedUser)">Delete</a>
         <div class="cart-sec simpleCart_shelfItem">
             <div class="cart-item cyc">
-                <img ng-src={{followedUser.photo}} class="img-responsive" alt="">
+                <img ng-show="followedUser.photo != null && followedUser.photo != undefined"
+                     ng-src="{{followedUser.photo}}" class="img-responsive" alt="">
+                <img ng-show="followedUser.photo == null || followedUser.photo == undefined"
+                     ng-src="./images/head.jpg" class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">
                 <h3><a href="#/profile_public/{{followedUser._id}}">{{followedUser.username}}</a></h3>
