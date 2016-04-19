@@ -266,7 +266,8 @@
                         <div class="form-group">
                             <label>Comment Title:</label>
                             <br/>
-                            <input type="text" class="form-control" placeholder="Comment Title" ng-model="model.currComment.title"/>
+                            <input type="text" class="form-control" placeholder="Comment Title"
+                                   ng-model="model.currComment.title" empty-to-null />
                         </div>
                         <div class="form-group">
                             <span class="star-rating">
@@ -280,7 +281,8 @@
                         <div class="form-group">
                             <label>Comment Content:</label>
                             <br/>
-                            <textarea class="form-control" placeholder="Comment Content" ng-model="model.currComment.content"></textarea>
+                            <textarea class="form-control" placeholder="Comment Content"
+                                      ng-model="model.currComment.content" empty-to-null></textarea>
                         </div>
                     </form>
                 </div>

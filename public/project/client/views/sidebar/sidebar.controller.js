@@ -37,10 +37,10 @@
         init();
 
         function isProfile() {
-            return vm.$location.url().indexOf('profile') > 0;
+            return (vm.$location.url().indexOf('profile') >= 0 && vm.$location.url().indexOf('profile_public') < 0);
         }
         function isAdmin() {
-            return vm.$location.url().indexOf('admin') > 0;
+            return vm.$location.url().indexOf('admin') >= 0;
         }
 
         function isProfileOrAdmin() {

@@ -30,13 +30,24 @@
             RecipeService
                 .userUnlikesRecipe(vm.currUser._id, recipe._id)
                 .then(function(response){
-                    setUser(response.data);
-                });
+                        setUser(vm.currUser._id);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
-        function setUser(user) {
-            UserService.setCurrentUser(user);
-            init();
+        function setUser(userId) {
+            UserService
+                .findUserById(userId)
+                .then(
+                    function(response){
+                        UserService.setCurrentUser(response.data);
+                        init();
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
         function noPic(pic) {

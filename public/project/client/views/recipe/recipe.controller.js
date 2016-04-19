@@ -136,6 +136,16 @@
 
         function updateComment() {
 
+            if (!vm.currComment.title) {
+                alert("title cannot be empty!");
+                return;
+            }
+
+            if (!vm.currComment.content) {
+                alert("content cannot be empty!");
+                return;
+            }
+
             if (vm.currComment.rating == "5") {
                 vm.currComment.rateImg = "./images/star5.png";
             } else if (vm.currComment.rating == "4") {
