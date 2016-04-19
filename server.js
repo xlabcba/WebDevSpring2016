@@ -11,6 +11,7 @@ var mongoose      = require('mongoose');
 var fs            = require('fs');
 var path          = require('path');
 var round         = require('mongo-round');
+var mv               = require("mv");
 
 
 // create a default connection string
@@ -44,6 +45,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
+app.use(mv);
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 

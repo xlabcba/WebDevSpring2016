@@ -4,6 +4,7 @@
 
 var fs = require("fs");
 var path = require("path");
+var mv = require("mv");
 
 module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
@@ -297,13 +298,17 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
             type: myFile.type
         };
 
-        var savePath = "../../uploads/" + file.name;
+        var saveFileNameArray = file.path.split('/');
+
+        var saveFileName = saveFileNameArray[saveFileNameArray.length - 1];
+
+        var savePath = "../../uploads/" + saveFileName;
 
         console.log(savePath);
 
         // optionally rename the file to its original name
         var oldPath = path.resolve(myFile.path);
-        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + myFile.name);
+        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + saveFileName);
 
         console.log(oldPath);
         console.log(newPath);
@@ -313,7 +318,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
         recipeModel.updateRecipePic(recipeId, savePath, "save")
             .then(
                 function ( doc ) {
-                    fs.rename(oldPath, newPath, function(err){
+                    mv(oldPath, newPath, function(err){
                         if(!err) {
                             res.redirect("/project/client/index.html#/recipe_edit/"+recipeId);
                         } else {

@@ -38,6 +38,7 @@
     "mongo-round": "^1.0.0",
     "mongoose": "^4.2.3",
     "multer": "^1.0.6",
+    "mv": "^2.1.1",
     "ng-dialog": "^0.5.5",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",

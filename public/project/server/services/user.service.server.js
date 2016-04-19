@@ -7,6 +7,11 @@ var ProjectStrategy  = require('passport-local').Strategy;
 var bcrypt           = require("bcrypt-nodejs");
 var fs               = require("fs");
 var path             = require("path");
+var mv               = require("mv");
+/*
+var multer           = require('multer');
+var upload           = multer({ dest: __dirname + '/../../../../public/uploads' });
+*/
 
 module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
@@ -414,6 +419,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
     }
 
     function uploadProfilePic (req,res){
+        /*
         var userId = req.body.userId;
         var myFile = req.files.myFile;
         console.log(userId);
@@ -425,14 +431,29 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
             size: myFile.size,
             type: myFile.type
         };
+        */
 
-        var savePath = "../../uploads/" + file.name;
+        var userId = req.body.userId;
+        var myFile = req.files.myFile;
+
+        var file = {
+            path: myFile.path,
+            name: myFile.name,  // TODO: change to unique name;
+            size: myFile.size,
+            type: myFile.type
+        };
+
+        var saveFileNameArray = file.path.split('/');
+
+        var saveFileName = saveFileNameArray[saveFileNameArray.length - 1];
+
+        var savePath = "../../uploads/" + saveFileName;
 
         console.log(savePath);
 
         // optionally rename the file to its original name
         var oldPath = path.resolve(myFile.path);
-        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + myFile.name);
+        var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + saveFileName);
 
         console.log(oldPath);
         console.log(newPath);
@@ -440,7 +461,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
         userModelProj.updateProfilePic(userId, savePath)
             .then(
                 function ( doc ) {
-                    fs.rename(oldPath, newPath, function(err){
+                    mv(oldPath, newPath, function(err){
                         if(!err) {
                             res.redirect("/project/client/index.html#/profile_info");
                         } else {
