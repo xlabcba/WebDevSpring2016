@@ -8,7 +8,7 @@
     {
         var vm = this;
 
-        console.log("enterred public controller");
+        //console.log("enterred public controller");
 
         vm.cannotFollow = cannotFollow;
         vm.canUnfollow = canUnfollow;

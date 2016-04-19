@@ -31,9 +31,9 @@ module.exports = function(app, userModel, userModelProj) {
     passport.deserializeUser(deserializeUser);
 
     function localStrategy(username, password, done) {
-        console.log("strategy assignment");
-        console.log(username);
-        console.log(password);
+        //console.log("strategy assignment");
+        //console.log(username);
+        //console.log(password);
         // lookup user by username only. cant compare password since it's encrypted
         userModel
             .findUserByUsername(username)
@@ -258,9 +258,9 @@ module.exports = function(app, userModel, userModelProj) {
             userId = req.params.userId;
         }
         var newUser = req.body;
-        console.log("password check before update profile");
-        console.log(userId);
-        console.log(newUser);
+        //console.log("password check before update profile");
+        //console.log(userId);
+        //console.log(newUser);
         userModel
             .findUserById(userId)
             .then(

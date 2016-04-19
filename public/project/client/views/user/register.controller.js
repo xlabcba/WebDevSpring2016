@@ -62,7 +62,7 @@
                 .then(
                     function (response) {
                         var user = response.data;
-                        console.log(user);
+                        //console.log(user);
                         if (user != null) {
                             UserService.setCurrentUser(user);
                             $location.url("/profile_info");

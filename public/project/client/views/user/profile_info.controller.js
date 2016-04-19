@@ -20,7 +20,7 @@
         vm.noPic = noPic;
 
         function init() {
-            console.log("HERE I AM!");
+            //console.log("HERE I AM!");
             vm.uploadme = {};
             vm.user = {};
             vm.currUser = UserService.getCurrentUser();
@@ -36,7 +36,7 @@
                     if(vm.user.photo) {
                         var photoArray = vm.user.photo.split("/");
                         vm.fileName = photoArray[photoArray.length - 1];
-                        console.log(vm.fileName);
+                        //console.log(vm.fileName);
                     }
                 });
 

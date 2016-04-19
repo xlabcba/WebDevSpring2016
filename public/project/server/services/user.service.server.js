@@ -125,17 +125,17 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
         var newUser = req.body;
         newUser.roles = ['user'];
-        console.log(newUser);
+        //console.log(newUser);
 
         userModelProj
             .findUserByUsername(newUser.username)
             .then(
                 function(user){
                     if(user) {
-                        console.log("here it is trapped!");
+                        //console.log("here it is trapped!");
                         res.json(null);
                     } else {
-                        console.log("here it passed");
+                        //console.log("here it passed");
                         // encrypt the password when registering
                         newUser.password = bcrypt.hashSync(newUser.password);
                         return userModelProj.createUser(newUser);
@@ -148,13 +148,13 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
             .then(
                 function(user){
                     if(user){
-                        console.log("before log in");
+                        //console.log("before log in");
                         req.login(user, function(err) {
                             if(err) {
                                 res.status(400).send(err);
                             } else {
-                                console.log("not error");
-                                console.log(user);
+                                //console.log("not error");
+                                //console.log(user);
                                 res.json(user);
                             }
                         });
@@ -238,18 +238,18 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
             userId = req.params.userId;
         }
         var newUser = req.body;
-        console.log("password check before update profile");
-        console.log(userId);
-        console.log(newUser);
+        //console.log("password check before update profile");
+        //console.log(userId);
+        //console.log(newUser);
         userModelProj
             .findUserById(userId)
             .then(
                 function(user){
-                    console.log(user);
+                    //console.log(user);
                     if (user.password != newUser.password) {
                         newUser.password = bcrypt.hashSync(newUser.password);
                     }
-                    console.log(newUser);
+                    //console.log(newUser);
                     userModelProj
                         .updateUserById(userId, newUser)
                         .then(
@@ -284,47 +284,62 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
             userId = req.params.userId;
         }
 
+        //console.log(userId);
+        //console.log("server side start");
+
         userModelProj.deleteUserFromFollower(userId)
             .then(
                 function ( stats ) {
-                    return recipeModel.deleteRecipeOfUser(userId);
-                },
-                function ( err ) {
-                    res.status(400).send(err);
-                })
-            .then(
-                function ( stats ) {
+                    //console.log("finish 1");
                     return recipeModel.deleteUserFromLikeBy(userId);
                 },
                 function ( err ) {
+                    //console.log("died 1");
                     res.status(400).send(err);
                 })
             .then(
                 function ( stats ) {
+                    //console.log("finish 2");
                     return commentModel.findCommentedRecipeForUser(userId);
                 },
                 function ( err ) {
+                    //console.log("died 2");
                     res.status(400).send(err);
                 })
             .then(
                 function ( recipeArray ) {
+                    //console.log("finish 3");
                     return commentModel.deleteCommentOfUser(userId, recipeArray);
                 },
                 function ( err ) {
+                    //console.log("died 3");
                     res.status(400).send(err);
                 })
             .then(
                 function ( recipeArray ) {
+                    //console.log("finish 4");
                     return commentModel.updateCommentedRecipeForUser(recipeArray);
                 },
                 function ( err ) {
+                    //console.log("died 4");
                     res.status(400).send(err);
                 })
             .then(
                 function ( stats ) {
+                    //console.log("finish 5");
+                    return recipeModel.deleteRecipeOfUser(userId);
+                },
+                function ( err ) {
+                    //console.log("died 5");
+                    res.status(400).send(err);
+                })
+            .then(
+                function ( stats ) {
+                    //console.log("finish 6");
                     return userModelProj.deleteUserById(userId);
                 },
                 function ( err ) {
+                    //console.log("died 6");
                     res.status(400).send(err);
                 })
             .then(
@@ -449,14 +464,14 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
         var savePath = "../../uploads/" + saveFileName;
 
-        console.log(savePath);
+        //console.log(savePath);
 
         // optionally rename the file to its original name
         var oldPath = path.resolve(myFile.path);
         var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + saveFileName);
 
-        console.log(oldPath);
-        console.log(newPath);
+        //console.log(oldPath);
+        //console.log(newPath);
 
         userModelProj.updateProfilePic(userId, savePath)
             .then(
@@ -478,7 +493,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
     function deleteProfilePic(req, res) {
         var userId = req.params.userId;
         var fileName = req.params.fileName;
-        console.log(fileName);
+        //console.log(fileName);
         userModelProj.updateProfilePic(userId, null)
             .then(
                 function ( doc ) {
@@ -499,10 +514,10 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
     // start configure middleware is Admin and authorized
 
     function isAdmin (req, res, next) {
-        console.log("checking admin");
+        //console.log("checking admin");
         if (req.isAuthenticated()) {
             if (req.user.roles.indexOf('admin') >= 0 ) {
-                console.log("passed");
+                //console.log("passed");
                 next();
             } else {
                 res.send(403);

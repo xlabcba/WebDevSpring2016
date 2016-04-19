@@ -510,7 +510,7 @@ module.exports = function(db, mongoose) {
     }
 
     function findAllRecipesForObj(searchObj) {
-        console.log(searchObj);
+        //console.log(searchObj);
         // use q to defer the response
         var deferred = q.defer();
 

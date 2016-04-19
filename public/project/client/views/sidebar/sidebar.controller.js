@@ -53,9 +53,9 @@
             var array2 = Object.keys(vm.pushTag2);
             var array3 = Object.keys(vm.pushTag3);
 
-            console.log(array1);
-            console.log(array2);
-            console.log(array3);
+            //console.log(array1);
+            //console.log(array2);
+            //console.log(array3);
 
             if (array1.length == 0 && array2.length == 0 && array3.length == 0) {
                 alert("please select at least one tags to search");

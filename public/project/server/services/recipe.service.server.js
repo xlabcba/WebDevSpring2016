@@ -288,8 +288,8 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
     function uploadRecipePic (req,res){
         var recipeId = req.body.recipeId;
         var myFile = req.files.myFile;
-        console.log(recipeId);
-        console.log(myFile);
+        //console.log(recipeId);
+        //console.log(myFile);
 
         var file = {
             path: myFile.path,
@@ -304,14 +304,14 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
         var savePath = "../../uploads/" + saveFileName;
 
-        console.log(savePath);
+        //console.log(savePath);
 
         // optionally rename the file to its original name
         var oldPath = path.resolve(myFile.path);
         var newPath = path.resolve(__dirname + "/../../../../public/uploads/" + saveFileName);
 
-        console.log(oldPath);
-        console.log(newPath);
+        //console.log(oldPath);
+        //console.log(newPath);
 
         //fs.rename(oldPath, newPath);
 
@@ -336,7 +336,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
         var recipeId = req.params.recipeId;
         var fileName = req.params.fileName;
         var savePath = "../../uploads/" + fileName;
-        console.log(fileName);
+        //console.log(fileName);
 
         recipeModel.updateRecipePic(recipeId, savePath, "delete")
             .then(

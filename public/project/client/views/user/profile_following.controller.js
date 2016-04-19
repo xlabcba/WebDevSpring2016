@@ -23,7 +23,7 @@
                 .then(function(response){
                     vm.followedUsers = response.data;
                     for(var u in response.data) {
-                        console.log("entered for loop");
+                        //console.log("entered for loop");
                         (function() {
                             var i = u;
                             RecipeService
@@ -35,7 +35,7 @@
                         })();
 
                     }
-                    console.log("exited for loop");
+                    //console.log("exited for loop");
                 });
         }
         init();

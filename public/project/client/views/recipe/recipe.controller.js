@@ -41,7 +41,7 @@
             vm.newComment = {};
             vm.recipeAuthor = {};
 
-            console.log(vm.currUser);
+            //console.log(vm.currUser);
 
             RecipeService
                 .getRecipeById(vm.recipeId)
@@ -51,7 +51,7 @@
                     for(var i in vm.recipe.recipeImg) {
                         vm.imgIndexes.push(i);
                     }
-                    console.log(vm.imgIndexes);
+                    //console.log(vm.imgIndexes);
                 });
 
             CommentService
@@ -77,7 +77,7 @@
         }
 
         function getUsersOfComments(comments) {
-            console.log(comments);
+            //console.log(comments);
             for (var c in comments) {
                 (function() {
                     var i = c;
@@ -112,7 +112,7 @@
             CommentService
                 .deleteCommentById(comment._id)
                 .then(function(response){
-                    console.log(response.data);
+                    //console.log(response.data);
                     init();
                 });
         }
@@ -127,7 +127,7 @@
                 rateImg: comment.rateImg,
                 content: comment.content
             };
-            console.log(vm.currComment);
+            //console.log(vm.currComment);
         }
 
         function clearCurrComment() {

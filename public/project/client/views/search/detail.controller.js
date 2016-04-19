@@ -13,14 +13,14 @@
         vm.storeId = $routeParams.id;
 
         function init() {
-            console.log(vm.storeId);
+            //console.log(vm.storeId);
             SearchService.searchByID(vm.storeId)
                 .then(function(resp) {
                     if (resp === undefined) {
                         alert("Item you are trying to search could not be found!!!");
                         vm.store = null;
                     } else {
-                        console.log(resp);
+                        //console.log(resp);
                         vm.store = resp;
                         uiGmapGoogleMapApi.then(function(maps) {
                             vm.map = {
@@ -39,11 +39,11 @@
                                 options: { draggable: true },
                                 events: {
                                     dragend: function (marker, eventName, args) {
-                                        console.log('marker dragend');
+                                        //console.log('marker dragend');
                                         var lat = marker.getPosition().lat();
                                         var lon = marker.getPosition().lng();
-                                        console.log(lat);
-                                        console.log(lon);
+                                        //console.log(lat);
+                                        //console.log(lon);
 
                                         vm.marker.options = {
                                             draggable: true,

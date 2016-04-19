@@ -20,9 +20,9 @@
 
         function init() {
             vm.$location = $location;
-            console.log("initial HEADER");
+            //console.log("initial HEADER");
             vm.currUser = UserService.getCurrentUser();
-            console.log(vm.currUser);
+            //console.log(vm.currUser);
             vm.searchStr = "";
         }
         init();
@@ -59,7 +59,7 @@
         }
 
         function localSearch(selectedObject) {
-            console.log(selectedObject);
+            //console.log(selectedObject);
 
             if (selectedObject == null || selectedObject == undefined) {
                 alert("please input some key word for searching recipe");
@@ -67,10 +67,10 @@
             }
 
             if(selectedObject.title != null && selectedObject.title != undefined) {
-                console.log("if 1");
+                //console.log("if 1");
                 $location.url("/home/"+selectedObject.title);
             } else if(selectedObject != null && selectedObject != undefined) {
-                console.log("if 2");
+                //console.log("if 2");
                 $location.url("/home/"+selectedObject);
             }
         }

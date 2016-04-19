@@ -36,16 +36,16 @@
         vm.sort = sort;
 
         if(vm.searchStr) {
-            console.log(vm.searchStr);
+            //console.log(vm.searchStr);
             vm.searchArray = vm.searchStr.split("&");
 
             if(vm.searchArray.length == 3) {
                 var tag1 = vm.searchArray[0].split("+");
                 var tag2 = vm.searchArray[1].split("+");
                 var tag3 = vm.searchArray[2].split("+");
-                console.log(tag1);
-                console.log(tag2);
-                console.log(tag3);
+                //console.log(tag1);
+                //console.log(tag2);
+                //console.log(tag3);
                 var searchObj = {
                     tag1: tag1,
                     tag2: tag2,
@@ -90,7 +90,7 @@
         }
 
         function localSearchObj(searchObj) {
-            console.log(searchObj);
+            //console.log(searchObj);
             RecipeService
                 .findAllRecipesForObj(searchObj)
                 .then(function(response){

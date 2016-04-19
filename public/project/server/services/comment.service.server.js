@@ -98,13 +98,13 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
 
         var commentId = req.params.commentId;
 
-        console.log("deleting comment in server client");
-        console.log(commentId);
+        //console.log("deleting comment in server client");
+        //console.log(commentId);
 
         commentModel.deleteCommentById(commentId)
             .then(
                 function ( comment ) {
-                    console.log(comment);
+                    //console.log(comment);
                     return commentModel.calculateRatingForRecipe(comment.recipeId);
                 },
                 function ( err ) {
@@ -133,14 +133,14 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
         var userId = req.params.userId;
         var recipeId = req.params.recipeId;
 
-        console.log(comment);
-        console.log(userId);
-        console.log(recipeId);
+        //console.log(comment);
+        //console.log(userId);
+        //console.log(recipeId);
 
         commentModel.createCommentForUser(userId, recipeId, comment)
             .then(
                 function ( doc ) {
-                    console.log(doc);
+                    //console.log(doc);
                     return commentModel.calculateRatingForRecipe(recipeId);
                 },
                 function ( err ) {
@@ -148,7 +148,7 @@ module.exports = function(app, userModelProj, recipeModel, commentModel) {
                 })
             .then(
                 function ( doc ) {
-                    console.log(doc);
+                    //console.log(doc);
                     res.json(doc);
                 },
                 function ( err ) {

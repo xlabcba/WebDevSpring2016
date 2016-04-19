@@ -58,7 +58,7 @@
                         vm.resultStr = "Sorry! no result for '"+vm.spirit+"' + '"+vm.zipcode+"'.";
                         return;
                     } else {
-                        console.log(resp);
+                        //console.log(resp);
                         vm.resultStr = "Result(s) for '"+vm.spirit+"' + '"+vm.zipcode+"' :"
                         vm.result = resp;
                     }

@@ -32,8 +32,8 @@
         return service;
 
         function login(user) {
-            console.log("here login");
-            console.log(user);
+            //console.log("here login");
+            //console.log(user);
             return $http.post("/api/project/login", user);
         }
 
@@ -42,7 +42,7 @@
         }
 
         function loggedin() {
-            console.log("check loggedin from client side");
+            //console.log("check loggedin from client side");
             return $http.get("/api/project/loggedin");
         }
 
@@ -67,11 +67,13 @@
         }
 
         function createUser(user) {
-            console.log("going to server service to register");
+            //console.log("going to server service to register");
             return $http.post("/api/project/user", user);
         }
 
         function deleteUserById(userId) {
+            //console.log(userId);
+            //console.log("here to server side");
             return $http.delete("/api/project/user/"+userId);
         }
 
@@ -95,8 +97,8 @@
         */
 
         function deleteProfilePhoto(userId, fileName) {
-            console.log(userId);
-            console.log(fileName);
+            //console.log(userId);
+            //console.log(fileName);
             return $http.post("/api/project/profile/"+userId+"/delete/"+fileName);
         }
 

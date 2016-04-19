@@ -54,7 +54,7 @@ module.exports = function(db, mongoose, recipeModel) {
         return mock;
         */
 
-        console.log("creating new comment");
+        //console.log("creating new comment");
 
         comment.userId = userId;
         comment.recipeId = recipeId;
@@ -465,8 +465,8 @@ module.exports = function(db, mongoose, recipeModel) {
         // use q to defer the response
         var deferred = q.defer();
 
-        console.log("here aggregate for recipe");
-        console.log(recipeId);
+        //console.log("here aggregate for recipe");
+        //console.log(recipeId);
 
         CommentModel
             .aggregate(
@@ -480,9 +480,9 @@ module.exports = function(db, mongoose, recipeModel) {
                     }
                 ],
                 (function(err, result) {
-                    console.log("result of aggregate for recipe");
-                    console.log(result);
-                    console.log(err);
+                    //console.log("result of aggregate for recipe");
+                    //console.log(result);
+                    //console.log(err);
 
                     if(!err) {
                         if(result.length == 1) {

@@ -188,8 +188,8 @@
                 // User is Authenticated
                 if (user !== '0')
                 {
-                    console.log("pass login check");
-                    console.log(user);
+                    //console.log("pass login check");
+                    //console.log(user);
                     UserService.setCurrentUser(user);
                     deferred.resolve();
                 }

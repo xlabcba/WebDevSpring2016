@@ -22,16 +22,18 @@
             vm.checkboxes = { admin: false, user: false };
             vm.modalUser = {};
             vm.users = [];
+            vm.currUser = UserService.getCurrentUser();
             UserService
                 .findAllUsers()
                 .then(function(response){
-                    console.log(response.data);
+                    //console.log(response.data);
                     vm.users = response.data;
                 });
         }
         init();
 
         function deleteUser(user) {
+            //console.log(user);
             UserService
                 .deleteUserById(user._id)
                 .then(function(response){
@@ -71,11 +73,34 @@
 
             UserService
                 .updateUser(user._id, newUser)
-                .then(function(response){
-                    console.log(response.data);
-                    init();
-                });
+                .then(
+                    function(response){
+                        setUser(user._id);
+                    },
+                    function(err){
+                        vm.error = err;
+                    }
+                );
         }
+
+        function setUser(userId) {
+            if(userId == vm.currUser._id) {
+                UserService
+                    .findUserById(userId)
+                    .then(
+                        function(response){
+                            UserService.setCurrentUser(response.data);
+                            init();
+                        },
+                        function(err){
+                            vm.error = err;
+                        });
+            } else {
+                init();
+            }
+        }
+
+
 
         function setModalUser(user) {
             vm.modalUser = {

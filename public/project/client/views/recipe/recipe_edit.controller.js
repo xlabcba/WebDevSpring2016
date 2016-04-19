@@ -156,16 +156,16 @@
                 RecipeService
                     .createRecipeForUser(vm.currUser._id, newRecipe)
                     .then(function(response){
-                        console.log("success create recipe");
-                        console.log(response.data);
+                        //console.log("success create recipe");
+                        //console.log(response.data);
                         $location.url("/recipe/"+response.data._id);
                     })
             } else {
                 RecipeService
                     .updateRecipeById(vm.currRecipeId, newRecipe)
                     .then(function(response ){
-                        console.log("success update recipe");
-                        console.log(response.data);
+                        //console.log("success update recipe");
+                        //console.log(response.data);
                         $location.url("/recipe/"+vm.currRecipeId);
                     });
             }
