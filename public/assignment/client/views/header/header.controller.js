@@ -32,8 +32,7 @@
                     },
                     function(err) {
                         vm.error = err;
-                    }
-                );
+                    });
             /*
             UserService.setCurrentUser(null);
             $location.url("/home");

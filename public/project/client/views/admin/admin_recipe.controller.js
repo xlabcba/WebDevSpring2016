@@ -13,6 +13,7 @@
         var vm = this;
 
         vm.deleteRecipe = deleteRecipe;
+        vm.noPic = noPic;
 
         function init() {
             vm.recipes = [];
@@ -31,6 +32,10 @@
                 .then(function(response){
                     init();
                 });
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
 
     }

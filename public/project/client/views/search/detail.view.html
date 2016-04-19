@@ -1,12 +1,41 @@
-<div class="col-md-9" ng-controller="DetailController">
+<div class="col-md-9 api-all" ng-controller="DetailController">
     <br/>
-    <h1>Result Detail</h1>
-    <div class="panel-body">
-        <img ng-src="{{detail.image_url}}">
-        <h2>{{detail.name}}</h2>
-        <p>{{detail.location.display_address.toString()}}</p>
-        <p>{{detail.display_phone}}</p>
-        <img ng-src="{{detail.rating_img_url}}">
-        <p>{{detail.snippet_text}}</p>
+    <div class="singel_right">
+        <div class="labout span_1_of_a1">
+            <div class="flexslider">
+                <img ng-src="{{model.store.image_url}}" class="api-title-img" alt="">
+            </div>
+        </div>
+        <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
+            <h1><a class="api-all" href="{{model.store.url}}">{{model.store.name}}</a></h1>
+            <ul class="rating">
+                <img ng-src="{{model.store.rating_img_url}}" class="img-rating" alt="">
+                <div class="clearfix"></div>
+            </ul>
+            <br/>
+            <h2 class="quick">Overview:</h2>
+            <p class="quick_desc">{{model.store.snippet_text}}</p>
+            <br/>
+            <h2 class="quick">Contacts:</h2>
+            <ul class="size">
+                <li><i class="fa fa-map-marker fa-lg quick-fact"></i><a class="title">Address:</a></li>
+                <li>{{model.store.location.display_address.toString()}}</li>
+            </ul>
+            <ul class="size">
+                <li><i class="fa fa-phone fa-lg quick-fact"></i><a class="title">Phone:</a></li>
+                <li>{{model.store.display_phone}}</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body api-detail" ng-show="model.store">
+        <ui-gmap-google-map center='model.map.center' zoom='model.map.zoom'>
+            <ui-gmap-marker
+                    idkey="model.marker.id"
+                    coords="model.marker.coords"
+                    options="model.marker.options"
+                    events="model.marker.events" >
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
     </div>
 </div>

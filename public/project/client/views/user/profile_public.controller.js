@@ -14,6 +14,7 @@
         vm.canUnfollow = canUnfollow;
         vm.followUser = followUser;
         vm.unfollowUser = unfollowUser;
+        vm.noPic = noPic;
 
         function init() {
 
@@ -77,22 +78,42 @@
         function followUser(followerId, followedId) {
             UserService
                 .followUser(followerId, followedId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(followerId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
         function unfollowUser(followerId, followedId) {
             UserService
                 .unfollowUser(followerId, followedId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(followerId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
-        function setUser(user) {
-            UserService.setCurrentUser(user);
-            init();
+        function setUser(userId) {
+            UserService
+                .findUserById(userId)
+                .then(
+                    function(response){
+                        UserService.setCurrentUser(response.data);
+                        init();
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
     }
 })();

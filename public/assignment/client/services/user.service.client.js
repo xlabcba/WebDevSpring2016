@@ -35,8 +35,6 @@
         return service;
 
         function login(user) {
-            console.log("here login");
-            console.log(user);
             return $http.post("/api/assignment/login", user);
         }
 
@@ -113,7 +111,6 @@
         }
 
         function updateUserByAdmin(userId, newUser) {
-            console.log("here I am updating user");
             return $http.put("/api/assignment/admin/user/"+userId, newUser);
         }
 

@@ -2,7 +2,7 @@ var passport         = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
 var bcrypt           = require("bcrypt-nodejs");
 
-module.exports = function(app, userModel) {
+module.exports = function(app, userModel, userModelProj) {
 
     var auth = authorized;
     var isAd = isAdmin;
@@ -31,6 +31,7 @@ module.exports = function(app, userModel) {
     passport.deserializeUser(deserializeUser);
 
     function localStrategy(username, password, done) {
+        console.log("strategy assignment");
         console.log(username);
         console.log(password);
         // lookup user by username only. cant compare password since it's encrypted
@@ -56,16 +57,28 @@ module.exports = function(app, userModel) {
     }
 
     function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(
-                function(user){
-                    done(null, user);
-                },
-                function(err){
-                    done(err, null);
-                }
-            );
+        if (user.photo != undefined && user.photo != null) {
+            userModelProj
+                .findUserById(user._id)
+                .then(
+                    function(user){
+                        done(null, user);
+                    },
+                    function(err){
+                        done(err, null);
+                    });
+        } else {
+            userModel
+                .findUserById(user._id)
+                .then(
+                    function(user){
+                        done(null, user);
+                    },
+                    function(err){
+                        done(err, null);
+                    }
+                );
+        }
     }
 
     function login(req, res) {

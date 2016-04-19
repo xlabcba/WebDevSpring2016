@@ -18,7 +18,8 @@
         return service;
 
         function createCommentForUser(userId, recipeId, comment) {
-            return $http.post("/api/project/user/"+userId+"/recipe/"+recipeId+"/comment/", comment);
+            console.log("here for creating comment in client side");
+            return $http.post("/api/project/comment/user/"+userId+"/recipe/"+recipeId, comment);
         }
 
         function findAllComments() {

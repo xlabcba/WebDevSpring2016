@@ -21,12 +21,12 @@
                 <!-- Carousel -->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol ng-show="model.recipe.recipeImg.length > 0" class="carousel-indicators">
+                    <ol ng-hide="model.noPic(model.recipe.recipeImg)" class="carousel-indicators">
                         <li data-target="#myCarousel" ng-repeat="imgIndex in model.imgIndexes"
                             ng-class="{active: (imgIndex == 0)}" data-slide-to="{{imgIndex}}"></li>
                     </ol>
                     <!-- Inner Content-->
-                    <div ng-show="model.recipe.recipeImg.length > 0" class="carousel-inner">
+                    <div ng-hide="model.noPic(model.recipe.recipeImg)" class="carousel-inner">
                         <div ng-class="{item: true, active: (imgIndex == 0)}"
                              ng-repeat="imgIndex in model.imgIndexes">
                             <img ng-src="{{model.recipe.recipeImg[imgIndex]}}" alt="Slide number {{imgIndex}}">
@@ -36,44 +36,68 @@
                         </div>
                     </div>
                     <!-- If no picture yet-->
-                    <img ng-show="model.recipe.recipeImg.length <= 0"
+                    <img ng-show="model.noPic(model.recipe.recipeImg)"
                          ng-src="./images/cocktail.jpg" alt="Slide number {{imgIndex}}">
                     <!-- /.carousel -->
+                </div>
             </div>
         </div>
-            </div>
         <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
             <div class="row">
-            <h1>{{model.recipe.title}}
-                <a ng-hide="model.cannotAddToFavorite()"
-                   ng-click="model.addRecipeToFavorite(model.currUser._id, model.recipeId)">
+                <h1>{{model.recipe.title}}
+                    <a ng-hide="model.cannotAddToFavorite()"
+                       ng-click="model.addRecipeToFavorite(model.currUser._id, model.recipeId)">
                     <span class="favorite-icon glyphicon glyphicon-heart-empty"
                           aria-hidden="true">{{model.recipe.likeBy.length}}</span>
-                </a>
-                <a ng-show="model.canDeleteFromFavorite()"
-                   ng-click="model.deleteRecipeFromFavorite(model.currUser._id, model.recipeId)">
+                    </a>
+                    <a ng-show="model.canDeleteFromFavorite()"
+                       ng-click="model.deleteRecipeFromFavorite(model.currUser._id, model.recipeId)">
                     <span class="favorite-icon glyphicon glyphicon-heart"
                           aria-hidden="true">{{model.recipe.likeBy.length}}</span>
-                </a>
-            </h1>
+                    </a>
+                </h1>
             </div>
             <ul class="rating">
-                <img ng-src="{{model.recipe.rateImg}}" class="img-rating" alt="">
-                <br/>
-                <li><a scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
-                <li><a scroll-to-item scroll-to="#postComment">Add Review</a></li>
+                <li><a>Created: {{model.recipe.created | date: "yyyy-MM-dd"}}</a></li>
+                <li><a>Updated: {{model.recipe.updated | date: "yyyy-MM-dd"}}</a></li>
                 <li ng-show="model.isAuthor(model.recipeAuthor._id)">
                     <a href="#/recipe_edit/{{model.recipeId}}">Edit Recipe</a>
                 </li>
+                <br/>
+                <br/>
+                <img ng-src="{{model.recipe.rateImg}}" class="img-rating" alt="">
+                <li><a scroll-to-item scroll-to="#currComments">{{model.comments.length}} Review(s)</a></li>
+                <li><a scroll-to-item scroll-to="#postComment">Add Review</a></li>
                 <div class="clearfix"></div>
             </ul>
             <br/>
             <h2 class="quick">Quick Overview:</h2>
             <p class="quick_desc">{{model.recipe.overview}}</p>
+            <br/>
+            <h2 class="quick">Quick Facts:</h2>
             <ul class="size">
-                <li>Base: {{model.recipe.tag1.join(",")}}</li>
-                <li>Flavor: {{model.recipe.tag2.join(",")}}</li>
-                <li>Skill Level: {{model.recipe.tag3}}</li>
+                <li><i class="fa fa-glass fa-lg quick-fact"></i><a class="title">Base:</a></li>
+                <li ng-repeat="base in model.recipe.tag1">
+                    <a class="api-btn" href="#/search/{{base}}">
+                        <i class="fa fa-yelp">{{base}}</i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="size">
+                <li><i class="fa fa-cutlery fa-lg quick-fact"></i><a class="title">Flavor:</a></li>
+                <li ng-repeat="flavor in model.recipe.tag2">
+                    <a class="api-btn" href="#/home/{{flavor}}">
+                        <i class="fa fa-search">{{flavor}}</i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="size">
+                <li><i class="fa fa-tasks fa-lg quick-fact"></i><a class="title">Skill Level:</a></li>
+                <li>
+                    <a class="api-btn" href="#/home/{{tag3}}">
+                        <i class="fa fa-search">{{model.recipe.tag3}}</i>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="clearfix"></div>
@@ -92,7 +116,7 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                     <div class="facts">
                         <ul class="tab_list">
-                            <li ng-repeat="liquor in model.recipe.ingredientSpirit"><p>{{liquor}}</p><a href="#/search" class="api-btn">Where to Buy</a></li>
+                            <li ng-repeat="liquor in model.recipe.ingredientSpirit"><p>{{liquor}}</p></li>
                             <li ng-repeat="other in model.recipe.ingredientOther"><p>{{other}}</p></li>
                         </ul>
                     </div>
@@ -109,72 +133,82 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                     <ul class="tab_list">
                         <div id="currComments" name="top">
-                        <p ng-hide="model.comments.length > 0">There is no review yet. You can post the first review!</p>
-                        <div class="cart-header" ng-repeat="comment in model.comments">
-                            <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
-                               ng-click="model.deleteComment(comment)">Delete</a>
-                            <a class="button update"
-                               ng-show="model.isAuthor(comment.author._id)"
-                               data-toggle="modal" data-target="#changeReviewModal"
-                               ng-click="model.setCurrComment(comment)">Change</a>
-                            <div class="cart-sec simpleCart_shelfItem">
-                                <div class="cart-item cyc">
-                                    <img ng-show="comment.author.photo != null && comment.author.photo != undefined"
-                                         ng-src="{{comment.author.photo}}" class="img-responsive" alt="">
-                                    <img ng-show="comment.author.photo == null || comment.author.photo == undefined"
-                                         ng-src="./images/head.jpg" class="img-responsive" alt=""/>
-                                </div>
-                                <div class="cart-item-info">
-                                    <h3><a href="#/profile_public/{{comment.author._id}}">{{comment.author.username}}</a></h3>
-                                    <ul class="qty">
-                                        <p>Recipe: {{comment.author.recipeNumber}}</p>
-                                        <p>Followed by: {{comment.author.followBy.length}}</p>
-                                    </ul>
-                                    <img ng-src="{{comment.rateImg}}" class="img-rating" alt="">
-                                    <br/>
-                                    <div class="delivery">
-                                        <p>{{comment.title}}</p>
-                                        <p>{{comment.content}}</p>
-                                        <div class="clearfix"></div>
+                            <p ng-hide="model.comments.length > 0">There is no review yet. You can post the first review!</p>
+                            <div class="cart-header" ng-repeat="comment in model.comments">
+                                <a class="button close1" ng-show="model.isAdminOrAuthor(comment.author._id)"
+                                   ng-click="model.deleteComment(comment)"><i class="fa fa-remove fa-lg"></i></a>
+                                <a class="button update"
+                                   ng-show="model.isAuthor(comment.author._id)"
+                                   data-toggle="modal" data-target="#changeReviewModal"
+                                   ng-click="model.setCurrComment(comment)"><i class="fa fa-pencil fa-lg"></i></a>
+                                <div class="cart-sec simpleCart_shelfItem">
+                                    <div class="cart-item cyc">
+                                        <img ng-hide="model.noPic(comment.author.photo)"
+                                             ng-src="{{comment.author.photo}}" class="img-responsive" alt="">
+                                        <img ng-show="model.noPic(comment.author.photo)"
+                                             ng-src="./images/head.jpg" class="img-responsive" alt=""/>
+                                        <a href="#/profile_public/{{comment.author._id}}">
+                                            {{comment.author.username}}
+                                        </a>
+                                        <div class="delivery">
+                                            <p>Recipe: {{comment.author.recipeNumber}}</p>
+                                            <p>Followed by: {{comment.author.followBy.length}}</p>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
+                                    <div class="cart-item-info">
+                                        <p class="comment">{{comment.title}}</p>
+                                        <ul class="comment">
+                                            <li><a>Created: {{comment.created | date: "yyyy-MM-dd"}}</a></li>
+                                            <li><a>Updated: {{comment.updated | date: "yyyy-MM-dd"}}</a></li>
+                                        </ul>
+                                        <img ng-src="{{comment.rateImg}}" class="img-rating" alt="">
+                                        <br/>
+                                        <p class="comment">{{comment.content}}</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
                             </div>
-                        </div>
                         </div>
                         <hr>
-                        <div id="postComment" name="top" class="cart-header">
-                            <div class="cart-sec simpleCart_shelfItem">
-                                <div class="cart-item cyc" ng-show = "model.isLoggedIn()">
-                                    <img ng-show="model.currUser.photo != null && model.currUser.photo != undefined"
-                                         ng-src="{{model.currUser.photo}}" class="img-responsive" alt=""/>
-                                    <img ng-show="model.currUser.photo == null || model.currUser.photo == undefined"
-                                         ng-src="./images/head.jpg" class="img-responsive" alt=""/>
-                                </div>
-                                <div class="cart-item-info" ng-show = "model.isLoggedIn()">
-                                    <a class="button close1" ng-click="model.postComment(model.newComment)">Post</a>
-                                    <input type="text" placeholder="title"
-                                           ng-model="model.newComment.title" empty-to-null />
-                                    <br/>
-                                    <span class="star-rating">
-                                        <input type="radio" ng-model="model.newComment.rating" value="1"><i></i>
-                                        <input type="radio" ng-model="model.newComment.rating" value="2"><i></i>
-                                        <input type="radio" ng-model="model.newComment.rating" value="3"><i></i>
-                                        <input type="radio" ng-model="model.newComment.rating" value="4"><i></i>
-                                        <input type="radio" ng-model="model.newComment.rating" value="5"><i></i>
-                                    </span>
-                                    <br/>
-                                    <div class="delivery">
+                        <div id="postComment" name="top">
+                            <p ng-hide="model.isLoggedIn()">
+                                You are guest. How about
+                                <a href="#/register">register</a> or <a href="#/login">login</a>
+                                to post a review on this recipe!
+                            </p>
+                            <div class="cart-header" ng-show = "model.isLoggedIn()">
+                                <a class="button close1" ng-click="model.postComment(model.newComment)">
+                                    <i class="fa fa-send fa-lg"></i>
+                                </a>
+                                <div class="cart-sec simpleCart_shelfItem">
+                                    <div class="cart-item cyc">
+                                        <img ng-hide="model.noPic(model.currUser.photo)"
+                                             ng-src="{{model.currUser.photo}}" class="img-responsive" alt=""/>
+                                        <img ng-show="model.noPic(model.currUser.photo)"
+                                             ng-src="./images/head.jpg" class="img-responsive" alt=""/>
+                                    </div>
+                                    <div class="cart-item-info">
+                                        <input type="text" placeholder="title"
+                                               ng-model="model.newComment.title" empty-to-null />
+                                        <br/>
+                                        <span class="star-rating">
+                                            <input type="radio" ng-model="model.newComment.rating" value="1"><i></i>
+                                            <input type="radio" ng-model="model.newComment.rating" value="2"><i></i>
+                                            <input type="radio" ng-model="model.newComment.rating" value="3"><i></i>
+                                            <input type="radio" ng-model="model.newComment.rating" value="4"><i></i>
+                                            <input type="radio" ng-model="model.newComment.rating" value="5"><i></i>
+                                        </span>
+                                        <br/>
+                                        <div class="delivery">
                                         <textarea rows="5" placeholder="Comments..."
                                                   ng-model="model.newComment.content" empty-to-null></textarea>
-                                        <div class="clearfix"></div>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="cart-item-info" ng-hide = "model.isLoggedIn()">
-                                    <p>You are guest. How about <a href="#/register">register</a> or <a href="#/login">login</a> to post a review on this recipe!</p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
                     </ul>
                 </div>
@@ -182,19 +216,27 @@
                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
                     <ul class="tab_list">
                         <div class="cart-header">
-                            <a class="button close1" ng-hide="model.cannotFollow()"
-                               ng-click="model.followRecipeAuthor(model.currUser._id, model.recipe.userId)">Follow !!!</a>
-                            <a class="button close1" ng-show="model.canUnfollow()"
-                               ng-click="model.unfollowRecipeAuthor(model.currUser._id, model.recipe.userId)">Unfollow</a>
                             <div class="cart-sec simpleCart_shelfItem">
                                 <div class="cart-item cyc">
-                                    <img ng-show="model.recipeAuthor.photo != null && model.recipeAuthor.photo != undefined"
+                                    <img ng-hide="model.noPic(model.recipeAuthor.photo)"
                                          ng-src="{{model.recipeAuthor.photo}}" class="img-responsive" alt="">
-                                    <img ng-show="model.recipeAuthor.photo == null || model.recipeAuthor.photo == undefined"
+                                    <img ng-show="model.noPic(model.recipeAuthor.photo)"
                                          ng-src="./images/head.jpg" class="img-responsive" alt="">
                                 </div>
                                 <div class="cart-item-info">
-                                    <h3><a href="#/profile_public/{{model.recipeAuthor._id}}">{{model.recipeAuthor.username}}</a></h3>
+                                    <h3>
+                                        <a href="#/profile_public/{{model.recipeAuthor._id}}">
+                                        {{model.recipeAuthor.username}}
+                                        </a>
+                                        <a ng-hide="model.cannotFollow()"
+                                           ng-click="model.followRecipeAuthor(model.currUser._id, model.recipe.userId)">
+                                            <i class="follow-icon-recipe fa fa-star-o">follow</i>
+                                        </a>
+                                        <a ng-show="model.canUnfollow()"
+                                           ng-click="model.unfollowRecipeAuthor(model.currUser._id, model.recipe.userId)">
+                                            <i class="follow-icon-recipe fa fa-star">followed</i>
+                                        </a>
+                                    </h3>
                                     <div class="delivery">
                                         <p>Recipe: {{model.recipeAuthor.recipeNumber}}</p>
                                         <p>Followed by: {{model.recipeAuthor.followBy.length}}</p>

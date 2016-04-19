@@ -126,7 +126,11 @@
                 return;
             }
             if (vm.newLiquorIngredients.length == 0) {
-                alert("At least one liquor as ingredient is required is required!");
+                alert("At least one liquor as ingredient is required!");
+                return;
+            }
+            if (vm.newSteps.length == 0) {
+                alert("At least one step iis required!");
                 return;
             }
 
@@ -144,7 +148,9 @@
                 ingredientSpirit: vm.newLiquorIngredients,
                 ingredientOther: vm.newOtherIngredients,
                 step: vm.newSteps,
-                overview: currRecipe.overview
+                overview: currRecipe.overview,
+                created: currRecipe.created,
+                updated: Date.now()
             };
 
             if(!newRecipe._id) {
@@ -172,7 +178,11 @@
             RecipeService
                 .deleteRecipeImage(recipeId, fileName)
                 .then(function(response){
-                    vm.currRecipe.recipeImg = response.data;
+                    RecipeService
+                        .getRecipeById(vm.currRecipeId)
+                        .then(function(response){
+                            vm.currRecipe.recipeImg = response.data.recipeImg;
+                        });
                 })
         }
 

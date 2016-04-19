@@ -13,19 +13,16 @@
                 Following
             </li>
         </ul>
-        <ul class="previous">
-            <li><a href="#/profile_info">Back to Previous Page</a></li>
-        </ul>
         <div class="clearfix"></div>
     </div>
     <h1>Following</h1>
     <div class="cart-header" ng-repeat="followedUser in model.followedUsers">
-        <a class="button close1" ng-click="model.unfollowUser(followedUser)">Delete</a>
+        <a class="button close1" ng-click="model.unfollowUser(followedUser)"><i class="fa fa-remove fa-lg"></i></a>
         <div class="cart-sec simpleCart_shelfItem">
             <div class="cart-item cyc">
-                <img ng-show="followedUser.photo != null && followedUser.photo != undefined"
+                <img ng-hide="model.noPic(followedUser.photo)"
                      ng-src="{{followedUser.photo}}" class="img-responsive" alt="">
-                <img ng-show="followedUser.photo == null || followedUser.photo == undefined"
+                <img ng-show="model.noPic(followedUser.photo)"
                      ng-src="./images/head.jpg" class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">

@@ -52,6 +52,11 @@
                 <input type="text" placeholder="Recipe Name" ng-model="model.currRecipe.title" empty-to-null />
             </div>
             <div class="form-group">
+                <span>Quick Overview<label>*</label></span>
+                <textarea rows="4" placeholder="Please briefly introduce this recipe..."
+                          ng-model="model.currRecipe.overview" empty-to-null></textarea>
+            </div>
+            <div class="form-group">
                 <span>Base Liquor<label>*</label></span>
                 <div class="delete" ng-repeat="base in model.currRecipe.tag1 track by $index">
                     <input type="text-with-delete" placeholder="Base Liquor {{$index + 1}}"
@@ -87,11 +92,6 @@
                         Advanced
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <span>Quick Overview<label>*</label></span>
-                <textarea rows="4" placeholder="Please briefly introduce this recipe..."
-                          ng-model="model.currRecipe.overview" empty-to-null></textarea>
             </div>
             <div class="form-group">
                 <span>Ingredients (Liquor)<label>*</label></span>

@@ -16,6 +16,7 @@
         vm.updateUser = updateUser;
         vm.setModalUser = setModalUser;
         vm.cleanModalUser = cleanModalUser;
+        vm.noPic = noPic;
 
         function init() {
             vm.checkboxes = { admin: false, user: false };
@@ -106,6 +107,10 @@
         function cleanModalUser() {
             vm.modalUser = {};
             vm.checkboxes = { admin: false, user: false };
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
     }
 })();

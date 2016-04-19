@@ -17,6 +17,7 @@
 
         vm.update = update;
         vm.deletePhoto = deletePhoto;
+        vm.noPic = noPic;
 
         function init() {
             console.log("HERE I AM!");
@@ -30,6 +31,7 @@
                 .findUserById(vm.currUser._id)
                 .then(function (response) {
                     vm.user = response.data;
+                    UserService.setCurrentUser(vm.user);
                     vm.user.birthday = new Date(response.data.birthday);
                     if(vm.user.photo) {
                         var photoArray = vm.user.photo.split("/");
@@ -50,13 +52,35 @@
         init();
 
         function update(user) {
+
+            if (!user.username) {
+                alert("username cannot be empty!");
+                return;
+            }
+            if (!user.password) {
+                alert("password cannot be empty!");
+                return;
+            }
+
+            var newUser = {
+                gender: user.gender,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                username: user.username,
+                password: user.password,
+                email: user.email,
+                birthday: user.birthday,
+                intro: user.intro
+            };
+
             UserService
-                .updateUser(user._id, user)
+                .updateUser(user._id, newUser)
                 .then(function(response){
-                    setUser(user);
+                    init()
                 });
         }
 
+        /*
         function setUser(user) {
             UserService
                 .findUserByCredentials(user.username, user.password)
@@ -69,6 +93,7 @@
                     }
                 });
         }
+        */
 
         function deletePhoto() {
             UserService
@@ -76,6 +101,10 @@
                 .then(function(response){
                     vm.user.photo = null;
                 })
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
     }
 })();

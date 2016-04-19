@@ -13,6 +13,7 @@
         var vm = this;
 
         vm.unfollowUser = unfollowUser;
+        vm.noPic = noPic;
 
         function init() {
             vm.followedUsers = [];
@@ -52,6 +53,10 @@
         function setUser(user) {
             UserService.setCurrentUser(user);
             init();
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
 
     }

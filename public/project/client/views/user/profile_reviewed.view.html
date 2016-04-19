@@ -13,21 +13,21 @@
                 Reviewed
             </li>
         </ul>
-        <ul class="previous">
-            <li><a href="#/profile_info">Back to Previous Page</a></li>
-        </ul>
         <div class="clearfix"></div>
     </div>
     <h1>Recipe Reviewed</h1>
     <div class="cart-header" ng-repeat="comment in model.comments">
-        <a class="button close1" ng-click="model.deleteComment(comment)">Delete</a>
-        <a class="button update" ng-click="model.updateComment(comment)">Update</a>
+        <a class="button close1" ng-click="model.deleteComment(comment)"><i class="fa fa-remove fa-lg"></i></a>
+        <a class="button update" ng-click="model.updateComment(comment)"><i class="fa fa-send fa-lg"></i></a>
         <div class="cart-sec simpleCart_shelfItem">
+            <hr>
             <div class="cart-item cyc">
                 <img ng-src="{{comment.recipeImg}}" class="img-responsive" alt="">
             </div>
             <div class="cart-item-info">
-                <h3><a href="#/recipe/{{comment.recipeId}}">{{comment.recipeTitle}}</a></h3>
+                <div class="delivery">
+                <a href="#/recipe/{{comment.recipeId}}">{{comment.recipeTitle}}</a>
+                </div>
                 <span class="star-rating">
                     <input type="radio" ng-model="comment.rating" value="1"><i></i>
                     <input type="radio" ng-model="comment.rating" value="2"><i></i>
@@ -37,10 +37,10 @@
                 </span>
                 <br/>
                 <div class="delivery">
-                    <input placeholder="CommentTitle" ng-model="comment.title">
+                    <input placeholder="CommentTitle" ng-model="comment.title" empty-to-null />
                 </div>
                 <div class="delivery">
-                    <textarea placeholder="CommentContent" ng-model="comment.content"></textarea>
+                    <textarea rows="4" placeholder="CommentContent" ng-model="comment.content" empty-to-null ></textarea>
                 </div>
             </div>
             <div class="clearfix"></div>

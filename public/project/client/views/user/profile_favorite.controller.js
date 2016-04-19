@@ -13,6 +13,7 @@
         var vm = this;
 
         vm.unlikeRecipe = unlikeRecipe;
+        vm.noPic = noPic;
 
         function init() {
             vm.currUser = UserService.getCurrentUser();
@@ -36,6 +37,10 @@
         function setUser(user) {
             UserService.setCurrentUser(user);
             init();
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
     }
 })();

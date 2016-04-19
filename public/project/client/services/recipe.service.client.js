@@ -9,6 +9,7 @@
             createRecipeForUser: createRecipeForUser,
             findAllRecipes: findAllRecipes,
             findAllRecipesForStr: findAllRecipesForStr,
+            findAllRecipesForObj: findAllRecipesForObj,
             findAllRecipesForUser: findAllRecipesForUser,
             findAllLikedRecipesForUser: findAllLikedRecipesForUser,
             deleteRecipeById: deleteRecipeById,
@@ -27,6 +28,10 @@
 
         function findAllRecipesForStr(searchStr) {
             return $http.get("/api/project/recipe/localSearch/"+searchStr);
+        }
+
+        function findAllRecipesForObj(searchObj) {
+            return $http.post("/api/project/recipe/localSearch",searchObj);
         }
 
         function findAllRecipes() {

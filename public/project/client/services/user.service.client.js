@@ -6,6 +6,9 @@
     function UserService($rootScope, $http) {
 
         var service = {
+            login: login,
+            logout: logout,
+            loggedin: loggedin,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -28,6 +31,21 @@
 
         return service;
 
+        function login(user) {
+            console.log("here login");
+            console.log(user);
+            return $http.post("/api/project/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/project/logout");
+        }
+
+        function loggedin() {
+            console.log("check loggedin from client side");
+            return $http.get("/api/project/loggedin");
+        }
+
         function findUserById(userId) {
             return $http.get("/api/project/user/"+userId);
         }
@@ -49,6 +67,7 @@
         }
 
         function createUser(user) {
+            console.log("going to server service to register");
             return $http.post("/api/project/user", user);
         }
 

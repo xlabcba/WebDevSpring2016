@@ -27,6 +27,7 @@
         vm.canDeleteFromFavorite = canDeleteFromFavorite;
         vm.addRecipeToFavorite = addRecipeToFavorite;
         vm.deleteRecipeFromFavorite = deleteRecipeFromFavorite;
+        vm.noPic = noPic;
 
         function init() {
 
@@ -39,6 +40,8 @@
             vm.currComment = {};
             vm.newComment = {};
             vm.recipeAuthor = {};
+
+            console.log(vm.currUser);
 
             RecipeService
                 .getRecipeById(vm.recipeId)
@@ -154,7 +157,9 @@
                 title: vm.currComment.title,
                 rating: vm.currComment.rating,
                 rateImg: vm.currComment.rateImg,
-                content: vm.currComment.content
+                content: vm.currComment.content,
+                created: vm.currComment.created,
+                updated: Date.now()
             };
 
             CommentService
@@ -223,17 +228,25 @@
         function followRecipeAuthor(followerId, followedId) {
             UserService
                 .followUser(followerId, followedId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(followerId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
         function unfollowRecipeAuthor(followerId, followedId) {
             UserService
                 .unfollowUser(followerId, followedId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(followerId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
         function cannotAddToFavorite() {
@@ -249,22 +262,42 @@
         function addRecipeToFavorite(userId, recipeId) {
             RecipeService
                 .userLikesRecipe(userId, recipeId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(userId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
         function deleteRecipeFromFavorite(userId, recipeId) {
             RecipeService
                 .userUnlikesRecipe(userId, recipeId)
-                .then(function(response){
-                    setUser(response.data);
-                });
+                .then(
+                    function(response){
+                        setUser(userId);
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
         }
 
-        function setUser(user) {
-            UserService.setCurrentUser(user);
-            init();
+        function setUser(userId) {
+            UserService
+                .findUserById(userId)
+                .then(
+                    function(response){
+                        UserService.setCurrentUser(response.data);
+                        init();
+                    },
+                    function(err){
+                        vm.error = err;
+                    });
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
 
     }

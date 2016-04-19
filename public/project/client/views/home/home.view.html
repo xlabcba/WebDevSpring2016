@@ -1,13 +1,25 @@
 <div class="col-md-9" ng-controller="HomeController">
     <div class="cbp-vm-view-grid">
+        <br/>
+        <h1>{{model.homeTitle}}</h1>
+        <h2>{{model.homeSubtitle}}</h2>
+        <br/>
+        <div>
+            <label for="sort">Sort by:</label>
+            <select  class="home" id="sort"
+                    ng-model="model.sortType"
+                    ng-options="option.value as option.label for option in model.sortOptions"
+                    ng-change="model.sort(model.sortType)">
+            </select>
+        </div>
         <ul>
-            <li ng-repeat="recipe in model.recipes">
+            <li ng-repeat="recipe in model.recipes | orderBy: model.predicate : model.reverse ">
                 <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img ng-show="recipe.recipeImg.length > 0"
+                            <img ng-hide="model.noPic(recipe.recipeImg)"
                                  ng-src={{recipe.recipeImg[0]}} class="img-responsive" alt=""/>
-                            <img ng-show="recipe.recipeImg.length <= 0"
+                            <img ng-show="model.noPic(recipe.recipeImg)"
                                  ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                             <div class="product_container">
                                 <div class="cart-left">

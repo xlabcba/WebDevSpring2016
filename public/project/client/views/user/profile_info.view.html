@@ -12,7 +12,7 @@
                 <button class="upload btn-warning" type="submit">Upload</button>
             </div>
         </form>
-        <div class="preview-tool" ng-show="model.user.photo != null && model.user.photo != undefined">
+        <div class="preview-tool" ng-hide="model.noPic(model.user.photo)">
                 <div class="content_grid">
                     <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
                         <a href="{{model.user.photo}}">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
         </div>
-        <div class="preview-tool" ng-show="model.user.photo == null || model.user.photo == undefined">
+        <div class="preview-tool" ng-show="model.noPic(model.user.photo)">
             <div class="content_grid">
                 <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
                     <a href="./images/head.jpg">

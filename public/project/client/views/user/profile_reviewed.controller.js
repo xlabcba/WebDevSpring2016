@@ -30,7 +30,7 @@
                                 .getRecipeById(response.data[i].recipeId)
                                 .then(function(res){
                                     response.data[i].recipeTitle = res.data.title;
-                                    if (res.data.recipeImg.length > 0) {
+                                    if (!noPic(res.data.recipeImg)) {
                                         response.data[i].recipeImg = res.data.recipeImg[0];
                                     } else {
                                         response.data[i].recipeImg = "./images/cocktail.jpg";
@@ -54,6 +54,15 @@
 
         function updateComment(comment) {
 
+            if (!comment.title) {
+                alert("Title cannot be empty!");
+                return;
+            }
+            if (!comment.content) {
+                alert("Content cannot be empty!");
+                return;
+            }
+
             if (comment.rating == "5") {
                 comment.rateImg = "./images/star5.png";
             } else if (comment.rating == "4") {
@@ -75,7 +84,9 @@
                 title: comment.title,
                 rating: comment.rating,
                 rateImg: comment.rateImg,
-                content: comment.content
+                content: comment.content,
+                created: comment.created,
+                updated: Date.now()
             };
 
             CommentService
@@ -83,6 +94,10 @@
                 .then(function(response){
                     init();
                 })
+        }
+
+        function noPic(pic) {
+            return (pic == null || pic == undefined || pic.length == 0);
         }
 
     }

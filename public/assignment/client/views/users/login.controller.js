@@ -41,8 +41,7 @@
                     },
                     function(err) {
                         vm.error = err;
-                    }
-                );
+                    });
             /*
             UserService
                 .findUserByCredentials(user.username, user.password)

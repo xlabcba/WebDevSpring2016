@@ -13,9 +13,6 @@
                 Favorite
             </li>
         </ul>
-        <ul class="previous">
-            <li><a href="#/profile_info">Back to Previous Page</a></li>
-        </ul>
         <div class="clearfix"></div>
     </div>
     <h3>Favorite Recipes</h3>
@@ -25,22 +22,26 @@
                 <a class="cbp-vm-image" href="#/recipe/{{likedRecipe._id}}">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img ng-show="likedRecipe.recipeImg.length > 0"
+                            <img ng-hide="model.noPic(likedRecipe.recipeImg)"
                                  ng-src="{{likedRecipe.recipeImg[0]}}" class="img-responsive" alt=""/>
-                            <img ng-show="likedRecipe.recipeImg.length <= 0"
+                            <img ng-show="model.noPic(likedRecipe.recipeImg)"
                                  ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                             <div class="product_container">
                                 <div class="cart-left">
                                     <p class="title">{{likedRecipe.title}}</p>
                                 </div>
                                 <br/>
-                                <span><img ng-src="{{likedRecipe.rateImg}}" class="img-rating" alt=""/></span>
+                                <span>
+                                    <img ng-src="{{likedRecipe.rateImg}}" class="img-rating title-rating" alt=""/>
+                                    <a class="button cbp-vm-add" ng-click="model.unlikeRecipe(likedRecipe)">
+                                        <i class="fa fa-remove fa-lg"></i>
+                                    </a>
+                                </span>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
                 </a>
-                <a class="button cbp-vm-add" ng-click="model.unlikeRecipe(likedRecipe)">Delete</a>
             </li>
         </ul>
     </div>

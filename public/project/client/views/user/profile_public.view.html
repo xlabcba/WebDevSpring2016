@@ -18,9 +18,9 @@
         <div class="labout span_1_of_a1">
             <div class="flexslider">
                 <br/>
-                <img ng-show="model.visitUser.photo != null && model.visitUser.photo != undefined"
+                <img ng-hide="model.noPic(model.visitUser.photo)"
                      ng-src="{{model.visitUser.photo}}" alt="">
-                <img ng-show="model.visitUser.photo == null || model.visitUser.photo == undefined"
+                <img ng-show="model.noPic(model.visitUser.photo)"
                      ng-src="./images/head.jpg" alt="">
             </div>
         </div>
@@ -29,13 +29,11 @@
                 <h1>{{model.visitUser.username}}
                     <a ng-hide="model.cannotFollow(model.visitUserId)"
                        ng-click="model.followUser(model.currUser._id, model.visitUserId)">
-                    <span class="follow-icon glyphicon glyphicon-star-empty"
-                          aria-hidden="true">Follow</span>
+                        <i class="follow-icon fa fa-star-o">follow</i>
                     </a>
                     <a ng-show="model.canUnfollow(model.visitUserId)"
                        ng-click="model.unfollowUser(model.currUser._id, model.visitUserId)">
-                    <span class="follow-icon glyphicon glyphicon-star"
-                          aria-hidden="true">Followed!</span>
+                        <i class="follow-icon fa fa-star">followed</i>
                     </a>
                 </h1>
             </div>
@@ -66,9 +64,9 @@
                                 <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                                     <div class="inner_content clearfix">
                                         <div class="product_image">
-                                            <img ng-show="recipe.recipeImg.length > 0"
+                                            <img ng-hide="model.noPic(recipe.recipeImg)"
                                                  ng-src="{{recipe.recipeImg[0]}}" class="img-responsive" alt=""/>
-                                            <img ng-show="recipe.recipeImg.length <= 0"
+                                            <img ng-show="model.noPic(recipe.recipeImg)"
                                                  ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                                             <div class="product_container">
                                                 <div class="cart-left">
@@ -92,9 +90,9 @@
                                 <a class="cbp-vm-image" href="#/recipe/{{recipe._id}}">
                                     <div class="inner_content clearfix">
                                         <div class="product_image">
-                                            <img ng-show="recipe.recipeImg.length > 0"
+                                            <img ng-hide="model.noPic(recipe.recipeImg)"
                                                  ng-src="{{recipe.recipeImg[0]}}" class="img-responsive" alt=""/>
-                                            <img ng-show="recipe.recipeImg.length <= 0"
+                                            <img ng-show="model.noPic(recipe.recipeImg)"
                                                  ng-src="./images/cocktail.jpg" class="img-responsive" alt=""/>
                                             <div class="product_container">
                                                 <div class="cart-left">
@@ -120,9 +118,9 @@
                            ng-click="model.unfollowRecipeAuthor(model.currUser._id, user._id)">Unfollow</a>
                         <div class="cart-sec simpleCart_shelfItem">
                             <div class="cart-item cyc">
-                                <img ng-show="user.photo == null || user.photo == undefined"
+                                <img ng-hide="model.noPic(user.photo)"
                                      ng-src="{{user.photo}}" class="img-responsive" alt="">
-                                <img ng-show="user.photo != null && user.photo != undefined"
+                                <img ng-show="model.noPic(user.photo)"
                                      ng-src="./images/head.jpg" class="img-responsive" alt="">
                             </div>
                             <div class="cart-item-info">

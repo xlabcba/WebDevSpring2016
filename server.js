@@ -10,6 +10,7 @@ var session       = require('express-session');
 var mongoose      = require('mongoose');
 var fs            = require('fs');
 var path          = require('path');
+var round         = require('mongo-round');
 
 
 // create a default connection string
@@ -50,7 +51,10 @@ app.get('/hello', function(req, res){
     res.send('hello world');
 });
 
-require("./public/assignment/server/app.js")(app, db, mongoose);
-require("./public/project/server/app.js")(app);
+var userModelProj = require("./public/project/server/models/user.model.js")(db, mongoose);
+
+
+require("./public/assignment/server/app.js")(app, db, mongoose, userModelProj);
+require("./public/project/server/app.js")(app, db, mongoose, userModelProj);
 
 app.listen(port, ipaddress);

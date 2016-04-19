@@ -36,10 +36,25 @@
         </div>
         <div class="banner_wrap">
             <div class="bannertop_box">
-                <div class="search">
-                    <input type="text" placeholder="Cosmo, Bloody Mary..." ng-model="model.searchStr">
-                    <a class="search" ng-click="model.localSearch(model.searchStr)"><i class="fa fa-search"></i></a>
+
+                <div class="input-group search">
+
+                    <div angucomplete-alt
+                         placeholder="Search Recipe..."
+                         pause="300"
+                         selected-object="selectedRecipe"
+                         remote-url="/api/project/complete/"
+                         title-field="title"
+                         minlength="2"
+                         input-class="form-control-small"
+                         match-class="highlight"
+                         override-suggestions="true">
+                    </div>
+
+                    <a ng-click="model.localSearch(selectedRecipe.originalObject)"><i class="fa fa-search"></i></a>
+
                 </div>
+
                 <div class="welcome_box">
                     <h2>Welcome to OurBar</h2>
                     <p>share recipe and enjoy</p>
