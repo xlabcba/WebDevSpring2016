@@ -55,6 +55,7 @@
             }
 
             user.photo = "";
+            user.roles = ["user"];
 
             UserService
                 .createUser(user)

@@ -16,7 +16,7 @@ module.exports = function(mongoose) {
         "followBy": {type: [Schema.ObjectId], default: []},
         "like": {type: [Schema.ObjectId], default: []},
         "intro": {type: String, default: ""},
-        "roles": {type: [String], enum: ["admin", "user"], default: ["user"]},
+        "roles": {type: [String], default: []},
         "created": {type: Date, default: Date.now}
 
     }, {collection: 'projectUser'});
