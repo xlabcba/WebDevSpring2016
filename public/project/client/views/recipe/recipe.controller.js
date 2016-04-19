@@ -151,7 +151,6 @@
             }
 
             var newComment = {
-                _id: vm.currComment._id,
                 userId: vm.currComment.userId,
                 recipeId: vm.currComment.recipeId,
                 title: vm.currComment.title,
@@ -163,7 +162,7 @@
             };
 
             CommentService
-                .updateCommentById(newComment._id, newComment)
+                .updateCommentById(vm.currComment._id, newComment)
                 .then(function(response){
                     init();
                 })

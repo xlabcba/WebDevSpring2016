@@ -54,7 +54,6 @@
             }
 
             var newUser = {
-                _id: user._id,
                 photo: user.photo,
                 gender: user.gender,
                 firstName: user.firstName,

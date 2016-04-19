@@ -135,7 +135,6 @@
             }
 
             var newRecipe = {
-                _id: vm.currRecipeId,
                 userId: currRecipe.userId,
                 title: currRecipe.title,
                 titleImg: currRecipe.titleImg,
@@ -153,7 +152,7 @@
                 updated: Date.now()
             };
 
-            if(!newRecipe._id) {
+            if(!vm.currRecipeId) {
                 RecipeService
                     .createRecipeForUser(vm.currUser._id, newRecipe)
                     .then(function(response){
