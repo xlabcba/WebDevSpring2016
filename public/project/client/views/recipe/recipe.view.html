@@ -60,7 +60,7 @@
             <ul class="rating">
                 <li><a>Created: {{model.recipe.created | date: "yyyy-MM-dd"}}</a></li>
                 <li><a>Updated: {{model.recipe.updated | date: "yyyy-MM-dd"}}</a></li>
-                <li ng-show="model.isAuthor(model.recipeAuthor._id)">
+                <li ng-show="model.isAdminOrAuthor(model.recipeAuthor._id)">
                     <a href="#/recipe_edit/{{model.recipeId}}">Edit Recipe</a>
                 </li>
                 <br/>
