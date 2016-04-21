@@ -396,3 +396,9 @@ footer .social_icon a:hover
 	}
 }
 /* end 600 media quires */
+
+html,body        {height:100%;}
+.wrapper         {width:90%;height:100%;margin:0 auto; margin-top:80px; background:#CCC}
+.h_iframe        {position:relative;}
+.h_iframe .ratio {display:block;width:100%;height:auto;}
+.h_iframe iframe {position:absolute;top:0;left:0;width:100%; height:100%;}
